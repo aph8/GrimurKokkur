@@ -1,0 +1,2 @@
+# GrimurKokkur
+Heimasíða Gríms Kokks
