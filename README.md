@@ -41,7 +41,7 @@ Grímur Kokkur er fjölskyldufyrirtæki sem býður upp á nútímalega og ljúf
 
 ```bash
 # Klóna geymsluna
-git clone https://github.com/yourusername/grimurkokkur.git
+git clone https://github.com/aph8/grimurkokkur.git
 cd grimurkokkur
 
 # Setja upp háð (dependencies)
@@ -80,45 +80,6 @@ npm run lint
 * **Mail:** nodemailer 7.0.3
 * **Markdown:** react-markdown, remark-gfm
 
-## Configuration
-
-Búðu til skrána `.env.local` í rót verkefnisins með eftirfarandi breytum:
-
-```env
-DATO_API_TOKEN=þinn_dato_token
-SMTP_HOST=your_smtp_host
-SMTP_PORT=587
-SMTP_USER=your_smtp_user
-SMTP_PASS=your_smtp_pass
-CONTACT_EMAIL=grimurkokkur@grimurkokkur.is
-NODE_ENV=development
-```
-
-## API Reference
-
-### `POST /api/contact`
-
-Sendir tengiliðaskilaboð með JSON líkama:
-
-```json
-{
-  "name": "Þitt nafn",
-  "email": "netfang@example.com",
-  "message": "Skilaboðin þín hér"
-}
-```
-
-* **Svátt**: 200 OK – sending tókst
-* **422**: Validation villa – ófullnægjandi gögn
-* **500**: Innri þjónustuvilla
-
-## Contributing
-
-1. Fork-aðu þetta repo
-2. Búðu til grein: `git checkout -b feature/Þitt-feature-nafn`
-3. Commit-aðu breytingar: `git commit -m "Bætt við einhverju"`
-4. Push-aðu grein: `git push origin feature/Þitt-feature-nafn`
-5. Opnaðu Pull Request
 
 ## License
 
