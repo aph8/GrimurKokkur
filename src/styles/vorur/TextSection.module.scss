@@ -1,0 +1,39 @@
+@import '../slantTheme';
+
+.textSection {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "title"
+    "content";
+  gap: 1rem;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 5vw, 2rem);
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: visible;
+
+  &::before {
+    @include slanted-edge(top, 10%);
+    opacity: 0.2;
+  }
+}
+
+.textSection__title {
+  grid-area: title;
+  position: relative;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.textSection__content {
+  grid-area: content;
+  color: var(--foreground);
+  line-height: 1.6;
+  font-size: clamp(1rem, 1.75vw, 1.125rem);
+
+  p { margin-bottom: 1rem; }
+  ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+  strong { color: var(--foreground); }
+}

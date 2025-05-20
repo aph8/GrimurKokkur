@@ -1,0 +1,98 @@
+// src/styles/vorur/ProductLayout.module.scss
+@use '../slantTheme' as slantTheme;
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Page title: slanted 3D extrusion                                          */
+.pageTitle {
+  display: inline-block;
+  position: relative;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  background: var(--accent-bg);
+  padding: 0.25em 0.5em;
+
+  /* front face: slight tilt + shadow */
+  transform: perspective(600px) rotateX(8deg);
+  transform-origin: bottom;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+
+  /* slanted front panel */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--accent-bg);
+    transform: skewY(-10deg);
+    transform-origin: left top;
+    z-index: -1;
+  }
+
+  /* extruded back face: same color, darkened via filter */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%; left: 0;
+    width: 100%; height: 0.4em;
+    background: var(--accent-bg);
+    filter: brightness(90%);
+    transform: skewX(-10deg);
+    transform-origin: left top;
+    z-index: -2;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Main grid + slanted-edge panels                                          */
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    "hero"
+    "desc"
+    "ing"
+    "video"
+    "gallery";
+  gap: clamp(1rem, 2vw, 2.5rem);
+  padding: 2rem 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 35% 65%;
+    grid-template-areas:
+      "hero desc"
+      "hero ing"
+      "hero nutri"
+      "hero video"
+      "hero gallery";
+    gap: clamp(1.5rem, 3vw, 4rem);
+  }
+
+  & > *:not(.heroContainer) {
+    position: relative;
+    &::before {
+      @include slantTheme.slanted-edge(top, 8%);
+      opacity: 0.15;
+    }
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Grid-area assignments                                                     */
+.heroContainer    { grid-area: hero; }
+.contentContainer { grid-area: desc / ing; }
+.descContainer    { grid-area: desc; }
+.ingContainer     { grid-area: ing; }
+.nutriContainer   { grid-area: nutri; }
+.videoContainer   { grid-area: video; }
+.galleryContainer { grid-area: gallery; }
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Show/hide helpers                                                         */
+.desktopOnly {
+  display: none;
+  @media (min-width: 768px) { display: block; }
+}
+.mobileOnly {
+  display: block;
+  @media (min-width: 768px) { display: none; }
+}

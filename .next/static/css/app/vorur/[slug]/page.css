@@ -1,0 +1,326 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/vorur/PhotoGallery.module.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.PhotoGallery_wrapper__lXv3F {
+  position: relative;
+  overflow-x: auto;
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+}
+.PhotoGallery_wrapper__lXv3F::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.PhotoGallery_container__LqEwT {
+  position: relative;
+  width: clamp(280px, 80%, 600px);
+  height: 24rem;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+@media (min-width: 768px) {
+  .PhotoGallery_container__LqEwT {
+    height: 28rem;
+  }
+}
+
+.PhotoGallery_arrowOverlay__fEnWz {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+.PhotoGallery_arrowOverlay__fEnWz span {
+  font-size: 2rem;
+  color: var(--foreground);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.PhotoGallery_counter__GyHUI {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: rgba(23, 23, 23, 0.1); /* fallback if --foreground-rgb not set */
+  color: var(--foreground);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/vorur/TextSection.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.TextSection_textSection__KWw0b {
+  position: relative;
+  display: grid;
+  grid-template-areas: "title" "content";
+  gap: 1rem;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 5vw, 2rem);
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: visible;
+}
+.TextSection_textSection__KWw0b::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.TextSection_textSection__title__Gji_q {
+  grid-area: title;
+  position: relative;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.TextSection_textSection__content__gzWMw {
+  grid-area: content;
+  color: var(--foreground);
+  line-height: 1.6;
+  font-size: clamp(1rem, 1.75vw, 1.125rem);
+}
+.TextSection_textSection__content__gzWMw p {
+  margin-bottom: 1rem;
+}
+.TextSection_textSection__content__gzWMw ul, .TextSection_textSection__content__gzWMw ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.TextSection_textSection__content__gzWMw strong {
+  color: var(--foreground);
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/vorur/NutritionTable.module.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.NutritionTable_wrapper__OTNyf {
+  overflow-x: auto;
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+}
+
+.NutritionTable_nutritionTable__ySgej {
+  width: clamp(280px, 60%, 600px);
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #f4d35e;
+  color: #171717;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+}
+.NutritionTable_nutritionTable__ySgej thead {
+  background: #f9e18c;
+}
+.NutritionTable_nutritionTable__ySgej thead th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  border-bottom: 2px solid #000;
+}
+.NutritionTable_nutritionTable__ySgej tbody tr:nth-child(even) {
+  background: #f9e18c;
+}
+.NutritionTable_nutritionTable__ySgej tbody tr:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.NutritionTable_nutritionTable__ySgej tbody tr td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #ccc;
+}
+.NutritionTable_nutritionTable__ySgej tbody tr.NutritionTable_subRow__C94uj {
+  background: rgba(0, 0, 0, 0.03);
+}
+.NutritionTable_nutritionTable__ySgej tbody tr.NutritionTable_subRow__C94uj td:first-child {
+  padding-left: 2rem;
+  font-style: italic;
+  color: #555;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/vorur/HeroImage.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.HeroImage_heroWrapper__7oTZi {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+.HeroImage_heroWrapper__7oTZi.HeroImage_asymmetric__HrN8K::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.HeroImage_heroImage__5fjgR {
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.HeroImage_heroImage__5fjgR:hover {
+  transform: scale(1.02);
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/vorur/ProductLayout.module.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Page title: slanted 3D extrusion                                          */
+.ProductLayout_pageTitle__IfoY4 {
+  display: inline-block;
+  position: relative;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  background: var(--accent-bg);
+  padding: 0.25em 0.5em;
+  /* front face: slight tilt + shadow */
+  transform: perspective(600px) rotateX(8deg);
+  transform-origin: bottom;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* slanted front panel */
+  /* extruded back face: same color, darkened via filter */
+}
+.ProductLayout_pageTitle__IfoY4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-bg);
+  transform: skewY(-10deg);
+  transform-origin: left top;
+  z-index: -1;
+}
+.ProductLayout_pageTitle__IfoY4::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 0.4em;
+  background: var(--accent-bg);
+  filter: brightness(90%);
+  transform: skewX(-10deg);
+  transform-origin: left top;
+  z-index: -2;
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Main grid + slanted-edge panels                                          */
+.ProductLayout_wrapper__7VwfO {
+  display: grid;
+  grid-template-areas: "hero" "desc" "ing" "video" "gallery";
+  gap: clamp(1rem, 2vw, 2.5rem);
+  padding: 2rem 1rem;
+}
+@media (min-width: 768px) {
+  .ProductLayout_wrapper__7VwfO {
+    grid-template-columns: 35% 65%;
+    grid-template-areas: "hero desc" "hero ing" "hero nutri" "hero video" "hero gallery";
+    gap: clamp(1.5rem, 3vw, 4rem);
+  }
+}
+.ProductLayout_wrapper__7VwfO > *:not(.ProductLayout_heroContainer__Xzc8F) {
+  position: relative;
+}
+.ProductLayout_wrapper__7VwfO > *:not(.ProductLayout_heroContainer__Xzc8F)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Grid-area assignments                                                     */
+.ProductLayout_heroContainer__Xzc8F {
+  grid-area: hero;
+}
+
+.ProductLayout_contentContainer__NjJo0 {
+  grid-area: desc/ing;
+}
+
+.ProductLayout_descContainer__8_ocN {
+  grid-area: desc;
+}
+
+.ProductLayout_ingContainer__ylbei {
+  grid-area: ing;
+}
+
+.ProductLayout_nutriContainer__vZqdG {
+  grid-area: nutri;
+}
+
+.ProductLayout_videoContainer__OlYwN {
+  grid-area: video;
+}
+
+.ProductLayout_galleryContainer__x__hB {
+  grid-area: gallery;
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Show/hide helpers                                                         */
+.ProductLayout_desktopOnly__utIWZ {
+  display: none;
+}
+@media (min-width: 768px) {
+  .ProductLayout_desktopOnly__utIWZ {
+    display: block;
+  }
+}
+
+.ProductLayout_mobileOnly__rrGre {
+  display: block;
+}
+@media (min-width: 768px) {
+  .ProductLayout_mobileOnly__rrGre {
+    display: none;
+  }
+}

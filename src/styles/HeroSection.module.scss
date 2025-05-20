@@ -1,0 +1,88 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+
+  .panel {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    transform: skewX(-20deg);
+    margin-left: -5%;
+    z-index: 1;
+
+    &.panel1 {
+      background-color: #111;
+    }
+    &.panel2 {
+      background-image: url('../../public/fiskibollur_portrait.svg');
+    }
+    &.panel3 {
+      background-image: url('../../public/humarsúpa_portrait.svg');
+    }
+    &.panel4 {
+      background-image: url('../../public/fiskistangir_portrait.svg');
+    }
+    &.panel5 {
+      background-image: url('../../public/plokkfiskur_portrait.svg');
+    }
+  }
+
+  .overlayContent {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: white;
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: white;
+      padding: 6px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+      margin-bottom: 2rem;
+      border: 2px solid #fff;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        transform: scale(1.05);
+      }
+    }
+
+    h1 {
+      font-size: 4rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      background: rgba(0, 0, 0, 0.5); 
+      padding: 0.3em 0.6em;
+      border-radius: 8px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); 
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+
+      button {
+        padding: 0.5rem 1.5rem;
+        font-weight: bold;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &.active {
+          background: white;
+          color: black;
+        }
+      }
+    }
+  }
+}

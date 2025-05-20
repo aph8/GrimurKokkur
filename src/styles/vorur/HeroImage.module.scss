@@ -1,0 +1,26 @@
+@import '../slantTheme';
+
+.heroWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+
+  &.asymmetric {
+    &::before {
+      @include slanted-edge(top, 12%);
+      opacity: 0.3;
+    }
+  }
+}
+
+.heroImage {
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.02);
+  }
+}

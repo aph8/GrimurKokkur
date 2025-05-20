@@ -1,0 +1,236 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/vorur/PhotoGallery.module.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.PhotoGallery_wrapper__lXv3F {
+  position: relative;
+  overflow-x: auto;
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+}
+.PhotoGallery_wrapper__lXv3F::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.PhotoGallery_container__LqEwT {
+  position: relative;
+  width: clamp(280px, 80%, 600px);
+  height: 24rem;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+@media (min-width: 768px) {
+  .PhotoGallery_container__LqEwT {
+    height: 28rem;
+  }
+}
+
+.PhotoGallery_arrowOverlay__fEnWz {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+.PhotoGallery_arrowOverlay__fEnWz span {
+  font-size: 2rem;
+  color: var(--foreground);
+  opacity: 0.6;
+  user-select: none;
+}
+
+.PhotoGallery_counter__GyHUI {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: rgba(23, 23, 23, 0.1); /* fallback if --foreground-rgb not set */
+  color: var(--foreground);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/vorur/HeroImage.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.HeroImage_heroWrapper__7oTZi {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+.HeroImage_heroWrapper__7oTZi.HeroImage_asymmetric__HrN8K::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.HeroImage_heroImage__5fjgR {
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.HeroImage_heroImage__5fjgR:hover {
+  transform: scale(1.02);
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/vorur/TextSection.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.TextSection_textSection__KWw0b {
+  position: relative;
+  display: grid;
+  grid-template-areas: "title" "content";
+  gap: 1rem;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 5vw, 2rem);
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: visible;
+}
+.TextSection_textSection__KWw0b::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.TextSection_textSection__title__Gji_q {
+  grid-area: title;
+  position: relative;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.TextSection_textSection__content__gzWMw {
+  grid-area: content;
+  color: var(--foreground);
+  line-height: 1.6;
+  font-size: clamp(1rem, 1.75vw, 1.125rem);
+}
+.TextSection_textSection__content__gzWMw p {
+  margin-bottom: 1rem;
+}
+.TextSection_textSection__content__gzWMw ul, .TextSection_textSection__content__gzWMw ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.TextSection_textSection__content__gzWMw strong {
+  color: var(--foreground);
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/AboutPage.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.AboutPage_main__xLOgI {
+  /* Give yourself up to ~1440px to play with */
+  max-width: 90rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+@media (min-width: 1024px) {
+  .AboutPage_main__xLOgI {
+    padding: 3rem 2rem;
+  }
+}
+
+.AboutPage_pageTitle__r3FvR {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--foreground);
+  position: relative;
+}
+.AboutPage_pageTitle__r3FvR::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 4rem;
+  height: 0.5rem;
+  background: var(--accent-bg);
+  transform: translateY(-50%) skewX(-10deg);
+  transform-origin: left center;
+  z-index: -1;
+}
+
+.AboutPage_section__rEAK6 {
+  margin-bottom: 3rem;
+  display: grid;
+  gap: 2rem;
+  /* Single-col until tablet */
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .AboutPage_section__rEAK6 {
+    /* Now give the image ~40% and text ~60% */
+    grid-template-columns: 2fr 3fr;
+  }
+}
+.AboutPage_section__rEAK6 .AboutPage_media__CT_tF {
+  position: relative;
+}
+.AboutPage_section__rEAK6 .AboutPage_videoWrapper__bY7Lg {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  margin-bottom: 1rem;
+}
+.AboutPage_section__rEAK6 .AboutPage_videoWrapper__bY7Lg .AboutPage_video__yJo8U {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0.5rem;
+}
+.AboutPage_section__rEAK6 .AboutPage_content__IH3Wn {
+  position: relative;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.AboutPage_section__rEAK6 .AboutPage_content__IH3Wn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.1;
+}

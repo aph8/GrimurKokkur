@@ -1,0 +1,124 @@
+@use './slantTheme' as slantTheme;
+
+.footer {
+  background: #000;
+  color: #eee;
+  padding: clamp(2rem, 5vw, 3rem) 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Top: three equal columns */
+.top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+}
+
+.description {
+  margin: 1rem 0;
+  color: #ccc;
+}
+
+/* Social icons */
+.socialIcons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.icon {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    color: #fff;
+  }
+}
+
+/* Contact button */
+.contactButton {
+  margin-top: 1rem;
+  background: #333;
+  color: #eee;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #444;
+  }
+}
+
+/* Bottom bar */
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left side */
+.bottomLeft {
+  color: #777;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Right side */
+.bottomRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Nav links */
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    color: #777;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #eee;
+    }
+  }
+}
+
+/* Back-to-top button */
+.toTop {
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: #eee;
+  }
+}

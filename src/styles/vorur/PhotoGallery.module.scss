@@ -1,0 +1,55 @@
+@import '../slantTheme';
+
+.wrapper {
+  position: relative;
+  overflow-x: auto;
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+
+  &::before {
+    @include slanted-edge(top, 8%);
+    opacity: 0.2;
+  }
+}
+
+.container {
+  position: relative;
+  width: clamp(280px, 80%, 600px);
+  height: 24rem;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+
+  @media (min-width: 768px) {
+    height: 28rem;
+  }
+}
+
+.arrowOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  pointer-events: none;
+
+  span {
+    font-size: 2rem;
+    color: var(--foreground);
+    opacity: 0.6;
+    user-select: none;
+  }
+}
+
+.counter {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: rgba(23, 23, 23, 0.1); /* fallback if --foreground-rgb not set */
+  color: var(--foreground);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}

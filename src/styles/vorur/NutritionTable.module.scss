@@ -1,0 +1,54 @@
+.wrapper {
+  overflow-x: auto;
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+}
+
+.nutritionTable {
+  width: clamp(280px, 60%, 600px);
+  margin: 0 auto;           
+  border-collapse: separate;
+  border-spacing: 0;        
+  border-radius: 0.5rem;
+  overflow: hidden;           
+  background: #f4d35e;
+  color: #171717;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+
+  thead {
+    background: #f9e18c;
+    th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+      border-bottom: 2px solid #000;
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background: #f9e18c;
+      }
+      &:hover {
+        background: rgba(0,0,0,0.05);
+      }
+
+      td {
+        padding: 0.6rem 1rem;
+        border-bottom: 1px solid #ccc;
+      }
+
+      &.subRow {
+        td:first-child {
+          padding-left: 2rem;
+          font-style: italic;
+          color: #555;
+        }
+        background: rgba(0,0,0,0.03);
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@mixin slanted-edge($side: top, $height: 0.1) {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: $height;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: #{if($side == bottom, "bottom left", "top left")};
+  @if $side == bottom {
+    bottom: 0;
+  } @else {
+    top: 0;
+  }
+  z-index: 0;
+}
