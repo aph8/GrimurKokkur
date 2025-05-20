@@ -18,14 +18,18 @@ const client = new GraphQLClient(endpoint, {
 /**
  * Generic fetch helper for arbitrary GraphQL queries
  */
-export async function fetchDatoCMS<T = any>(
+export async function fetchDatoCMS<T>(
   query: string,
-  variables?: Record<string, any>
+  variables?: Record<string, unknown>
 ): Promise<T> {
   try {
     return await client.request<T>(query, variables);
-  } catch (err) {
-    console.error('DatoCMS error:', err);
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.error('DatoCMS error:', err.message);
+    } else {
+      console.error('DatoCMS error:', String(err));
+    }
     throw err;
   }
 }
@@ -97,8 +101,8 @@ export async function getAllProducts(): Promise<ProductCard[] | null> {
       ALL_PRODUCTS_QUERY
     );
     return allProducts;
-  } catch (err) {
-    console.error('Error fetching all products:', err);
+  } catch (err: unknown) {
+    console.error('Error fetching all products:', err instanceof Error ? err.message : String(err));
     return null;
   }
 }
@@ -143,8 +147,8 @@ export async function getProductBySlug(
       { slug }
     );
     return product;
-  } catch (err) {
-    console.error('Error fetching product by slug:', err);
+  } catch (err: unknown) {
+    console.error('Error fetching product by slug:', err instanceof Error ? err.message : String(err));
     return null;
   }
 }
@@ -173,16 +177,14 @@ const ALL_ABOUT_QUERY = gql`
   }
 `;
 
-export async function getAllAboutSections(): Promise<
-  AboutSection[] | null
-> {
+export async function getAllAboutSections(): Promise<AboutSection[] | null> {
   try {
-    const { allAbouts } = await client.request<{
-      allAbouts: AboutSection[];
-    }>(ALL_ABOUT_QUERY);
+    const { allAbouts } = await client.request<{ allAbouts: AboutSection[] }>(
+      ALL_ABOUT_QUERY
+    );
     return allAbouts;
-  } catch (err) {
-    console.error('Error fetching all about sections:', err);
+  } catch (err: unknown) {
+    console.error('Error fetching all about sections:', err instanceof Error ? err.message : String(err));
     return null;
   }
 }
@@ -212,12 +214,13 @@ export async function getAboutBySlug(
   slug: string
 ): Promise<AboutSection | null> {
   try {
-    const { about } = await client.request<{
-      about: AboutSection;
-    }>(ABOUT_BY_SLUG_QUERY, { slug });
+    const { about } = await client.request<{ about: AboutSection }>(
+      ABOUT_BY_SLUG_QUERY,
+      { slug }
+    );
     return about;
-  } catch (err) {
-    console.error('Error fetching about by slug:', err);
+  } catch (err: unknown) {
+    console.error('Error fetching about by slug:', err instanceof Error ? err.message : String(err));
     return null;
   }
 }

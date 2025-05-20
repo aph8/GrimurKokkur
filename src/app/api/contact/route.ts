@@ -25,11 +25,15 @@ export async function POST(request: Request) {
   try {
     await sendContactEmail({ name, email, message });
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('❌ sendContactEmail failed:', err);
     // expose the message to the client in dev mode
+    const errorMessage =
+      err && typeof err === 'object' && 'message' in err
+        ? `Server error: ${(err as { message: string }).message}`
+        : 'Server error: Unknown error';
     return NextResponse.json(
-      { error: `Server error: ${err.message}` },
+      { error: errorMessage },
       { status: 500 }
     );
   }
