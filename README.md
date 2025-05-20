@@ -126,7 +126,7 @@ Distributed under the **MIT License**. Skoðaðu [LICENSE](LICENSE) skrána fyri
 
 ## Authors
 
-* **Þitt nafn** – [yourusername](https://github.com/yourusername) – [your.email@example.com](mailto:your.email@example.com)
+* **Þitt nafn** – [Andri Páll Helgason](https://github.com/aph8) – [aph8@hi.is](mailto:aph8@hi.is)
 
 ## Acknowledgements
 
