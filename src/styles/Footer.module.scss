@@ -122,3 +122,50 @@
     color: #eee;
   }
 }
+
+/*------------------------------------
+  Responsive Breakpoints
+------------------------------------*/
+
+// Mobile: stack top columns
+@media (max-width: 768px) {
+  .top {
+    grid-template-columns: 1fr;   // single column
+    gap: 1.5rem;
+  }
+
+  .column {
+    align-items: center;          // center content
+    text-align: center;
+
+    .socialIcons {
+      justify-content: center;
+    }
+
+    .contactButton {
+      margin: 1rem auto 0;        // center button
+    }
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .bottomRight {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+// Tablet: two columns side by side
+@media (min-width: 769px) and (max-width: 1024px) {
+  .top {
+    grid-template-columns: repeat(2, 1fr); // two columns
+  }
+
+  .column:last-child {
+    grid-column: 1 / -1;                  // make 3rd section full-width below
+  }
+}
