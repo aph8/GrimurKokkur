@@ -1,41 +1,135 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grímur Kokkur
 
-## Getting Started
+> **Nútímaleg og ljúffeng matarmenning**
 
-First, run the development server:
+---
+
+## Table of Contents
+
+* [About](#about)
+* [Demo](#demo)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Features](#features)
+* [Tech Stack](#tech-stack)
+* [Configuration](#configuration)
+* [API Reference](#api-reference)
+* [Contributing](#contributing)
+* [License](#license)
+* [Authors](#authors)
+* [Acknowledgements](#acknowledgements)
+
+---
+
+## About
+
+Grímur Kokkur er fjölskyldufyrirtæki sem býður upp á nútímalega og ljúffenga matarmenningu með áherslu á tilbúna sjávarrétti. Vefsíðan notar Next.js og DatoCMS til að birta vörulista, upplýsingar um fyrirtækið, og hafa samband form sem sendir tölvupóst.
+
+## Demo
+
+* **Live Site:** [https://your-domain.com](https://your-domain.com)
+* **Screenshots:**
+  ![Forsíða](path/to/homepage.png)
+  *Helstu eiginleikar vefsíðunnar.*
+
+## Installation
+
+### Prerequisites
+
+* Node.js 16+
+* Git
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Klóna geymsluna
+git clone https://github.com/yourusername/grimurkokkur.git
+cd grimurkokkur
+
+# Setja upp háð (dependencies)
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Í þróunarham\ n npm run dev
+# Búa til fyrir framleiðslu
+npm run build
+# Keyra framleiðsluham
+npm start
+# Laga villur / lint check
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+* **Dynamískar um okkur- og vörusíður** úr DatoCMS gegnum GraphQL
+* **Útgáfa vöru:** Aðskildir upplýsingar, næringargögn og mynda- & myndbandsgallerí
+* **Sía eftir vegan vörum** með viðmóti í vörugrildi
+* **Snjall forsíða (HeroSection)** með sveigjanlegum panelum
+* **Tengiliðafor­m** sem sendir póst í gegnum Nodemailer
+* **Markdown styður** fyrir innihald með remark-gfm
+* **Responsive myndir** með Next/Image og sérsniðnum hlutföllum
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Framework:** Next.js 15.3.2
+* **Language:** TypeScript, React 19.1.0
+* **Styling:** SCSS modules, Sass 1.88.0
+* **Data Fetching:** graphql-request, DatoCMS
+* **Validation:** zod 3.25.1
+* **Mail:** nodemailer 7.0.3
+* **Markdown:** react-markdown, remark-gfm
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Configuration
 
-## Deploy on Vercel
+Búðu til skrána `.env.local` í rót verkefnisins með eftirfarandi breytum:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+DATO_API_TOKEN=þinn_dato_token
+SMTP_HOST=your_smtp_host
+SMTP_PORT=587
+SMTP_USER=your_smtp_user
+SMTP_PASS=your_smtp_pass
+CONTACT_EMAIL=grimurkokkur@grimurkokkur.is
+NODE_ENV=development
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# GrimurKokkur
-Heimasíða Gríms Kokks
->>>>>>> 954dd9431d939a0f3451b01c0235363ee4eca34c
+## API Reference
+
+### `POST /api/contact`
+
+Sendir tengiliðaskilaboð með JSON líkama:
+
+```json
+{
+  "name": "Þitt nafn",
+  "email": "netfang@example.com",
+  "message": "Skilaboðin þín hér"
+}
+```
+
+* **Svátt**: 200 OK – sending tókst
+* **422**: Validation villa – ófullnægjandi gögn
+* **500**: Innri þjónustuvilla
+
+## Contributing
+
+1. Fork-aðu þetta repo
+2. Búðu til grein: `git checkout -b feature/Þitt-feature-nafn`
+3. Commit-aðu breytingar: `git commit -m "Bætt við einhverju"`
+4. Push-aðu grein: `git push origin feature/Þitt-feature-nafn`
+5. Opnaðu Pull Request
+
+## License
+
+Distributed under the **MIT License**. Skoðaðu [LICENSE](LICENSE) skrána fyrir nánari upplýsingar.
+
+## Authors
+
+* **Þitt nafn** – [yourusername](https://github.com/yourusername) – [your.email@example.com](mailto:your.email@example.com)
+
+## Acknowledgements
+
+* [DatoCMS](https://www.datocms.com) – Innihaldsstjórnunargrind
+* [Next.js](https://nextjs.org) – Veframmagerðargrunnur
+* [Zod](https://github.com/colinhacks/zod) – Gagnasannprófun
