@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html {
+  /* reserve space for scrollbars so they never float over content */
+  scrollbar-gutter: stable both-edges;
+}
+
 html, body {
   overflow-x: hidden;
 }
@@ -21,7 +26,6 @@ html, body {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-
     --card-bg: #1a1a1a;
     --accent-bg: #222222;
     --origin-bg: #2a2a2a;

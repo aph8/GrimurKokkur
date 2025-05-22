@@ -46,6 +46,9 @@
 /* ────────────────────────────────────────────────────────────────────────── */
 /* Main grid + slanted-edge panels                                          */
 .wrapper {
+  /* reserve gutter for its own scrollbar */
+  scrollbar-gutter: stable both-edges;
+
   display: grid;
   grid-template-areas:
     "hero"
@@ -55,8 +58,9 @@
     "gallery";
   gap: clamp(1rem, 2vw, 2.5rem);
 
-  /* original padding plus ~20px room for overlay scrollbars */
-  padding: 2rem 1rem 2rem calc(1rem + 20px);
+  /* original padding plus ~20px room for overlay scrollbars on the right */
+  /* top 2rem, right 1rem+20px, bottom 2rem, left 1rem */
+  padding: 2rem calc(1rem + 20px) 2rem 1rem;
 
   @media (min-width: 768px) {
     grid-template-columns: 35% 65%;
