@@ -1,17 +1,11 @@
-// src/styles/AboutPage.module.scss
-
+/* src/styles/AboutPage.module.scss */
 @use './slantTheme' as slantTheme;
 
 .main {
-  /* Give yourself up to ~1440px to play with */
   max-width: 90rem;
   width: 100%;
   margin: 0 auto;
   padding: 2rem 1rem;
-
-  @media (min-width: 1024px) {
-    padding: 3rem 2rem;
-  }
 }
 
 .pageTitle {
@@ -22,16 +16,7 @@
   position: relative;
 
   &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 4rem;
-    height: 0.5rem;
-    background: var(--accent-bg);
-    transform: translateY(-50%) skewX(-10deg);
-    transform-origin: left center;
-    z-index: -1;
+    /* ... */
   }
 }
 
@@ -39,44 +24,27 @@
   margin-bottom: 3rem;
   display: grid;
   gap: 2rem;
-
-  /* Single-col until tablet */
   grid-template-columns: 1fr;
 
   @media (min-width: 768px) {
-    /* Now give the image ~40% and text ~60% */
     grid-template-columns: 2fr 3fr;
   }
+}
 
-  .media {
-    position: relative;
-  }
+.loading {
+  color: var(--foreground);
+  font-style: italic;
+}
 
-  .videoWrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 */
-    margin-bottom: 1rem;
+.error {
+  color: #e53935;
+}
 
-    .video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-      border-radius: 0.5rem;
-    }
-  }
+.galleryWrapper {
+  margin-top: 2rem;
+}
 
-  .content {
-    position: relative;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-
-    &::before {
-      @include slantTheme.slanted-edge(top, 8%);
-      opacity: 0.1;
-    }
-  }
+.galleryTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }

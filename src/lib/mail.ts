@@ -1,22 +1,31 @@
 // src/lib/mail.ts
-import nodemailer from 'nodemailer';
+import nodemailer, { Transporter } from 'nodemailer';
+import sanitizeHtml from 'sanitize-html';
 
-const {
-  SMTP_HOST,
-  SMTP_PORT,
-  SMTP_USER,
-  SMTP_PASS,
-  CONTACT_EMAIL,
-  NODE_ENV,
-} = process.env;
+const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL, NODE_ENV } = process.env;
 
 if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_EMAIL) {
-  throw new Error(
-    'Missing one of SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL'
-  );
+  throw new Error('Missing one of SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL');
 }
 
 const isDev = NODE_ENV !== 'production';
+
+let transporter: Transporter | null = null;
+function getTransporter() {
+  if (!transporter) {
+    transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: Number(SMTP_PORT),
+      secure: false,
+      requireTLS: true,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      tls: { rejectUnauthorized: !isDev },
+      logger: isDev,
+      debug: isDev,
+    });
+  }
+  return transporter;
+}
 
 export async function sendContactEmail({
   name,
@@ -27,36 +36,28 @@ export async function sendContactEmail({
   email: string;
   message: string;
 }) {
-  // Create transporter with STARTTLS + optional cert validation
-  const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT),
-    secure: false,            // false = use STARTTLS, not SSL/TLS on connect
-    requireTLS: true,         // force upgrade to TLS
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-    tls: {
-      // in dev allow self-signed certs; in prod enforce strict
-      rejectUnauthorized: !isDev,
-    },
-    logger: isDev,            // log to console in dev
-    debug: isDev,             // include SMTP debug output
+  // Sanitize message: engin HTML tags
+  const cleanMessage = sanitizeHtml(message, {
+    allowedTags: [],
+    allowedAttributes: {},
   });
 
-  // verify connection configuration
-  await transporter.verify();
+  // Gakktu úr skugga um að SMTP-tenging virki
+  await getTransporter().verify();
 
-  // send the message
-  await transporter.sendMail({
+  // Send email
+  await getTransporter().sendMail({
     from: `"Kontakt form" <${SMTP_USER}>`,
     to: CONTACT_EMAIL,
     subject: `Ný skilaboð frá ${name}`,
     replyTo: email,
-    text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+    text: `Name: ${name}\nEmail: ${email}\n\n${cleanMessage}`,
     html: `
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
       <hr/>
-      <p>${message.replace(/\n/g, '<br/>')}</p>
+      <p>${cleanMessage.replace(/\n/g, '<br/>')}</p>
     `,
+    headers: { 'X-Message-Received': new Date().toISOString() },
   });
 }

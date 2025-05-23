@@ -1,0 +1,123 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/Products.module.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* ────────────────────────────────────────────────────────── */
+/* Main container                                            */
+/* ────────────────────────────────────────────────────────── */
+.Products_main__nhHSm {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* Header row: titill til vinstri, toggle til hægri          */
+/* ────────────────────────────────────────────────────────── */
+.Products_headerRow__9hQYA {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.Products_title__SZY9s {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.Products_veganToggle__39DG9 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.Products_veganToggle__39DG9 input {
+  margin: 0;
+  transform: scale(1.1);
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* Vörugríð (4 vörur í röð á desktop, annars færri)        */
+/* ────────────────────────────────────────────────────────── */
+.Products_productList__ZNR8V {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: clamp(1.5rem, 2vw, 2rem);
+  /* Mobile: 1 dálkur */
+  grid-template-columns: 1fr;
+  /* Tablet: 2 dálkar */
+  /* Desktop: 4 dálkar */
+}
+@media (min-width: 768px) {
+  .Products_productList__ZNR8V {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .Products_productList__ZNR8V {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* Einstakur vörukassi                                        */
+/* ────────────────────────────────────────────────────────── */
+.Products_productCard__gZY1Y {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.Products_productCard__gZY1Y:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+.Products_productCard__gZY1Y::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8%;
+  background: var(--accent-bg);
+  transform: skewY(-5deg);
+  transform-origin: top left;
+  top: 0;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.Products_productImageWrapper__JnMSa {
+  position: relative;
+  width: 100%;
+  padding-top: 66.666%; /* 3:2 aspect ratio */
+  background: var(--accent-bg);
+}
+
+.Products_productImage__WPjLz {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Products_productTitle__zKGNR {
+  font-size: 1.25rem;
+  font-weight: 750;
+  margin: 1.5rem;
+  color: var(--foreground);
+  text-align: center;
+}

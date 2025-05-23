@@ -1,3 +1,6 @@
+// src/components/vorur/NutritionTable.tsx
+'use client';
+
 import React from 'react';
 import styles from '@/styles/vorur/NutritionTable.module.scss';
 
@@ -14,23 +17,23 @@ interface NutritionTableProps {
 
 const NutritionTable: React.FC<NutritionTableProps> = ({ data }) => (
   <div className={styles.wrapper}>
-    <table className={styles.nutritionTable}>
+    <table className={styles.nutritionTable} role="table" aria-label="Næringargögn">
       <thead>
         <tr>
-          <th>Næringarefni</th>
-          <th>í 100 g</th>
+          <th scope="col">Næringarefni</th>
+          <th scope="col">í 100 g</th>
         </tr>
       </thead>
       <tbody>
-        {data.map((row, i) => (
-          <React.Fragment key={i}>
+        {data.map((row) => (
+          <React.Fragment key={row.label}>
             <tr>
-              <td>{row.label}</td>
+              <th scope="row">{row.label}</th>
               <td>{row.value}</td>
             </tr>
-            {row.subrows?.map((sub, j) => (
-              <tr key={j} className="subRow">
-                <td>{sub.label}</td>
+            {row.subrows?.map((sub) => (
+              <tr key={sub.label} className={styles.subRow}>
+                <th scope="row">{sub.label}</th>
                 <td>{sub.value}</td>
               </tr>
             ))}
@@ -41,4 +44,4 @@ const NutritionTable: React.FC<NutritionTableProps> = ({ data }) => (
   </div>
 );
 
-export default NutritionTable;
+export default React.memo(NutritionTable);

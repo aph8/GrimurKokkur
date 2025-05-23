@@ -1,88 +1,108 @@
-@use './slantTheme' as slantTheme;
+// src/styles/Products.module.scss
+@use './variables' as v;
+@use './mixins' as m;
 
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Filter bar for the vegan checkbox                                         */
-.filterBar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-
-  label {
-    cursor: pointer;
-
-    input {
-      margin-right: 1em;
-      transform: translateY(1px);
-    }
-  }
-}
-
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Main container                                                            */
+/* ────────────────────────────────────────────────────────── */
+/* Main container                                            */
+/* ────────────────────────────────────────────────────────── */
 .main {
-  max-width: 90rem;        /* ≈1440px */
+  max-width: 90rem;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  box-sizing: border-box;
-
-  @media (min-width: 1024px) {
-    padding: 2rem 4rem;
-  }
+  padding: v.$spacing-lg v.$spacing-sm;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Page title                                                                */
+/* ────────────────────────────────────────────────────────── */
+/* Header row: titill til vinstri, toggle til hægri          */
+/* ────────────────────────────────────────────────────────── */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: v.$spacing-md;
+}
+
 .title {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--foreground);
-  margin-bottom: 1.5rem;
+  margin: 0;
 }
 
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Responsive grid                                                           */
+.veganToggleContainer {
+}
+
+.veganToggle {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-xs;
+  cursor: pointer;
+  font-weight: 500;
+
+  input {
+    margin: 0;
+    transform: scale(1.1);
+  }
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* Vörugríð (4 vörur í röð á desktop, annars færri)        */
+/* ────────────────────────────────────────────────────────── */
 .productList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: grid;
-  gap: clamp(1.5rem, 2vw, 3rem);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(v.$spacing-md, 2vw, v.$spacing-lg);
+
+  /* Mobile: 1 dálkur */
+  grid-template-columns: 1fr;
+
+  /* Tablet: 2 dálkar */
+  @include m.respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Desktop: 4 dálkar */
+  @include m.respond-to(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Individual product card                                                   */
+/* ────────────────────────────────────────────────────────── */
+/* Einstakur vörukassi                                        */
+/* ────────────────────────────────────────────────────────── */
 .productCard {
   position: relative;
   background: var(--card-bg);
-  border-radius: 1rem;
+  border-radius: v.$radius-md;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   }
 
   &::before {
-    /* namespaced mixin call */
-    @include slantTheme.slanted-edge(top, 8%);
+    @include m.slanted-edge(top, 8%);
     opacity: 0.15;
   }
 }
 
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Image wrapper maintaining 3:2 ratio                                        */
 .productImageWrapper {
   position: relative;
   width: 100%;
-  padding-top: 66.666%;  /* 3:2 aspect ratio */
+  padding-top: 66.666%; /* 3:2 aspect ratio */
   background: var(--accent-bg);
 }
 
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Next.js Image global styles                                               */
 .productImage {
   position: absolute;
   top: 0;
@@ -92,12 +112,10 @@
   object-fit: cover;
 }
 
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Product title inside the card                                              */
 .productTitle {
   font-size: 1.25rem;
   font-weight: 750;
-  margin: 1rem;
+  margin: v.$spacing-md;
   color: var(--foreground);
   text-align: center;
 }

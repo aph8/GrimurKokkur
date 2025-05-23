@@ -79,12 +79,8 @@ export default async function ProductPage({ params }: Props) {
 
         {/* ─── CONTENT COLUMN ─────────────────────────────────────── */}
         <div className={styles.contentContainer}>
-          {discription && (
-            <TextSection title="Lýsing" text={discription} isMarkdown />
-          )}
-          {ingredient && (
-            <TextSection title="Innihaldsefni" text={ingredient} isMarkdown />
-          )}
+          {discription && <TextSection title="Lýsing" text={discription} isMarkdown />}
+          {ingredient && <TextSection title="Innihaldsefni" text={ingredient} isMarkdown />}
 
           {/* Nutrition á mobile */}
           {nutritionfacts.length > 0 && (

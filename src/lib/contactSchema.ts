@@ -1,17 +1,33 @@
 import { z } from 'zod';
 
-export const ContactSchema = z.object({
-  name: z
-    .string()
-    .min(1, "Nafn má ekki vera tómt")
-    .max(100, "Nafn má ekki vera lengra en 100 stafir"),
-  email: z
-    .string()
-    .email("Netfang er ekki gilt"),
-  message: z
-    .string()
-    .min(1, "Skilaboð mega ekki vera tóm")
-    .max(2000, "Skilaboð mega ekki vera lengri en 2000 stafir"),
-});
+const trimmedString = (min?: number, minMsg?: string, max?: number, maxMsg?: string) =>
+  z.preprocess(
+    (val) => (typeof val === 'string' ? val.trim() : val),
+    z
+      .string()
+      .refine((s) => (min !== undefined ? s.length >= min : true), {
+        message: minMsg,
+      })
+      .refine((s) => (max !== undefined ? s.length <= max : true), {
+        message: maxMsg,
+      }),
+  );
+
+// Nota í schema-inu:
+export const ContactSchema = z
+  .object({
+    name: trimmedString(1, 'Nafn má ekki vera tómt', 100, 'Nafn má ekki vera lengra en 100 stafir'),
+    email: z.preprocess(
+      (val) => (typeof val === 'string' ? val.trim() : val),
+      z.string().email('Netfang er ekki gilt'),
+    ),
+    message: trimmedString(
+      1,
+      'Skilaboð mega ekki vera tóm',
+      2000,
+      'Skilaboð mega ekki vera lengri en 2000 stafir',
+    ),
+  })
+  .strict();
 
 export type ContactInput = z.infer<typeof ContactSchema>;

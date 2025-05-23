@@ -1,28 +1,61 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, FormEvent } from 'react';
 import styles from '@/styles/ContactPage.module.scss';
+import { ContactSchema, type ContactInput } from '@/lib/contactSchema';
+
+type Status = 'idle' | 'pending' | 'success' | 'error';
 
 export default function ContactPage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState<'idle'|'pending'|'success'|'error'>('idle');
+  const [form, setForm] = useState<ContactInput>({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactInput, string>>>({});
+  const [status, setStatus] = useState<Status>('idle');
+  const liveRef = useRef<HTMLDivElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const validate = (): boolean => {
+    const result = ContactSchema.safeParse(form);
+    if (!result.success) {
+      const fieldErrs: Partial<Record<keyof ContactInput, string>> = {};
+      for (const issue of result.error.issues) {
+        const key = issue.path[0] as keyof ContactInput;
+        fieldErrs[key] = issue.message;
+      }
+      setErrors(fieldErrs);
+      return false;
+    }
+    setErrors({});
+    return true;
+  };
+
+  const handleChange =
+    (field: keyof ContactInput) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((f) => ({ ...f, [field]: e.target.value }));
+      setErrors((e) => ({ ...e, [field]: undefined }));
+    };
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!validate()) {
+      liveRef.current?.focus();
+      return;
+    }
     setStatus('pending');
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error('Network error');
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || res.statusText);
       setStatus('success');
-      setName(''); setEmail(''); setMessage('');
+      setForm({ name: '', email: '', message: '' });
+      setErrors({});
+      liveRef.current?.focus();
     } catch {
       setStatus('error');
+      liveRef.current?.focus();
     }
   };
 
@@ -31,7 +64,7 @@ export default function ContactPage() {
       <h1 className={styles.title}>Hafa samband</h1>
 
       <div className={styles.contactWrapper}>
-        {/* Map panel */}
+        {/* Kort */}
         <div className={styles.mapWrapper}>
           <div className={styles.mapContainer}>
             <iframe
@@ -44,18 +77,28 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Form panel */}
-        <div className={styles.formWrapper}>
-          <form className={styles.form} onSubmit={handleSubmit}>
+        {/* Form */}
+        <form className={styles.formWrapper} onSubmit={handleSubmit} noValidate>
+          <fieldset className={styles.fieldset}>
+            <legend className={styles.legend}>Upplýsingar</legend>
+
             <div className={styles.formGroup}>
               <label htmlFor="name">Nafn</label>
               <input
                 id="name"
                 type="text"
+                value={form.name}
+                onChange={handleChange('name')}
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? 'err-name' : undefined}
+                disabled={status === 'pending'}
                 required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
               />
+              {errors.name && (
+                <p id="err-name" className={styles.error}>
+                  {errors.name}
+                </p>
+              )}
             </div>
 
             <div className={styles.formGroup}>
@@ -63,10 +106,18 @@ export default function ContactPage() {
               <input
                 id="email"
                 type="email"
+                value={form.email}
+                onChange={handleChange('email')}
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? 'err-email' : undefined}
+                disabled={status === 'pending'}
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
               />
+              {errors.email && (
+                <p id="err-email" className={styles.error}>
+                  {errors.email}
+                </p>
+              )}
             </div>
 
             <div className={styles.formGroup}>
@@ -74,28 +125,36 @@ export default function ContactPage() {
               <textarea
                 id="message"
                 rows={6}
+                value={form.message}
+                onChange={handleChange('message')}
+                aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? 'err-message' : undefined}
+                disabled={status === 'pending'}
                 required
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
               />
+              {errors.message && (
+                <p id="err-message" className={styles.error}>
+                  {errors.message}
+                </p>
+              )}
             </div>
+          </fieldset>
 
-            <button
-              type="submit"
-              className={styles.submitButton}
-              disabled={status === 'pending'}
-            >
-              {status === 'pending' ? 'Senda...' : 'Senda'}
-            </button>
+          <button type="submit" className={styles.submitButton} disabled={status === 'pending'}>
+            {status === 'pending' ? 'Sæki...' : 'Senda'}
+          </button>
 
-            {status === 'success' && (
-              <p className={styles.success}>Skilaboðin voru send!</p>
-            )}
-            {status === 'error' && (
-              <p className={styles.error}>Villa við að senda. Reyndu aftur.</p>
-            )}
-          </form>
-        </div>
+          <div
+            role="alert"
+            aria-live="assertive"
+            tabIndex={-1}
+            ref={liveRef}
+            className={styles.liveMessage}
+          >
+            {status === 'success' && <p className={styles.success}>Skilaboðin voru send!</p>}
+            {status === 'error' && <p className={styles.error}>Villa kom upp. Reyndu aftur.</p>}
+          </div>
+        </form>
       </div>
     </main>
   );

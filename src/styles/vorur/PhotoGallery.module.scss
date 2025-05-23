@@ -1,12 +1,14 @@
-@import '../slantTheme';
+// src/styles/vorur/PhotoGallery.module.scss
+@use '../variables' as v;
+@use '../mixins' as m;
 
 .wrapper {
   position: relative;
   overflow-x: auto;
-  margin-top: clamp(1rem, 3vw, 1.5rem);
+  margin-top: clamp(v.$spacing-sm, 3vw, v.$spacing-md);
 
   &::before {
-    @include slanted-edge(top, 8%);
+    @include m.slanted-edge(top, 8%);
     opacity: 0.2;
   }
 }
@@ -17,11 +19,11 @@
   height: 24rem;
   margin: 0 auto;
   background: var(--card-bg);
-  border-radius: 1rem;
+  border-radius: v.$radius-md;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 
-  @media (min-width: 768px) {
+  @include m.respond-to(md) {
     height: 28rem;
   }
 }
@@ -47,9 +49,30 @@
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
-  background: rgba(23, 23, 23, 0.1); /* fallback if --foreground-rgb not set */
+  background: rgba(23, 23, 23, 0.1);
   color: var(--foreground);
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   font-size: 0.875rem;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(23, 23, 23, 0.5);
+  border: none;
+  padding: 0.5rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prevButton {
+  left: 0.5rem;
+}
+.nextButton {
+  right: 0.5rem;
 }

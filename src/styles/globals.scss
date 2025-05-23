@@ -1,25 +1,18 @@
-/* ────────────────────────────────────────────────────────────────────────── */
-/* Make padding/borders count inside width, and prevent side‐scrollbars    */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+@use 'sass:color';
+@use './variables' as *;
+@use './mixins' as *;
+@use './functions' as *;
+@use './breakpoints';
+@use './helpers' as *;
+@use './base'; /* reset + element base */
 
-html {
-  /* reserve space for scrollbars so they never float over content */
-  scrollbar-gutter: stable both-edges;
-}
-
-html, body {
-  overflow-x: hidden;
-}
-
-/* ────────────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --card-bg: #ffffff;
-  --accent-bg: #f9f9f9;
-  --origin-bg: #fffcf2;
+  --background: #{$color-background};
+  --foreground: #{$color-foreground};
+  --card-bg: #{$color-card-bg};
+  --accent-bg: #{$color-accent-bg};
+  --primary: #{$color-primary};
+  --primary-light: #{$color-primary-light};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,16 +21,89 @@ html, body {
     --foreground: #ededed;
     --card-bg: #1a1a1a;
     --accent-bg: #222222;
-    --origin-bg: #2a2a2a;
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.5;
-  font-size: clamp(0.875rem, 1vw, 1rem);
+/* ============================================= */
+/* Skip-link                                     */
+/* ============================================= */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.5rem;
+  z-index: 1001;
+  text-decoration: none;
+  transition: top 0.3s ease;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/* ============================================= */
+/* Layout                                        */
+/* ============================================= */
+body > main {
+  padding: 2rem 1rem;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+/* ============================================= */
+/* Global links                                  */
+/* ============================================= */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: none; /* no color shift */
+
+  &:hover,
+  &:focus {
+    /* no color change on hover/focus */
+  }
+
+  &:focus {
+    outline: 3px solid black; /* black focus ring */
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================= */
+/* Form controls & buttons                       */
+/* ============================================= */
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid black; /* black focus ring */
+  outline-offset: 2px;
+}
+
+/* ============================================= */
+/* Tabs                                          */
+/* ============================================= */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+
+  .tab {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--foreground);
+    border-bottom: 3px solid transparent; /* baseline */
+    transition: border-bottom-color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: black; /* black hover underline */
+    }
+
+    &.active {
+      border-bottom-color: black; /* black underline on active */
+      color: var(--foreground); /* text stays default */
+      font-weight: 600; /* optional emphasis */
+    }
+  }
 }

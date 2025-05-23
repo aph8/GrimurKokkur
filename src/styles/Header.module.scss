@@ -1,26 +1,60 @@
+@use './variables' as v;
+@use './mixins' as m;
+
 .header {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  background-color: #ffffff !important;
+  color: var(--header-text);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
   z-index: 1000;
+  transition: transform 0.25s ease-in-out;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #000000 !important;
+  }
+
+  @media (max-width: 768px) {
+    .nav & {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #ffffff !important;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: #000000 !important;
+      }
+
+      flex-direction: column;
+      gap: 0;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+
+      /* Mobile links */
+      a {
+        padding: v.$spacing-md clamp(v.$spacing-sm, 5vw, v.$spacing-lg);
+        border-top: 1px solid #eee;
+        border-bottom: 3px solid transparent; /* baseline */
+      }
+    }
+  }
+}
+
+.headerHidden {
+  transform: translateY(-100%);
 }
 
 .container {
   max-width: 1800px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 5vw, 2rem);
+  padding: 0 clamp(v.$spacing-sm, 5vw, v.$spacing-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 8rem;
-
-  @media (max-width: 768px) {
-    height: auto;
-    flex-direction: row;
-    justify-content: space-between;
-  }
 }
 
 .logo {
@@ -30,40 +64,33 @@
 
 .nav {
   display: flex;
-  gap: clamp(1rem, 4vw, 2.5rem);
+  gap: clamp(v.$spacing-sm, 4vw, v.$spacing-lg);
+  border-bottom: 1px solid #ddd;
 
   a {
+    position: relative;
+    padding: 0 v.$spacing-sm;
     font-size: clamp(1rem, 2.5vw, 1.125rem);
-    padding: 0.5rem 0;
-  }
+    color: var(--nav-link);
+    text-decoration: none;
+    font-weight: 500;
+    transition: border-bottom-color 0.2s ease; /* no color transition */
 
-  // Hide the nav on mobile by default
-  @media (max-width: 768px) {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    gap: 0;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease;
+    border-bottom: 3px solid transparent; /* baseline */
 
-    a {
-      padding: 1rem clamp(1rem, 5vw, 2rem);
-      border-top: 1px solid #eee;
+    &:hover,
+    &:focus {
+      border-bottom-color: black; /* black hover underline */
     }
   }
 }
 
 .navOpen {
   @media (max-width: 768px) {
-    max-height: 500px; 
+    max-height: 500px;
   }
 }
 
-/* Hamburger button */
 .hamburger {
   display: none;
   background: transparent;
@@ -71,7 +98,7 @@
   cursor: pointer;
   flex-direction: column;
   gap: 6px;
-  padding: 0.5rem;
+  padding: v.$spacing-sm;
   margin-left: auto;
 
   @media (max-width: 768px) {
@@ -79,16 +106,16 @@
   }
 }
 
-/* Bars for hamburger */
 .bar,
 .barOpen {
   width: 25px;
   height: 3px;
-  background-color: #171717;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  background-color: var(--foreground);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
-/* Animate to “X” when open */
 .barOpen:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
@@ -97,4 +124,10 @@
 }
 .barOpen:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
+}
+
+.activeLink {
+  color: var(--nav-link);
+  font-weight: 600;
+  border-bottom-color: black !important;
 }

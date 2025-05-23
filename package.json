@@ -6,19 +6,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,scss,css,json,md}\""
   },
   "dependencies": {
     "@datocms/cda-client": "^0.2.7",
     "graphql-request": "^7.1.2",
     "lucide-react": "^0.511.0",
     "next": "^15.3.2",
+    "next-nprogress-bar": "^2.4.7",
     "nodemailer": "^7.0.3",
+    "nprogress": "^0.2.0",
     "react": "^19.1.0",
     "react-datocms": "^7.2.2",
     "react-dom": "^19.1.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "sanitize-html": "^2.17.0",
     "sass": "^1.88.0",
     "zod": "^3.25.1"
   },
@@ -27,10 +31,15 @@
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.17",
+    "@types/nprogress": "^0.2.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/sanitize-html": "^2.16.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
+    "glob": "^11.0.2",
+    "prettier": "^3.5.3",
+    "strip-comments": "^2.0.1",
     "typescript": "^5"
   }
 }

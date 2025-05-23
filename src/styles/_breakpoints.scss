@@ -1,0 +1,6 @@
+// ──────────────────────────────────────────────────────────
+// _breakpoints.scss — named breakpoints map
+// ──────────────────────────────────────────────────────────
+@use './variables';
+
+$breakpoints: variables.$breakpoints !default;

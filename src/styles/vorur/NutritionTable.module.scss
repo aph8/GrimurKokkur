@@ -1,53 +1,58 @@
+// src/styles/vorur/NutritionTable.module.scss
+@use '../variables' as v;
+@use '../mixins' as m;
+
 .wrapper {
   overflow-x: auto;
-  margin-top: clamp(1rem, 3vw, 1.5rem);
+  margin-top: clamp(v.$spacing-sm, 3vw, v.$spacing-md);
 }
 
 .nutritionTable {
   width: clamp(280px, 60%, 600px);
-  margin: 0 auto;           
+  margin: 0 auto;
   border-collapse: separate;
-  border-spacing: 0;        
-  border-radius: 0.5rem;
-  overflow: hidden;           
-  background: #f4d35e;
-  color: #171717;
+  border-spacing: 0;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  background: v.$color-primary;
+  color: v.$color-foreground;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-size: clamp(0.85rem, 1.5vw, 1rem);
 
   thead {
-    background: #f9e18c;
+    background: v.$color-primary-light;
+
     th {
-      padding: 0.75rem 1rem;
+      padding: v.$spacing-sm v.$spacing-md;
       text-align: left;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.025em;
-      border-bottom: 2px solid #000;
+      border-bottom: 2px solid v.$color-foreground;
     }
   }
 
   tbody {
     tr {
       &:nth-child(even) {
-        background: #f9e18c;
+        background: v.$color-primary-light;
       }
       &:hover {
-        background: rgba(0,0,0,0.05);
+        background: rgba(0, 0, 0, 0.05);
       }
 
       td {
-        padding: 0.6rem 1rem;
+        padding: v.$spacing-xs v.$spacing-md;
         border-bottom: 1px solid #ccc;
       }
 
       &.subRow {
         td:first-child {
-          padding-left: 2rem;
+          padding-left: v.$spacing-lg;
           font-style: italic;
           color: #555;
         }
-        background: rgba(0,0,0,0.03);
+        background: rgba(0, 0, 0, 0.03);
       }
     }
   }

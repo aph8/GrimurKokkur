@@ -1,55 +1,14 @@
 // src/lib/datocms.ts
+import { gql } from 'graphql-request';
+import { fetchDatoCMS } from './fetchDatoCMS';
 
-import { GraphQLClient, gql } from 'graphql-request';
-
-const endpoint = 'https://graphql.datocms.com/';
-const token = process.env.DATO_API_TOKEN;
-
-if (!token) {
-  throw new Error('DATO_API_TOKEN is missing from .env.local');
-}
-
-const client = new GraphQLClient(endpoint, {
-  headers: {
-    authorization: `Bearer ${token}`,
-  },
-});
-
-/**
- * Generic fetch helper for arbitrary GraphQL queries
- */
-export async function fetchDatoCMS<T>(
-  query: string,
-  variables?: Record<string, unknown>
-): Promise<T> {
-  try {
-    return await client.request<T>(query, variables);
-  } catch (err: unknown) {
-    if (err instanceof Error) {
-      console.error('DatoCMS error:', err.message);
-    } else {
-      console.error('DatoCMS error:', String(err));
-    }
-    throw err;
-  }
-}
-
-/**
- * Card-style product listing type
- */
 export interface ProductCard {
   slug: string;
   title: string;
-  image?: {
-    url: string;
-    alt?: string;
-  };
+  image?: { url: string; alt?: string };
   vegan?: boolean;
 }
 
-/**
- * Detailed product type for individual pages
- */
 export interface Product {
   title: string;
   discription?: string;
@@ -66,9 +25,6 @@ export interface Product {
   video?: { url: string };
 }
 
-/**
- * About-section type (your “about” table)
- */
 export interface AboutSection {
   slug: string;
   title: string;
@@ -78,8 +34,9 @@ export interface AboutSection {
   video?: { url: string };
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────────────────
 // PRODUCTS
+// ──────────────────────────────────────────────────────────────────────────
 
 const ALL_PRODUCTS_QUERY = gql`
   query AllProducts {
@@ -97,12 +54,9 @@ const ALL_PRODUCTS_QUERY = gql`
 
 export async function getAllProducts(): Promise<ProductCard[] | null> {
   try {
-    const { allProducts } = await client.request<{ allProducts: ProductCard[] }>(
-      ALL_PRODUCTS_QUERY
-    );
+    const { allProducts } = await fetchDatoCMS<{ allProducts: ProductCard[] }>(ALL_PRODUCTS_QUERY);
     return allProducts;
-  } catch (err: unknown) {
-    console.error('Error fetching all products:', err instanceof Error ? err.message : String(err));
+  } catch {
     return null;
   }
 }
@@ -138,23 +92,18 @@ const PRODUCT_BY_SLUG_QUERY = gql`
   }
 `;
 
-export async function getProductBySlug(
-  slug: string
-): Promise<Product | null> {
+export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
-    const { product } = await client.request<{ product: Product }>(
-      PRODUCT_BY_SLUG_QUERY,
-      { slug }
-    );
+    const { product } = await fetchDatoCMS<{ product: Product }>(PRODUCT_BY_SLUG_QUERY, { slug });
     return product;
-  } catch (err: unknown) {
-    console.error('Error fetching product by slug:', err instanceof Error ? err.message : String(err));
+  } catch {
     return null;
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────────────────
 // ABOUT SECTIONS
+// ──────────────────────────────────────────────────────────────────────────
 
 const ALL_ABOUT_QUERY = gql`
   query AllAboutSections {
@@ -179,12 +128,9 @@ const ALL_ABOUT_QUERY = gql`
 
 export async function getAllAboutSections(): Promise<AboutSection[] | null> {
   try {
-    const { allAbouts } = await client.request<{ allAbouts: AboutSection[] }>(
-      ALL_ABOUT_QUERY
-    );
+    const { allAbouts } = await fetchDatoCMS<{ allAbouts: AboutSection[] }>(ALL_ABOUT_QUERY);
     return allAbouts;
-  } catch (err: unknown) {
-    console.error('Error fetching all about sections:', err instanceof Error ? err.message : String(err));
+  } catch {
     return null;
   }
 }
@@ -210,17 +156,11 @@ const ABOUT_BY_SLUG_QUERY = gql`
   }
 `;
 
-export async function getAboutBySlug(
-  slug: string
-): Promise<AboutSection | null> {
+export async function getAboutBySlug(slug: string): Promise<AboutSection | null> {
   try {
-    const { about } = await client.request<{ about: AboutSection }>(
-      ABOUT_BY_SLUG_QUERY,
-      { slug }
-    );
+    const { about } = await fetchDatoCMS<{ about: AboutSection }>(ABOUT_BY_SLUG_QUERY, { slug });
     return about;
-  } catch (err: unknown) {
-    console.error('Error fetching about by slug:', err instanceof Error ? err.message : String(err));
+  } catch {
     return null;
   }
 }

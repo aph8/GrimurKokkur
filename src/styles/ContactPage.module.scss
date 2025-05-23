@@ -1,3 +1,5 @@
+/* src/styles/ContactPage.module.scss */
+
 @use './slantTheme' as slantTheme;
 
 .container {
@@ -41,8 +43,8 @@
   background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: visible;
 
   &::before {
     @include slantTheme.slanted-edge(top, 8%);
@@ -52,10 +54,13 @@
 
 .mapContainer {
   width: 100%;
-  height: 100%;
-  aspect-ratio: 4/3;
+  height: 400px;
   border-radius: 0.5rem;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    height: 500px;
+  }
 
   iframe {
     width: 100%;
@@ -64,10 +69,22 @@
   }
 }
 
-.form {
+/* Sjálfur formWrapper gerður að flex-container til að ýta hnappinum niður og til hægri */
+.formWrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legend {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .formGroup {
@@ -89,7 +106,7 @@
     &:focus {
       outline: none;
       border-color: var(--accent-bg);
-      box-shadow: 0 0 0 3px rgba(100,150,250,0.2);
+      box-shadow: 0 0 0 3px rgba(100, 150, 250, 0.2);
     }
   }
 }
@@ -104,6 +121,9 @@
   cursor: pointer;
   transition: filter 0.2s;
 
+  /* Ýtir hnappinum til hægri innan flex-container */
+  margin-left: auto;
+
   &:hover:not(:disabled) {
     filter: brightness(0.9);
   }
@@ -114,12 +134,18 @@
   }
 }
 
-.success {
-  color: #4caf50;
-  margin-top: 0.5rem;
-}
-
 .error {
   color: #e53935;
-  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.success {
+  color: #4caf50;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.liveMessage {
+  margin-top: 1rem;
 }

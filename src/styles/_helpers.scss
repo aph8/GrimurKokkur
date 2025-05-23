@@ -1,0 +1,10 @@
+// ──────────────────────────────────────────────────────────
+// _helpers.scss — small utility classes
+// ──────────────────────────────────────────────────────────
+
+/* Truncate long text with ellipsis */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,10 @@
+// ──────────────────────────────────────────────────────────
+// _functions.scss — utility functions
+// ──────────────────────────────────────────────────────────
+@use 'sass:math';
+
+/// Convert px to rem, default base 16px
+/// Example: to-rem(24px) → 1.5rem
+@function to-rem($px, $base: 16px) {
+  @return math.div($px, $base) * 1rem;
+}

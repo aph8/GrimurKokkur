@@ -1,16 +1,18 @@
-@import '../slantTheme';
+// src/styles/vorur/HeroImage.module.scss
+@use '../variables' as v;
+@use '../mixins' as m;
 
 .heroWrapper {
   position: relative;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: v.$radius-md;
   background: var(--card-bg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
+  margin-bottom: v.$spacing-lg;
 
   &.asymmetric {
     &::before {
-      @include slanted-edge(top, 12%);
+      @include m.slanted-edge(top, 12%);
       opacity: 0.3;
     }
   }
@@ -20,6 +22,8 @@
   display: block;
   object-fit: cover;
   transition: transform 0.3s ease;
+  will-change: transform;
+
   &:hover {
     transform: scale(1.02);
   }

@@ -1,3 +1,5 @@
+// src/styles/_slantTheme.scss
+
 @mixin slanted-edge($side: top, $height: 0.1) {
   content: '';
   position: absolute;
@@ -6,7 +8,7 @@
   height: $height;
   background: var(--accent-bg);
   transform: skewY(-5deg);
-  transform-origin: #{if($side == bottom, "bottom left", "top left")};
+  transform-origin: #{if($side == bottom, 'bottom left', 'top left')};
   @if $side == bottom {
     bottom: 0;
   } @else {

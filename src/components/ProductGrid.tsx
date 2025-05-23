@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ProductCard } from '@/lib/datocms';
@@ -11,47 +11,31 @@ interface ProductGridProps {
 }
 
 export default function ProductGrid({ products }: ProductGridProps) {
-  const [veganOnly, setVeganOnly] = useState(false);
-
-  // filter on the client
-  const displayed = veganOnly
-    ? products.filter((p) => p.vegan)
-    : products;
-
   return (
-    <>
-      <div className={styles.filterBar}>
-        <label>
-          <input
-            type="checkbox"
-            checked={veganOnly}
-            onChange={(e) => setVeganOnly(e.currentTarget.checked)}
-          />{' '}
-          Vegan vörur
-        </label>
-      </div>
-
-      <div className={styles.productList}>
-        {displayed.map((product) => (
-          <Link
-            key={product.slug}
-            href={`/vorur/${product.slug}`}
-            className={styles.productCard}
-          >
+    <ul className={styles.productList}>
+      {products.map((product, i) => (
+        <li key={product.slug} className={styles.productCard}>
+          <Link href={`/vorur/${product.slug}`}>
             {product.image?.url && (
               <div className={styles.productImageWrapper}>
                 <Image
                   src={product.image.url}
                   alt={product.image.alt || product.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, 260px"
+                  quality={100} // hærri gæði en default (75)
+                  placeholder="blur"
+                  blurDataURL="/placeholder.png"
+                  priority={i < 4}
+                  unoptimized={false} // leyfa Next.js optimera
                   className={styles.productImage}
                 />
               </div>
             )}
             <h2 className={styles.productTitle}>{product.title}</h2>
           </Link>
-        ))}
-      </div>
-    </>
+        </li>
+      ))}
+    </ul>
   );
 }
