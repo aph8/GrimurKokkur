@@ -67,6 +67,9 @@ export default function Footer() {
           <p>
             <strong>Email:</strong> grimurkokkur@grimurkokkur.is
           </p>
+          <p>
+            <strong>Kennitala:</strong> 531205-1460
+          </p>
           <Link href="/contact">
             <button className={styles.contactButton}>Hafa samband</button>
           </Link>
