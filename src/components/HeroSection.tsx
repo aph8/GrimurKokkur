@@ -5,12 +5,11 @@ import Image from 'next/image';
 import styles from '@/styles/HeroSection.module.scss';
 
 const panels = [
-  { src: '/fiskibollur_portrait.svg', alt: '' },
-  { src: '/humarsúpa_portrait.svg',   alt: '' },
-  { src: '/fiskistangir_portrait.svg', alt: '' },
-  { src: '/plokkfiskur_portrait.svg',  alt: '' },
+  { src: '/fiskibollur_portrait.svg', alt: 'Fiskibollur' },
+  { src: '/humarsúpa_portrait.svg',   alt: 'Humarsúpa' },
+  { src: '/fiskistangir_portrait.svg', alt: 'Fiskistangir' },
+  { src: '/plokkfiskur_portrait.svg',  alt: 'Plokkfiskur' },
 ];
-
 
 export default function HeroSection() {
   return (
@@ -21,7 +20,7 @@ export default function HeroSection() {
             src={p.src}
             alt={p.alt}
             fill
-            priority={i === 0}         
+            priority={true}
             style={{
               objectFit: 'cover',
               objectPosition: 'center',

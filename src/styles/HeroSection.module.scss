@@ -15,15 +15,10 @@
     z-index: 1;
   }
 
-  /* If you need distinct styling per panel, keep these—but
-     background-* rules are now handled inside <Image> */
-  .panel1 { /* e.g. if you wanted a solid fallback color: */
+  /* Only panel1 needs a fallback color */
+  .panel1 {
     background-color: #111;
   }
-  .panel2 {}
-  .panel3 {}
-  .panel4 {}
-  .panel5 {}
 }
 
 .overlayContent {
