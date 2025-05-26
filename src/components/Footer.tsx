@@ -62,10 +62,16 @@ export default function Footer() {
             <strong>Heimilisfang:</strong> Hlíðavegi 5, 900 Vestmannaeyjar
           </p>
           <p>
-            <strong>Sími:</strong> 481 2665
+            <strong>Sími:</strong>{' '}
+            <a href="tel:+3544812665" className={styles.link}>
+              481 2665
+            </a>
           </p>
           <p>
-            <strong>Email:</strong> grimurkokkur@grimurkokkur.is
+            <strong>Email:</strong>{' '}
+            <a href="mailto:grimurkokkur@grimurkokkur.is" className={styles.link}>
+              grimurkokkur@grimurkokkur.is
+            </a>
           </p>
           <p>
             <strong>Kennitala:</strong> 531205-1460
