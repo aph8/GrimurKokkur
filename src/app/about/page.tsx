@@ -1,4 +1,7 @@
 // src/app/about/page.tsx
+export const runtime    = 'edge';
+export const revalidate = 60;
+
 import { notFound } from 'next/navigation';
 import { getAllAboutSections, type AboutSection } from '@/lib/datocms';
 import AboutSections from '@/components/AboutSections';

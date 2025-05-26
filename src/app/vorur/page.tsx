@@ -1,3 +1,7 @@
+export const runtime    = 'edge';
+export const revalidate = 60;
+
+
 import { notFound } from 'next/navigation';
 import { getAllProducts, ProductCard } from '@/lib/datocms';
 import ProductsPageClient from '@/components/ProductsPageClient';

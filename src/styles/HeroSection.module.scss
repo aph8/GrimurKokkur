@@ -1,6 +1,5 @@
-// src/styles/HeroSection.module.scss
+/* src/styles/HeroSection.module.scss */
 @use './variables' as v;
-@use './mixins' as m;
 
 .hero {
   position: relative;
@@ -9,29 +8,22 @@
   overflow: hidden;
 
   .panel {
+    position: relative;    // required for Image fill
     flex: 1;
-    background-size: cover;
-    background-position: center;
     transform: skewX(-20deg);
     margin-left: -5%;
     z-index: 1;
-
-    &.panel1 {
-      background-color: #111;
-    }
-    &.panel2 {
-      background-image: url('../../public/fiskibollur_portrait.svg');
-    }
-    &.panel3 {
-      background-image: url('../../public/humarsúpa_portrait.svg');
-    }
-    &.panel4 {
-      background-image: url('../../public/fiskistangir_portrait.svg');
-    }
-    &.panel5 {
-      background-image: url('../../public/plokkfiskur_portrait.svg');
-    }
   }
+
+  /* If you need distinct styling per panel, keep these—but
+     background-* rules are now handled inside <Image> */
+  .panel1 { /* e.g. if you wanted a solid fallback color: */
+    background-color: #111;
+  }
+  .panel2 {}
+  .panel3 {}
+  .panel4 {}
+  .panel5 {}
 }
 
 .overlayContent {

@@ -1,3 +1,9 @@
+'use client';
+
+export const runtime    = 'edge';
+export const revalidate = 60;
+
+
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { getProductBySlug, Product } from '@/lib/datocms';

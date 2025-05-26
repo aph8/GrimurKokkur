@@ -1,5 +1,8 @@
 'use client';
 
+export const runtime    = 'edge';
+export const revalidate = 60;
+
 import React, { useState, useRef, FormEvent } from 'react';
 import styles from '@/styles/ContactPage.module.scss';
 import { ContactSchema, type ContactInput } from '@/lib/contactSchema';

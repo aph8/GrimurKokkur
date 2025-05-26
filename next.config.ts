@@ -9,16 +9,9 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'www.datocms-assets.com',
-        port: '',        // empty string matches default port 443
-        pathname: '/**', // all paths under this host
+        port: '',
+        pathname: '/**',
       },
-      // add more hosts here if needed:
-      // {
-      //   protocol: 'https',
-      //   hostname: 'images.ctfassets.net',
-      //   port: '',
-      //   pathname: '/**',
-      // },
     ],
   },
 

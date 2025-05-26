@@ -1,4 +1,8 @@
 // src/app/api/contact/route.ts
+
+export const runtime    = 'edge';
+export const revalidate = 60;
+
 import { NextResponse } from 'next/server';
 import { ContactSchema } from '@/lib/contactSchema';
 import { sendContactEmail } from '@/lib/mail';
@@ -8,20 +12,14 @@ export async function POST(request: Request) {
   try {
     data = await request.json();
   } catch {
-    return NextResponse.json(
-      { error: 'Invalid JSON' },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
   const result = ContactSchema.safeParse(data);
   if (!result.success) {
     // Extract all Zod errors in formatted form
     const formatted = result.error.format();
-    return NextResponse.json(
-      { errors: formatted },
-      { status: 422 }
-    );
+    return NextResponse.json({ errors: formatted }, { status: 422 });
   }
 
   // result.data is already typed by Zod
@@ -29,10 +27,7 @@ export async function POST(request: Request) {
 
   try {
     await sendContactEmail({ name, email, message });
-    return NextResponse.json(
-      { success: true },
-      { status: 200 }
-    );
+    return NextResponse.json({ success: true }, { status: 200 });
   } catch (err: unknown) {
     console.error('❌ sendContactEmail failed:', err);
 
@@ -44,9 +39,6 @@ export async function POST(request: Request) {
       errorMessage = err;
     }
 
-    return NextResponse.json(
-      { error: errorMessage },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
