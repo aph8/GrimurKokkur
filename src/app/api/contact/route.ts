@@ -1,6 +1,6 @@
 // src/app/api/contact/route.ts
 
-export const runtime    = 'nodejs';
+export const runtime = 'nodejs';
 export const revalidate = 60;
 
 import { NextResponse } from 'next/server';
