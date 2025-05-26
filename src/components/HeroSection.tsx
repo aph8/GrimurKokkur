@@ -6,7 +6,7 @@ import styles from '@/styles/HeroSection.module.scss';
 
 const panels = [
   { src: '/fiskibollur_portrait.svg', alt: 'Fiskibollur' },
-  { src: '/humarsúpa_portrait.svg',   alt: 'Humarsúpa' },
+  { src: '/humarsupa_portrait.svg',   alt: 'Humarsúpa' },
   { src: '/fiskistangir_portrait.svg', alt: 'Fiskistangir' },
   { src: '/plokkfiskur_portrait.svg',  alt: 'Plokkfiskur' },
 ];
