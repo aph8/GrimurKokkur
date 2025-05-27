@@ -1,13 +1,13 @@
 .carouselWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 20 / 30;  
+  aspect-ratio: 20 / 30;
   overflow: hidden;
 }
 
 .slides {
   position: absolute;
-  inset: 0;               
+  inset: 0;
   display: flex;
   transition: transform 1s ease;
 }

@@ -1,0 +1,69 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/HeroCarousel.module.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.HeroCarousel_carouselWrapper__IxtcD {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 20/30;
+  overflow: hidden;
+}
+
+.HeroCarousel_slides__iS5Ob {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  transition: transform 1s ease;
+}
+
+.HeroCarousel_slide___U6gZ {
+  flex: 0 0 100%;
+  position: relative;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[7].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[7].use[5]!./src/styles/HeroSection.module.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.HeroSection_hero__5yfb5 {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+.HeroSection_hero__5yfb5 .HeroSection_panel__l3t_w {
+  position: relative;
+  flex: 1;
+  z-index: 1;
+}
+.HeroSection_hero__5yfb5 .HeroSection_panel__l3t_w + .HeroSection_panel__l3t_w {
+  margin-left: -5%;
+}
+.HeroSection_hero__5yfb5 .HeroSection_panel1__vzF6g {
+  background-color: #111;
+}
+
+.HeroSection_mobileHero__KyoMQ {
+  position: relative;
+}
+
+.HeroSection_overlayContent__Br9lV {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  transform: none;
+  z-index: 10;
+  color: white;
+}
+.HeroSection_overlayContent__Br9lV h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  letter-spacing: 0.1em;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.2em 0.4em;
+  border-radius: 0.375rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .HeroSection_desktopOnly__mRZYP {
+    display: none !important;
+  }
+}

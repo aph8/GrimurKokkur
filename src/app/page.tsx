@@ -2,7 +2,7 @@
 export const runtime = 'edge';
 export const revalidate = 60;
 import type { Metadata } from 'next';
-import HeroSection from '@/components/HeroSection';
+import HeroSection from '@/components/homePage/HeroSection';
 
 export const metadata: Metadata = {
   title: 'Grímur Kokkur – Heim',

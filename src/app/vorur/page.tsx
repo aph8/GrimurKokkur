@@ -5,7 +5,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllProducts, type ProductCard } from '@/lib/datocms';
-import ProductsPageClient from '@/components/ProductsPageClient';
+import ProductsPageClient from '@/components/vorur/ProductsPageClient';
 
 export const metadata: Metadata = {
   title: 'Vörur – Grímur Kokkur',
