@@ -1,3 +1,4 @@
+// src/app/layout.tsx
 export const runtime = 'edge';
 
 import type { Metadata } from 'next';

@@ -55,7 +55,10 @@ export default async function ProductPage({ params }: PageProps) {
 
   return (
     <main className="w-full px-4 py-12">
-      <h1 className={styles.pageTitle}>{title}</h1>
+      <h1 id="pageTitle" className={styles.pageTitle}>
+        {title}
+      </h1>
+
       <div className={styles.wrapper}>
         {/* HERO COLUMN */}
         {image?.url && (
@@ -66,11 +69,15 @@ export default async function ProductPage({ params }: PageProps) {
               ratio="16:9"
               className="asymmetric"
             />
+
+            {/* Nutrition on desktop */}
             {nutritionfacts.length > 0 && (
               <div className={styles.desktopOnly}>
                 <NutritionTable data={nutritionfacts as NutritionRow[]} />
               </div>
             )}
+
+            {/* Video */}
             {video?.url && (
               <div className="mt-8">
                 <h2 className="text-xl font-semibold mb-2">Myndband</h2>
@@ -82,6 +89,8 @@ export default async function ProductPage({ params }: PageProps) {
                 />
               </div>
             )}
+
+            {/* Photo gallery */}
             {imagegallery.length > 0 && (
               <div className="mt-8">
                 <TextSection title="Myndagallerí">
@@ -95,10 +104,13 @@ export default async function ProductPage({ params }: PageProps) {
             )}
           </div>
         )}
+
         {/* CONTENT COLUMN */}
         <div className={styles.contentContainer}>
           {discription && <TextSection title="Lýsing" text={discription} isMarkdown />}
           {ingredient && <TextSection title="Innihaldsefni" text={ingredient} isMarkdown />}
+
+          {/* Nutrition on mobile */}
           {nutritionfacts.length > 0 && (
             <div className={styles.mobileOnly}>
               <TextSection title="Næringargögn">

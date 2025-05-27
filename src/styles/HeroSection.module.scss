@@ -15,8 +15,6 @@
     z-index: 1;
   }
 
-
-
   .panel1 {
     background-color: #111;
   }
@@ -24,7 +22,7 @@
 
 .overlayContent {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: v.$spacing-lg;
   transform: translateY(-50%);
   z-index: 10;

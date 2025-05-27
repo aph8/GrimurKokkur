@@ -19,9 +19,7 @@ export default function Header() {
   const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
 
-  const toggleMenu = useCallback(() => {
-    setMenuOpen((o) => !o);
-  }, []);
+  const toggleMenu = useCallback(() => setMenuOpen((o) => !o), []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -35,7 +33,6 @@ export default function Header() {
       const titleTop = titleEl.getBoundingClientRect().top;
       setHidden(titleTop <= headerHeight);
     };
-
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
@@ -48,42 +45,52 @@ export default function Header() {
       role="banner"
     >
       <div className={styles.container}>
-        <Link href="/" className={styles.logo} aria-label="Forsíða">
-          <Image src="/Grimur_kokkur_logo.svg" alt="Grímur kokkur logo" width={100} height={100} />
-        </Link>
+        <div className={styles.branding}>
+          <Link href="/" className={styles.logo} aria-label="Forsíða">
+            <Image
+              src="/Grimur_kokkur_logo.svg"
+              alt="Grímur Kokkur logo"
+              width={100}
+              height={100}
+            />
+          </Link>
+        </div>
 
-        <button
-          className={styles.hamburger}
-          onClick={toggleMenu}
-          aria-label={menuOpen ? 'Loka aðalvalmynd' : 'Opna aðalvalmynd'}
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-        >
-          <span className={menuOpen ? styles.barOpen : styles.bar} />
-          <span className={menuOpen ? styles.barOpen : styles.bar} />
-          <span className={menuOpen ? styles.barOpen : styles.bar} />
-        </button>
-        <nav
-          id="primary-navigation"
-          className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}
-          role="navigation"
-          aria-label="Aðalvalmynd"
-        >
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`${styles.tab} ${isActive ? styles.tabActive : ''}`}
-                aria-current={isActive ? 'page' : undefined}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className={styles.controls}>
+          <button
+            className={styles.hamburger}
+            onClick={toggleMenu}
+            aria-label={menuOpen ? 'Loka aðalvalmynd' : 'Opna aðalvalmynd'}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+          >
+            <span className={menuOpen ? styles.barOpen : styles.bar} />
+            <span className={menuOpen ? styles.barOpen : styles.bar} />
+            <span className={menuOpen ? styles.barOpen : styles.bar} />
+          </button>
+
+          <nav
+            id="primary-navigation"
+            className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}
+            role="navigation"
+            aria-label="Aðalvalmynd"
+          >
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`${styles.tab} ${isActive ? styles.activeLink : ''}`}
+                  aria-current={isActive ? 'page' : undefined}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
       </div>
     </header>
   );

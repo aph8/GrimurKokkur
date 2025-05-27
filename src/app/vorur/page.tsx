@@ -1,3 +1,4 @@
+// src/app/vorur/page.tsx
 export const revalidate = false;
 export const dynamic = 'force-static';
 
