@@ -5,7 +5,7 @@ export const revalidate = 60;
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllAboutSections, type AboutSection } from '@/lib/datocms';
-import AboutSections from '@/components/AboutSections';
+import AboutSections from '@/components/about/AboutSections';
 import styles from '@/styles/AboutPage.module.scss';
 
 export const metadata: Metadata = {

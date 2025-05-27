@@ -5,7 +5,7 @@ export const dynamic = 'force-static';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getProductBySlug, type Product } from '@/lib/datocms';
-import TextSection from '@/components/vorur/TextSection';
+import TextSection from '@/components/vorur/TextSection'; 
 import NutritionTable, { type NutritionRow } from '@/components/vorur/NutritionTable';
 import PhotoGallery from '@/components/vorur/PhotoGallery';
 import HeroImage from '@/components/vorur/HeroImage';
