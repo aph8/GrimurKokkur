@@ -1,5 +1,6 @@
 export const runtime = 'edge';
-export const revalidate = 60;
+export const revalidate = false; 
+export const dynamic = 'force-static';
 
 import { notFound } from 'next/navigation';
 import { getAllProducts, ProductCard } from '@/lib/datocms';

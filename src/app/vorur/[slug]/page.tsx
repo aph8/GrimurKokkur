@@ -1,7 +1,6 @@
-'use client';
-
 export const runtime = 'edge';
-export const revalidate = 60;
+export const revalidate = false; 
+export const dynamic = 'force-static'; 
 
 import React from 'react';
 import { notFound } from 'next/navigation';
