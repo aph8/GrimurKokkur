@@ -8,14 +8,15 @@
   overflow: hidden;
 
   .panel {
-    position: relative; // required for Image fill
+    position: relative;
     flex: 1;
-    transform: skewX(-20deg);
+    //transform: skewX(-20deg);
     margin-left: -5%;
     z-index: 1;
   }
 
-  /* Only panel1 needs a fallback color */
+
+
   .panel1 {
     background-color: #111;
   }
@@ -37,25 +38,5 @@
     padding: 0.3em 0.6em;
     border-radius: v.$radius-sm;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-  }
-
-  .buttons {
-    display: flex;
-    gap: v.$spacing-sm;
-
-    a {
-      padding: v.$spacing-xs v.$spacing-md;
-      font-weight: bold;
-      border: 2px solid white;
-      background: transparent;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-
-      &.active {
-        background: white;
-        color: black;
-      }
-    }
   }
 }
