@@ -2,36 +2,55 @@
 'use client';
 
 import Image from 'next/image';
+import HeroCarousel from './HeroCarousel';
+import useIsMobile from '@/hooks/useIsMobile';
 import styles from '@/styles/HeroSection.module.scss';
 
 const panels = [
-  { src: '/fiskibollur_portrait.svg', alt: 'Fiskibollur' },
-  { src: '/humarsupa_portrait.svg', alt: 'Humarsúpa' },
-  { src: '/fiskistangir_portrait.svg', alt: 'Fiskistangir' },
-  { src: '/plokkfiskur_portrait.svg', alt: 'Plokkfiskur' },
+  { url: '/fiskibollur_portrait.svg', alt: 'Fiskibollur' },
+  { url: '/humarsupa_portrait.svg', alt: 'Humarsúpa' },
+  { url: '/fiskistangir_portrait.svg', alt: 'Fiskistangir' },
+  { url: '/plokkfiskur_portrait.svg', alt: 'Plokkfiskur' },
 ];
 
 export default function HeroSection() {
-  return (
-    <header className={styles.hero} role="banner" aria-labelledby="hero-title">
-      {panels.map((p, i) => (
-        <div key={i} className={`${styles.panel} ${styles[`panel${i + 1}`]}`}>
-          <Image
-            src={p.src}
-            alt={p.alt}
-            fill
-            priority={true}
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'center',
-            }}
-          />
-        </div>
-      ))}
+  const isMobile = useIsMobile();
 
-      <div className={styles.overlayContent}>
-        <h1 id="hero-title">Grímur Kokkur</h1>
-      </div>
-    </header>
+  return (
+    <>
+      {isMobile ? (
+        <div className={styles.mobileHero}>
+          <HeroCarousel images={panels} intervalMs={5000} />
+          <div className={styles.overlayContent}>
+            <h1 id="hero-title">Grímur Kokkur</h1>
+          </div>
+        </div>
+      ) : (
+        <header
+          className={`${styles.hero} ${styles.desktopOnly}`}
+          role="banner"
+          aria-labelledby="hero-title"
+        >
+          {panels.map((p, i) => (
+            <div
+              key={i}
+              className={`${styles.panel} ${styles[`panel${i + 1}`]}`}
+            >
+              <Image
+                src={p.url}
+                alt={p.alt}
+                fill
+                priority
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+              />
+            </div>
+          ))}
+
+          <div className={styles.overlayContent}>
+            <h1 id="hero-title">Grímur Kokkur</h1>
+          </div>
+        </header>
+      )}
+    </>
   );
 }

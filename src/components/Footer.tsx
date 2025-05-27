@@ -111,9 +111,6 @@ export default function Footer() {
             <Link href="/about">Um Okkur</Link>
             <Link href="/contact">Hafa Samband</Link>
           </nav>
-          <button aria-label="Back to top" className={styles.toTop} onClick={scrollToTop}>
-            <ArrowUp size={20} />
-          </button>
         </div>
       </div>
     </footer>
