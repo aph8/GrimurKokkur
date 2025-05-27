@@ -12,7 +12,7 @@ interface HeroCarouselProps {
 
 export default function HeroCarousel({
   images,
-  intervalMs = 5000,
+  intervalMs = 3000,
 }: HeroCarouselProps) {
   const [index, setIndex] = useState(0);
 

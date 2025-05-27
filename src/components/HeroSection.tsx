@@ -20,7 +20,7 @@ export default function HeroSection() {
     <>
       {isMobile ? (
         <div className={styles.mobileHero}>
-          <HeroCarousel images={panels} intervalMs={5000} />
+          <HeroCarousel images={panels} intervalMs={3000} />
           <div className={styles.overlayContent}>
             <h1 id="hero-title">Grímur Kokkur</h1>
           </div>
