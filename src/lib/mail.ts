@@ -2,25 +2,10 @@
 import nodemailer, { Transporter } from 'nodemailer';
 import sanitizeHtml from 'sanitize-html';
 
-const {
-  SMTP_HOST,
-  SMTP_PORT,
-  SMTP_USER,
-  SMTP_PASS,
-  CONTACT_EMAIL,
-  NODE_ENV,
-} = process.env;
+const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL, NODE_ENV } = process.env;
 
-if (
-  !SMTP_HOST ||
-  !SMTP_PORT ||
-  !SMTP_USER ||
-  !SMTP_PASS ||
-  !CONTACT_EMAIL
-) {
-  throw new Error(
-    'Missing one of SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL'
-  );
+if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_EMAIL) {
+  throw new Error('Missing one of SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL');
 }
 
 const isDev = NODE_ENV !== 'production';

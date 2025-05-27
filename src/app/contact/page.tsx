@@ -30,8 +30,8 @@ export default function ContactPage() {
   const handleChange =
     (field: keyof ContactInput) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setForm(f => ({ ...f, [field]: e.target.value }));
-      setErrors(e => ({ ...e, [field]: undefined }));
+      setForm((f) => ({ ...f, [field]: e.target.value }));
+      setErrors((e) => ({ ...e, [field]: undefined }));
     };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -143,7 +143,13 @@ export default function ContactPage() {
             {status === 'pending' ? 'Sæki...' : 'Senda'}
           </button>
 
-          <div role="alert" aria-live="assertive" tabIndex={-1} ref={liveRef} className={styles.liveMessage}>
+          <div
+            role="alert"
+            aria-live="assertive"
+            tabIndex={-1}
+            ref={liveRef}
+            className={styles.liveMessage}
+          >
             {status === 'success' && <p className={styles.success}>Skilaboðin voru send!</p>}
             {status === 'error' && <p className={styles.error}>Villa kom upp. Reyndu aftur.</p>}
           </div>

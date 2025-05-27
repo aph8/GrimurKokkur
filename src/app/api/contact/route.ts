@@ -11,10 +11,7 @@ export async function POST(request: NextRequest) {
   try {
     data = await request.json();
   } catch {
-    return NextResponse.json(
-      { error: 'Invalid JSON payload' },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: 'Invalid JSON payload' }, { status: 400 });
   }
 
   // 2) Validate with Zod
@@ -22,10 +19,7 @@ export async function POST(request: NextRequest) {
   if (!result.success) {
     // Flatten Zod errors into { field: [messages], _errors: [...] }
     const errors = result.error.flatten();
-    return NextResponse.json(
-      { errors },
-      { status: 422 }
-    );
+    return NextResponse.json({ errors }, { status: 422 });
   }
 
   const { name, email, message } = result.data;
@@ -33,17 +27,10 @@ export async function POST(request: NextRequest) {
   // 3) Send email
   try {
     await sendContactEmail({ name, email, message });
-    return NextResponse.json(
-      { success: true },
-      { status: 200 }
-    );
+    return NextResponse.json({ success: true }, { status: 200 });
   } catch (err: unknown) {
     console.error('❌ sendContactEmail failed:', err);
-    const errorMessage =
-      err instanceof Error ? err.message : String(err);
-    return NextResponse.json(
-      { error: errorMessage },
-      { status: 500 }
-    );
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
