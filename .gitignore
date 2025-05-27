@@ -50,3 +50,9 @@ Thumbs.db
 *.pem                  # your local certs
 *.swp                  # vim swap files
 *.orig                 # patch backups
+
++# Local env overrides
++.env.local
+
++# Local-only analysis output
++analyze/
