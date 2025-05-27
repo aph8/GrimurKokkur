@@ -49,7 +49,7 @@ export default function Header() {
     >
       <div className={styles.container}>
         <Link href="/" className={styles.logo} aria-label="Forsíða">
-          <Image src="/Grimur_kokkur_logo.svg" alt="Grímur kokkur logo" width={80} height={80} />
+          <Image src="/Grimur_kokkur_logo.svg" alt="Grímur kokkur logo" width={100} height={100} />
         </Link>
 
         <button
