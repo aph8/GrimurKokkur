@@ -1,44 +1,49 @@
 // src/app/api/contact/route.ts
-
-export const runtime = 'nodejs';
-export const revalidate = 60;
-
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { ContactSchema } from '@/lib/contactSchema';
 import { sendContactEmail } from '@/lib/mail';
 
-export async function POST(request: Request) {
+export const runtime = 'nodejs';
+
+export async function POST(request: NextRequest) {
+  // 1) Parse JSON
   let data: unknown;
   try {
     data = await request.json();
   } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+    return NextResponse.json(
+      { error: 'Invalid JSON payload' },
+      { status: 400 }
+    );
   }
 
+  // 2) Validate with Zod
   const result = ContactSchema.safeParse(data);
   if (!result.success) {
-    // Extract all Zod errors in formatted form
-    const formatted = result.error.format();
-    return NextResponse.json({ errors: formatted }, { status: 422 });
+    // Flatten Zod errors into { field: [messages], _errors: [...] }
+    const errors = result.error.flatten();
+    return NextResponse.json(
+      { errors },
+      { status: 422 }
+    );
   }
 
-  // result.data is already typed by Zod
   const { name, email, message } = result.data;
 
+  // 3) Send email
   try {
     await sendContactEmail({ name, email, message });
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json(
+      { success: true },
+      { status: 200 }
+    );
   } catch (err: unknown) {
     console.error('❌ sendContactEmail failed:', err);
-
-    // Safely extract an error message
-    let errorMessage = 'Server error: Unknown error';
-    if (err instanceof Error) {
-      errorMessage = err.message;
-    } else if (typeof err === 'string') {
-      errorMessage = err;
-    }
-
-    return NextResponse.json({ error: errorMessage }, { status: 500 });
+    const errorMessage =
+      err instanceof Error ? err.message : String(err);
+    return NextResponse.json(
+      { error: errorMessage },
+      { status: 500 }
+    );
   }
 }

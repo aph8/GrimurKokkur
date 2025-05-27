@@ -1,21 +1,47 @@
-export const runtime = 'edge';
-export const revalidate = false; 
-export const dynamic = 'force-static'; 
+// src/app/vorur/[slug]/page.tsx
+export const dynamic = 'force-static';
+export const revalidate = false;
 
-import React from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProductBySlug, Product } from '@/lib/datocms';
+import { getProductBySlug, type Product } from '@/lib/datocms';
 import TextSection from '@/components/vorur/TextSection';
-import NutritionTable, { NutritionRow } from '@/components/vorur/NutritionTable';
+import NutritionTable, { type NutritionRow } from '@/components/vorur/NutritionTable';
 import PhotoGallery from '@/components/vorur/PhotoGallery';
 import HeroImage from '@/components/vorur/HeroImage';
-import styles from '../../../styles/vorur/ProductLayout.module.scss';
+import styles from '@/styles/vorur/ProductLayout.module.scss';
 
-interface Props {
+interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function ProductPage({ params }: Props) {
+/** 
+ * Generate per‐product <head> metadata
+ */
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
+
+  if (!product) {
+    return {
+      title: 'Vara ekki fundin – Grímur Kokkur',
+      description: 'Fann enga vöru með þessu slug.',
+    };
+  }
+
+  return {
+    title: `${product.title} – Grímur Kokkur`,
+    description:
+      (product.discription?.slice(0, 157) ?? `Upplýsingar um ${product.title}`) + '…',
+    icons: {
+      icon: '/Grimur_kokkur_logo.svg',
+      shortcut: '/Grimur_kokkur_logo.svg',
+      apple: '/Grimur_kokkur_logo.svg',
+    },
+  };
+}
+
+export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params;
   const product: Product | null = await getProductBySlug(slug);
   if (!product) return notFound();
@@ -32,11 +58,10 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <main className="w-full px-4 py-12">
-      {/* Titill sem notar .pageTitle fyrir underline-animation */}
       <h1 className={styles.pageTitle}>{title}</h1>
 
       <div className={styles.wrapper}>
-        {/* ─── HERO COLUMN ─────────────────────────────────────────── */}
+        {/* HERO COLUMN */}
         {image?.url && (
           <div className={styles.heroContainer}>
             <HeroImage
@@ -46,14 +71,14 @@ export default async function ProductPage({ params }: Props) {
               className="asymmetric"
             />
 
-            {/* Nutrition á desktop */}
+            {/* Nutrition on desktop */}
             {nutritionfacts.length > 0 && (
               <div className={styles.desktopOnly}>
                 <NutritionTable data={nutritionfacts as NutritionRow[]} />
               </div>
             )}
 
-            {/* Myndband */}
+            {/* Video */}
             {video?.url && (
               <div className="mt-8">
                 <h2 className="text-xl font-semibold mb-2">Myndband</h2>
@@ -66,7 +91,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
             )}
 
-            {/* Myndagallerí */}
+            {/* Photo gallery */}
             {imagegallery.length > 0 && (
               <div className="mt-8">
                 <TextSection title="Myndagallerí">
@@ -81,12 +106,16 @@ export default async function ProductPage({ params }: Props) {
           </div>
         )}
 
-        {/* ─── CONTENT COLUMN ─────────────────────────────────────── */}
+        {/* CONTENT COLUMN */}
         <div className={styles.contentContainer}>
-          {discription && <TextSection title="Lýsing" text={discription} isMarkdown />}
-          {ingredient && <TextSection title="Innihaldsefni" text={ingredient} isMarkdown />}
+          {discription && (
+            <TextSection title="Lýsing" text={discription} isMarkdown />
+          )}
+          {ingredient && (
+            <TextSection title="Innihaldsefni" text={ingredient} isMarkdown />
+          )}
 
-          {/* Nutrition á mobile */}
+          {/* Nutrition on mobile */}
           {nutritionfacts.length > 0 && (
             <div className={styles.mobileOnly}>
               <TextSection title="Næringargögn">

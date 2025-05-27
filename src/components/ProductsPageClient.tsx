@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useMemo, memo } from 'react';
-import { ProductCard } from '@/lib/datocms';
+import type { ProductCard } from '@/lib/datocms';
 import ProductGrid from './ProductGrid';
 import styles from '@/styles/Products.module.scss';
 

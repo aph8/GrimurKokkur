@@ -1,8 +1,5 @@
 'use client';
 
-export const runtime = 'edge';
-export const revalidate = 60;
-
 import React, { useState, useRef, FormEvent } from 'react';
 import styles from '@/styles/ContactPage.module.scss';
 import { ContactSchema, type ContactInput } from '@/lib/contactSchema';
@@ -33,8 +30,8 @@ export default function ContactPage() {
   const handleChange =
     (field: keyof ContactInput) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setForm((f) => ({ ...f, [field]: e.target.value }));
-      setErrors((e) => ({ ...e, [field]: undefined }));
+      setForm(f => ({ ...f, [field]: e.target.value }));
+      setErrors(e => ({ ...e, [field]: undefined }));
     };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -52,6 +49,7 @@ export default function ContactPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || res.statusText);
+
       setStatus('success');
       setForm({ name: '', email: '', message: '' });
       setErrors({});
@@ -67,7 +65,6 @@ export default function ContactPage() {
       <h1 className={styles.title}>Hafa samband</h1>
 
       <div className={styles.contactWrapper}>
-        {/* Kort */}
         <div className={styles.mapWrapper}>
           <div className={styles.mapContainer}>
             <iframe
@@ -80,7 +77,6 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Form */}
         <form className={styles.formWrapper} onSubmit={handleSubmit} noValidate>
           <fieldset className={styles.fieldset}>
             <legend className={styles.legend}>Upplýsingar</legend>
@@ -147,13 +143,7 @@ export default function ContactPage() {
             {status === 'pending' ? 'Sæki...' : 'Senda'}
           </button>
 
-          <div
-            role="alert"
-            aria-live="assertive"
-            tabIndex={-1}
-            ref={liveRef}
-            className={styles.liveMessage}
-          >
+          <div role="alert" aria-live="assertive" tabIndex={-1} ref={liveRef} className={styles.liveMessage}>
             {status === 'success' && <p className={styles.success}>Skilaboðin voru send!</p>}
             {status === 'error' && <p className={styles.error}>Villa kom upp. Reyndu aftur.</p>}
           </div>

@@ -2,15 +2,30 @@
 import nodemailer, { Transporter } from 'nodemailer';
 import sanitizeHtml from 'sanitize-html';
 
-const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL, NODE_ENV } = process.env;
+const {
+  SMTP_HOST,
+  SMTP_PORT,
+  SMTP_USER,
+  SMTP_PASS,
+  CONTACT_EMAIL,
+  NODE_ENV,
+} = process.env;
 
-if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_EMAIL) {
-  throw new Error('Missing one of SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL');
+if (
+  !SMTP_HOST ||
+  !SMTP_PORT ||
+  !SMTP_USER ||
+  !SMTP_PASS ||
+  !CONTACT_EMAIL
+) {
+  throw new Error(
+    'Missing one of SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL'
+  );
 }
 
 const isDev = NODE_ENV !== 'production';
+let transporter: Transporter;
 
-let transporter: Transporter | null = null;
 function getTransporter() {
   if (!transporter) {
     transporter = nodemailer.createTransport({
@@ -36,16 +51,16 @@ export async function sendContactEmail({
   email: string;
   message: string;
 }) {
-  // Sanitize message: engin HTML tags
+  // Sanitize input (no HTML tags)
   const cleanMessage = sanitizeHtml(message, {
     allowedTags: [],
     allowedAttributes: {},
   });
 
-  // Gakktu úr skugga um að SMTP-tenging virki
+  // Verify SMTP connection
   await getTransporter().verify();
 
-  // Send email
+  // Send
   await getTransporter().sendMail({
     from: `"Kontakt form" <${SMTP_USER}>`,
     to: CONTACT_EMAIL,
@@ -58,6 +73,8 @@ export async function sendContactEmail({
       <hr/>
       <p>${cleanMessage.replace(/\n/g, '<br/>')}</p>
     `,
-    headers: { 'X-Message-Received': new Date().toISOString() },
+    headers: {
+      'X-Message-Received': new Date().toISOString(),
+    },
   });
 }
