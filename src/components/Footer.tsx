@@ -4,11 +4,10 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Instagram, Facebook, ArrowUp } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 import styles from '@/styles/Footer.module.scss';
 
 export default function Footer() {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <footer className={styles.footer}>
