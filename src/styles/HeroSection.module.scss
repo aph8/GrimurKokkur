@@ -1,5 +1,10 @@
+/* src/styles/HeroSection.module.scss */
+
 @use './variables' as v;
 
+/* ============================================= */
+/* Desktop‐only hero (4 panels)                  */
+/* ============================================= */
 .hero {
   position: relative;
   height: 100vh;
@@ -12,7 +17,7 @@
     z-index: 1;
   }
 
-  // overlap every panel after the first
+  /* overlap every panel after the first */
   .panel + .panel {
     margin-left: -5%;
   }
@@ -22,17 +27,22 @@
   }
 }
 
-// container for mobile carousel + overlay
+/* ============================================= */
+/* Mobile carousel + overlay (hidden by default) */
+/* ============================================= */
 .mobileHero {
+  display: none; /* hide mobile carousel on desktop by default */
   position: relative;
 }
 
-// this overlay style is shared between mobile & desktop
+/* ============================================= */
+/* Overlay (shared)                              */
+/* ============================================= */
 .overlayContent {
   position: absolute;
-  top: 1.5rem; // distance from top
-  left: 1.5rem; // distance from left
-  transform: none; // no centering transform
+  top: 1.5rem; /* distance from top */
+  left: 1.5rem; /* distance from left */
+  transform: none; /* no centering transform */
   z-index: 10;
   color: white;
 
@@ -47,9 +57,33 @@
   }
 }
 
-// fallback hide for desktop if JS fails
+/* ============================================= */
+/* Fallback/hide for desktop if JS fails         */
+/* ============================================= */
 .desktopOnly {
+  /* by default, show on desktop; hide on small screens */
   @media (max-width: 768px) {
     display: none !important;
+  }
+}
+
+/* ============================================= */
+/* Show/hide based on viewport width             */
+/* ============================================= */
+/* On narrow viewports (up to 768px):             */
+/*   • Show .mobileHero,                             */
+/*   • Hide .desktopOnly (already handled above).     */
+/* On wider viewports (>768px):                     */
+/*   • Hide .mobileHero (explicitly)                  */
+/*   • Show .desktopOnly (default behavior)            */
+@media (max-width: 768px) {
+  .mobileHero {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobileHero {
+    display: none; /* ensure it stays hidden on desktop */
   }
 }

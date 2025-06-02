@@ -1,10 +1,7 @@
 // src/components/HeroSection.tsx
-'use client';
-
 import Image from 'next/image';
-import HeroCarousel from './HeroCarousel';
-import useIsMobile from '@/hooks/useIsMobile';
 import styles from '@/styles/HeroSection.module.scss';
+import HeroCarousel from './HeroCarousel'; // direct import of the client component
 
 const panels = [
   { url: '/fiskibollur_portrait.svg', alt: 'Fiskibollur' },
@@ -14,40 +11,44 @@ const panels = [
 ];
 
 export default function HeroSection() {
-  const isMobile = useIsMobile();
-
   return (
     <>
-      {isMobile ? (
-        <div className={styles.mobileHero}>
-          <HeroCarousel images={panels} intervalMs={3000} />
-          <div className={styles.overlayContent}>
-            <h1 id="hero-title">Grímur Kokkur</h1>
-          </div>
+      {/* ─────────────────────────────────────────────────────────────────
+          MOBILE: client‐only carousel (hidden on desktop via CSS)
+          (HeroCarousel is a client component by virtue of 'use client' at top of its file)
+      ───────────────────────────────────────────────────────────────── */}
+      <div className={styles.mobileHero}>
+        <HeroCarousel images={panels} intervalMs={3000} />
+        <div className={styles.overlayContent}>
+          <h1 id="hero-title">Grímur Kokkur</h1>
         </div>
-      ) : (
-        <header
-          className={`${styles.hero} ${styles.desktopOnly}`}
-          role="banner"
-          aria-labelledby="hero-title"
-        >
-          {panels.map((p, i) => (
-            <div key={i} className={`${styles.panel} ${styles[`panel${i + 1}`]}`}>
-              <Image
-                src={p.url}
-                alt={p.alt}
-                fill
-                priority
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
-              />
-            </div>
-          ))}
+      </div>
 
-          <div className={styles.overlayContent}>
-            <h1 id="hero-title">Grímur Kokkur</h1>
+      {/* ─────────────────────────────────────────────────────────────────
+          DESKTOP: server‐rendered hero with four overlapping panels
+      ───────────────────────────────────────────────────────────────── */}
+      <header
+        className={`${styles.hero} ${styles.desktopOnly}`}
+        role="banner"
+        aria-labelledby="hero-title"
+      >
+        {panels.map((p, i) => (
+          <div key={i} className={`${styles.panel} ${styles[`panel${i + 1}`]}`}>
+            <Image
+              src={p.url}
+              alt={p.alt}
+              fill
+              // Only “Humarsúpa” (index 1) is truly above‐the‐fold on desktop, so mark it as priority
+              priority={i === 1}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+            />
           </div>
-        </header>
-      )}
+        ))}
+
+        <div className={styles.overlayContent}>
+          <h1 id="hero-title">Grímur Kokkur</h1>
+        </div>
+      </header>
     </>
   );
 }

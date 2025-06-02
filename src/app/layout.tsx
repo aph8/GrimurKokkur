@@ -32,6 +32,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="is">
+      <head>
+        {/* Preload the Humarsúpa SVG so it can be fetched ASAP */}
+        <link rel="preload" as="image" href="/humarsupa_portrait.svg" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Skip-link for screen-reader and keyboard users */}
         <a href="#main-content" className="skip-link">
