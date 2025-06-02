@@ -33,8 +33,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="is">
       <head>
-        {/* Preload the Humarsúpa SVG so it can be fetched ASAP */}
+        {/* Preload all four heroSection images so they can be fetched ASAP */}
+        <link rel="preload" as="image" href="/fiskibollur_portrait.svg" />
         <link rel="preload" as="image" href="/humarsupa_portrait.svg" />
+        <link rel="preload" as="image" href="/fiskistangir_portrait.svg" />
+        <link rel="preload" as="image" href="/plokkfiskur_portrait.svg" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Skip-link for screen-reader and keyboard users */}

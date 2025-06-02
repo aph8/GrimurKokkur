@@ -1,7 +1,7 @@
 // src/components/HeroSection.tsx
 import Image from 'next/image';
 import styles from '@/styles/HeroSection.module.scss';
-import HeroCarousel from './HeroCarousel'; // direct import of the client component
+import HeroCarousel from './HeroCarousel'; // client component via 'use client' in HeroCarousel.tsx
 
 const panels = [
   { url: '/fiskibollur_portrait.svg', alt: 'Fiskibollur' },
@@ -15,7 +15,6 @@ export default function HeroSection() {
     <>
       {/* ─────────────────────────────────────────────────────────────────
           MOBILE: client‐only carousel (hidden on desktop via CSS)
-          (HeroCarousel is a client component by virtue of 'use client' at top of its file)
       ───────────────────────────────────────────────────────────────── */}
       <div className={styles.mobileHero}>
         <HeroCarousel images={panels} intervalMs={3000} />
@@ -38,7 +37,8 @@ export default function HeroSection() {
               src={p.url}
               alt={p.alt}
               fill
-              // Only “Humarsúpa” (index 1) is truly above‐the‐fold on desktop, so mark it as priority
+              // Only “Humarsúpa” (index 1) is treated as priority by default.
+              // The others will still be preloaded from <head> above.
               priority={i === 1}
               style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
