@@ -13,9 +13,11 @@ interface HeroCarouselProps {
 export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarouselProps) {
   const [index, setIndex] = useState(0);
 
-  // auto‐advance every `intervalMs` ms
+  // Auto‐advance
   useEffect(() => {
-    const tid = setInterval(() => setIndex((i) => (i + 1) % images.length), intervalMs);
+    const tid = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length);
+    }, intervalMs);
     return () => clearInterval(tid);
   }, [images.length, intervalMs]);
 

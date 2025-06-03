@@ -1,6 +1,7 @@
 // src/app/page.tsx
 export const runtime = 'edge';
 export const revalidate = 60;
+
 import type { Metadata } from 'next';
 import HeroSection from '@/components/homePage/HeroSection';
 

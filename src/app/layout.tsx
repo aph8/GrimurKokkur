@@ -13,7 +13,6 @@ const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
-
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
@@ -32,15 +31,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="is">
-      <head>
-        {/* Preload all four heroSection images so they can be fetched ASAP */}
-        <link rel="preload" as="image" href="/fiskibollur_portrait.svg" />
-        <link rel="preload" as="image" href="/humarsupa_portrait.svg" />
-        <link rel="preload" as="image" href="/fiskistangir_portrait.svg" />
-        <link rel="preload" as="image" href="/plokkfiskur_portrait.svg" />
-      </head>
+      {/* No <head> tag here! */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Skip-link for screen-reader and keyboard users */}
         <a href="#main-content" className="skip-link">
           Sleppa í efni
         </a>
@@ -52,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <Analytics />
 
-        {/* Back-to-top button */}
         <BackToTop />
       </body>
     </html>

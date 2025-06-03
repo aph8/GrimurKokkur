@@ -1,7 +1,10 @@
-// src/components/HeroSection.tsx
-import Image from 'next/image';
-import styles from '@/styles/HeroSection.module.scss';
-import HeroCarousel from './HeroCarousel'; // client component via 'use client' in HeroCarousel.tsx
+// src/components/homePage/HeroSection.tsx
+'use client';
+
+import { useState, useEffect } from 'react';
+import useIsMobile from './useIsMobile';
+import DesktopHero from './DesktopHero';
+import MobileHeroCarousel from './MobileHeroCarousel';
 
 const panels = [
   { url: '/fiskibollur_portrait.svg', alt: 'Fiskibollur' },
@@ -11,44 +14,35 @@ const panels = [
 ];
 
 export default function HeroSection() {
-  return (
-    <>
-      {/* ─────────────────────────────────────────────────────────────────
-          MOBILE: client‐only carousel (hidden on desktop via CSS)
-      ───────────────────────────────────────────────────────────────── */}
-      <div className={styles.mobileHero}>
-        <HeroCarousel images={panels} intervalMs={3000} />
-        <div className={styles.overlayContent}>
-          <h1 id="hero-title">Grímur Kokkur</h1>
-        </div>
-      </div>
+  // 1. Track “have we mounted on the client yet?”
+  const [mounted, setMounted] = useState(false);
 
-      {/* ─────────────────────────────────────────────────────────────────
-          DESKTOP: server‐rendered hero with four overlapping panels
-      ───────────────────────────────────────────────────────────────── */}
-      <header
-        className={`${styles.hero} ${styles.desktopOnly}`}
-        role="banner"
-        aria-labelledby="hero-title"
-      >
-        {panels.map((p, i) => (
-          <div key={i} className={`${styles.panel} ${styles[`panel${i + 1}`]}`}>
-            <Image
-              src={p.url}
-              alt={p.alt}
-              fill
-              // Only “Humarsúpa” (index 1) is treated as priority by default.
-              // The others will still be preloaded from <head> above.
-              priority={i === 1}
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-            />
-          </div>
-        ))}
+  // 2. After hydration, set mounted = true
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-        <div className={styles.overlayContent}>
-          <h1 id="hero-title">Grímur Kokkur</h1>
-        </div>
-      </header>
-    </>
-  );
+  // 3. Check our hook -- might be undefined if we haven’t run matchMedia yet.
+  const isMobile = useIsMobile();
+
+  // -------------------------------------------
+  // 4. If we are still *not mounted*, render the
+  //    same thing server rendered: the desktop hero.
+  //    (SSR default was DesktopHero.)
+  // -------------------------------------------
+  if (!mounted) {
+    return <DesktopHero panels={panels} />;
+  }
+
+  // -------------------------------------------
+  // 5. Now that we know we’re on the client:
+  //    - if isMobile === true, show the mobile carousel.
+  //    - if isMobile === false, show the desktop hero.
+  //    - if isMobile is still undefined (rare), default to desktop.
+  // -------------------------------------------
+  if (isMobile) {
+    return <MobileHeroCarousel panels={panels} />;
+  } else {
+    return <DesktopHero panels={panels} />;
+  }
 }
