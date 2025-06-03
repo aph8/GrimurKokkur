@@ -13,7 +13,6 @@ interface MobileHeroCarouselProps {
 }
 
 export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) {
-  // emblaRef is attached to the viewport; emblaApi lets us call scrollNext()
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   useEffect(() => {
@@ -31,7 +30,7 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
           <div key={i} className={styles.slide}>
             <Image
               src={p.url}
-              alt={p.alt || `Slide ${i + 1}`}  // ← never undefined
+              alt={p.alt || `Slide ${i + 1}`} 
               fill
               sizes="100vw"
               style={{ objectFit: 'cover' }}

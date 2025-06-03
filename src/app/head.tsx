@@ -1,33 +1,32 @@
-// src/app/head.tsx
+// app/head.tsx
 export default function Head() {
   return (
     <>
-      {/* Tell the browser to match CSS to the real device width */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {/* Preload these four “desktop” SVGs only when screen ≥ 769px */}
+      {/* Preload only when viewport ≥ 769px */}
       <link
         rel="preload"
         as="image"
-        href="/fiskibollur_portrait.svg"
+        href="/humarsupa_portrait.jpg"
         media="(min-width: 769px)"
       />
       <link
         rel="preload"
         as="image"
-        href="/humarsupa_portrait.svg"
+        href="/fiskibollur_portrait.jpg"
         media="(min-width: 769px)"
       />
       <link
         rel="preload"
         as="image"
-        href="/fiskistangir_portrait.svg"
+        href="/fiskistangir_portrait.jpg"
         media="(min-width: 769px)"
       />
       <link
         rel="preload"
         as="image"
-        href="/plokkfiskur_portrait.svg"
+        href="/plokkfiskur_portrait.jpg"
         media="(min-width: 769px)"
       />
     </>
