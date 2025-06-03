@@ -4,11 +4,6 @@ import { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
-  // Tell Next to generate a modern bundle for supported browsers,
-  // and optimize polyfills out where possible.
-  experimental: {
-  },
-
   images: {
     remotePatterns: [
       {
@@ -29,6 +24,21 @@ const nextConfig: NextConfig = {
       }
     }
     return config;
+  },
+
+
+  async headers() {
+    return [
+      {
+        source: '/insights/script.js',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 };
 
