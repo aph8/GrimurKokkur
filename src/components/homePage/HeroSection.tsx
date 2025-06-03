@@ -7,9 +7,8 @@ import DesktopHero from './DesktopHero';
 import MobileHeroCarousel from './MobileHeroCarousel';
 
 const panels = [
-  // 1) Humarsúpa is index 0 (LCP on desktop, priority)
-  { url: '/humarsupa_portrait.jpg', alt: 'Humarsúpa' },
   { url: '/fiskibollur_portrait.jpg', alt: 'Fiskibollur' },
+  { url: '/humarsupa_portrait.jpg', alt: 'Humarsúpa' },
   { url: '/fiskistangir_portrait.jpg', alt: 'Fiskistangir' },
   { url: '/plokkfiskur_portrait.jpg', alt: 'Plokkfiskur' },
 ];

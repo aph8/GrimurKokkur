@@ -19,8 +19,7 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
           <Image
             src={p.url}
             alt={p.alt || ''}
-            // Priority only on the first panel (Humarsúpa).
-            priority={i === 0}
+            priority={true}
             fill
             sizes="(max-width: 768px) 100vw, 900px"
             style={{ objectFit: 'cover', objectPosition: 'center' }}

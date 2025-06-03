@@ -35,6 +35,7 @@ export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarousel
               src={img.url}
               alt={img.alt || `Slide ${i + 1}`}
               fill
+              priority={true}
               sizes="100vw"
               style={{ objectFit: 'cover' }}
             />

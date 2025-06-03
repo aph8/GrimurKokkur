@@ -34,6 +34,7 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
               src={p.url}
               alt={p.alt || `Slide ${i + 1}`}
               fill
+              priority={true}
               sizes="100vw"
               style={{ objectFit: 'cover' }}
             />
