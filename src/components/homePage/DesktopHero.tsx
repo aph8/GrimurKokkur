@@ -12,11 +12,17 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
   return (
     <header className={styles.hero} role="banner" aria-labelledby="hero-title">
       {panels.map((p, i) => (
-        <div key={i} className={`${styles.panel} ${styles[`panel${i + 1}`]}`}>
+        <div
+          key={i}
+          className={`${styles.panel} ${styles[`panel${i + 1}`]}`}
+        >
           <Image
             src={p.url}
-            alt={p.alt || ''}           // ← always pass a string
+            alt={p.alt || ''}
+            // Priority only on the first panel (Humarsúpa).
+            priority={i === 0}
             fill
+            sizes="(max-width: 768px) 100vw, 900px"
             style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
         </div>

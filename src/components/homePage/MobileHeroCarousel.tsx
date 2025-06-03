@@ -13,8 +13,10 @@ interface MobileHeroCarouselProps {
 }
 
 export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) {
+  // 1) Get the viewport ref and embla API
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
+  // 2) Auto‐advance every 3s
   useEffect(() => {
     if (!emblaApi) return;
     const intervalId = setInterval(() => {
@@ -30,7 +32,7 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
           <div key={i} className={styles.slide}>
             <Image
               src={p.url}
-              alt={p.alt || `Slide ${i + 1}`} 
+              alt={p.alt || `Slide ${i + 1}`}
               fill
               sizes="100vw"
               style={{ objectFit: 'cover' }}
@@ -38,6 +40,7 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
           </div>
         ))}
       </div>
+
       {/* Overlay title on top of the carousel */}
       <div className={styles.overlayContent}>
         <h1 id="hero-title">Grímur Kokkur</h1>

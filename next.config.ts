@@ -4,6 +4,11 @@ import { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
+  // Tell Next to generate a modern bundle for supported browsers,
+  // and optimize polyfills out where possible.
+  experimental: {
+  },
+
   images: {
     remotePatterns: [
       {

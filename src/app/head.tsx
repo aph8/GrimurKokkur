@@ -1,10 +1,51 @@
-// app/head.tsx
+// src/app/head.tsx
 export default function Head() {
   return (
     <>
+      {/* 1) Always include mobile viewport meta */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {/* Preload only when viewport ≥ 769px */}
+      {/* 2) Inline the minimal critical CSS needed for the desktop hero to paint immediately */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical desktop‐hero styles */
+            .HeroSection_hero__5yfb5 {
+              position: relative;
+              height: 100vh;
+              display: flex;
+              overflow: hidden;
+            }
+            .HeroSection_panel__l3t_w {
+              position: relative;
+              flex: 1;
+              z-index: 1;
+            }
+            .HeroSection_panel__l3t_w + .HeroSection_panel__l3t_w {
+              margin-left: -5%;
+            }
+            .HeroSection_panel1__vzF6g { background-color: #111; }
+            .HeroSection_overlayContent__Br9lV {
+              position: absolute;
+              top: 1.5rem;
+              left: 1.5rem;
+              z-index: 10;
+              color: white;
+            }
+            .HeroSection_overlayContent__Br9lV h1 {
+              font-size: clamp(1.5rem, 4vw, 2.5rem);
+              letter-spacing: 0.1em;
+              margin: 0;
+              background: rgba(0, 0, 0, 0.5);
+              padding: 0.2em 0.4em;
+              border-radius: 4px;
+              text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+            }
+          `,
+        }}
+      />
+
+      {/* 3) Preload the desktop hero images when screen ≥ 769px */}
       <link
         rel="preload"
         as="image"
