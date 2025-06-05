@@ -16,10 +16,7 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
         const isHumarsupa = p.url.endsWith('humarsupa_portrait.jpg');
 
         return (
-          <div
-            key={i}
-            className={`${styles.panel} ${styles[`panel${i + 1}`]}`}
-          >
+          <div key={i} className={`${styles.panel} ${styles[`panel${i + 1}`]}`}>
             <Image
               src={p.url}
               alt={p.alt || ''}

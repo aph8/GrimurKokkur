@@ -26,15 +26,10 @@ const nextConfig: NextConfig = {
     return config;
   },
 
-  /**
-   * Set a long-future cache header on:
-   *  1) /insights/script.js  (your own “insights” file)
-   *  2) Everything under /_next/static (Next.js–generated JS/CSS)
-   */
   async headers() {
     return [
       {
-        // 1) Cache /insights/script.js for 1 year
+        // Cache your own “insights/script.js” long‐term
         source: '/insights/script.js',
         headers: [
           {
@@ -44,7 +39,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // 2) Cache all Next.js static files forever
+        // Cache all Next.js static files under /_next/static forever
         source: '/_next/static/:path*',
         headers: [
           {

@@ -1,5 +1,4 @@
 // src/app/layout.tsx
-export const runtime = 'edge';
 
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -13,6 +12,7 @@ const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
+
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
@@ -31,7 +31,28 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="is">
-      {/* No <head> tag here—Next merges app/head.tsx */}
+      <head>
+        {/* Preload all four hero images so they can be fetched ASAP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/fiskibollur_portrait.jpg"
+          media="(min-width: 769px)"
+        />
+        <link rel="preload" as="image" href="/humarsupa_portrait.jpg" media="(min-width: 769px)" />
+        <link
+          rel="preload"
+          as="image"
+          href="/fiskistangir_portrait.jpg"
+          media="(min-width: 769px)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/plokkfiskur_portrait.jpg"
+          media="(min-width: 769px)"
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <a href="#main-content" className="skip-link">
           Sleppa í efni
@@ -43,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <Footer />
         <Analytics />
+
         <BackToTop />
       </body>
     </html>

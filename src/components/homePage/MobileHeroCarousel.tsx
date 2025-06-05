@@ -33,7 +33,7 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
               alt={p.alt || `Slide ${i + 1}`}
               fill
               sizes="100vw"
-              priority={i === 0}        
+              priority={i === 0}
               style={{ objectFit: 'cover' }}
             />
           </div>
