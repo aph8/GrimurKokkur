@@ -14,7 +14,12 @@ export default function Footer() {
       <div className={styles.top}>
         {/* Column 1: Logo, description, award, social */}
         <div className={styles.column}>
-          <Image src="/Grimur_kokkur_logo.svg" alt="Grímur Kokkur logo" width={80} height={80} />
+          <Image
+            src="/Grimur_kokkur_logo.svg"
+            alt="Grímur Kokkur logo"
+            width={80}
+            height={80}
+          />
           <p className={styles.description}>
             Grímur kokkur er fjölskyldufyrirtæki í fremstu röð í framleiðslu á tilbúnum
             sjávarréttum.
@@ -55,6 +60,7 @@ export default function Footer() {
 
         {/* Column 2: Contact */}
         <div className={styles.column}>
+          {/* Change this from <h3> to <h2> so it follows the page's <h1> */}
           <h2>Hafa samband</h2>
           <p>
             <strong>Heimilisfang:</strong> Hlíðavegi 5, 900 Vestmannaeyjar
@@ -81,6 +87,7 @@ export default function Footer() {
 
         {/* Column 3: Opening hours */}
         <div className={styles.column}>
+          {/* Now that “Hafa samband” is <h2>, it’s correct for this to be <h3> */}
           <h3>Opnunartími</h3>
           <p>
             <strong>Mán – Fös:</strong>
