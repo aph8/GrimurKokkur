@@ -55,7 +55,7 @@ export default function Footer() {
 
         {/* Column 2: Contact */}
         <div className={styles.column}>
-          <h3>Hafa samband</h3>
+          <h2>Hafa samband</h2>
           <p>
             <strong>Heimilisfang:</strong> Hlíðavegi 5, 900 Vestmannaeyjar
           </p>
