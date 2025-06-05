@@ -1,6 +1,5 @@
 // src/app/page.tsx
-export const runtime = 'edge';
-export const revalidate = 60; // ISR: refresh HTML every 60 seconds
+
 
 import type { Metadata } from 'next';
 import HeroSection from '@/components/homePage/HeroSection';
