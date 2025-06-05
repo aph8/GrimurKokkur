@@ -33,11 +33,14 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
               alt={p.alt || `Slide ${i + 1}`}
               fill
               sizes="100vw"
+              priority={i === 0}        
               style={{ objectFit: 'cover' }}
             />
           </div>
         ))}
       </div>
+
+      {/* Overlay title (always on top) */}
       <div className={styles.overlayContent}>
         <h1 id="hero-title">Grímur Kokkur</h1>
       </div>
