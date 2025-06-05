@@ -3,19 +3,19 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 20 / 30; /* Maintain a 2:3 aspect ratio */
+  aspect-ratio: 20 / 30;
 }
 
 .slides {
   display: flex;
   transition: transform 1s ease;
-  height: 100%; /* Fill the wrapper’s full height */
+  height: 100%;
 }
 
 .slide {
   position: relative;
   min-width: 100%;
-  height: 100%; /* So that <Image fill> can cover full height */
+  height: 100%;
 }
 
 .overlayContent {

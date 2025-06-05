@@ -14,7 +14,7 @@
     z-index: 1;
   }
 
-  /* overlap every panel after the first */
+  /* Overlap each panel after the first by 5% */
   .panel + .panel {
     margin-left: -5%;
   }
@@ -24,7 +24,7 @@
   }
 }
 
-/* Shared overlay content (for desktop) */
+/* Shared overlay content */
 .overlayContent {
   position: absolute;
   top: 1.5rem;

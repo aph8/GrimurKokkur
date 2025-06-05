@@ -2,10 +2,10 @@
 export default function Head() {
   return (
     <>
-      {/* 1) Always include mobile viewport meta */}
+      {/* 1) Always include a viewport meta for responsive sizing */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {/* 2) Inline the minimal critical CSS needed for the desktop hero to paint immediately */}
+      {/* 2) Inline the minimal critical CSS for the desktop hero */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -20,11 +20,14 @@ export default function Head() {
               position: relative;
               flex: 1;
               z-index: 1;
+              /* Panels may overlap; margin-left on subsequent panels */
             }
             .HeroSection_panel__l3t_w + .HeroSection_panel__l3t_w {
               margin-left: -5%;
             }
-            .HeroSection_panel1__vzF6g { background-color: #111; }
+            .HeroSection_panel1__vzF6g {
+              background-color: #111;
+            }
             .HeroSection_overlayContent__Br9lV {
               position: absolute;
               top: 1.5rem;
@@ -45,7 +48,7 @@ export default function Head() {
         }}
       />
 
-      {/* 3) Preload the desktop hero images when screen ≥ 769px */}
+      {/* 3) Preload the four desktop hero images when screen ≥ 769px */}
       <link
         rel="preload"
         as="image"
