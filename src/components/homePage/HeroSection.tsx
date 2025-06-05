@@ -15,6 +15,7 @@ const panels = [
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -24,6 +25,7 @@ export default function HeroSection() {
   if (!mounted) {
     return <DesktopHero panels={panels} />;
   }
+
   return isMobile ? (
     <MobileHeroCarousel panels={panels} />
   ) : (

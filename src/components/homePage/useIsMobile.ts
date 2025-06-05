@@ -4,8 +4,10 @@
 import { useState, useEffect } from 'react';
 
 /**
- * Returns `true` if viewport ≤ 768px, `false` if > 768px,
- * and `undefined` on the very first render (so SSR/client match).
+ * Returns:
+ *   - undefined until hydration (SSR & first-client-render match).
+ *   - true if viewport ≤ 768px.
+ *   - false if viewport > 768px.
  */
 export default function useIsMobile(): boolean | undefined {
   const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
@@ -16,13 +18,12 @@ export default function useIsMobile(): boolean | undefined {
       return;
     }
     const mql = window.matchMedia('(max-width: 768px)');
-    // Sync initial
     setIsMobile(mql.matches);
-    // Listen for changes
-    const listener = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mql.addEventListener('change', listener);
+
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
     return () => {
-      mql.removeEventListener('change', listener);
+      mql.removeEventListener('change', handler);
     };
   }, []);
 

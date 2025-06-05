@@ -27,7 +27,7 @@ const nextConfig: NextConfig = {
   },
 
   /**
-   * Add HTTP headers so that /insights/script.js is cached for one year.
+   * Set a one‐year, immutable cache‐control header for /insights/script.js.
    */
   async headers() {
     return [
@@ -40,7 +40,9 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // If you later want to cache all Next.js static assets (JS/CSS) for a year:
+      // If you also want to cache Next.js static assets under /_next/static/,
+      // uncomment the block below:
+      //
       // {
       //   source: '/_next/static/:path*',
       //   headers: [

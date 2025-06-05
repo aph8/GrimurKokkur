@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="is">
-      {/* No <head> tag here—Next will merge in app/head.tsx */}
+      {/* No <head> tag here—Next merges app/head.tsx */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <a href="#main-content" className="skip-link">
           Sleppa í efni
