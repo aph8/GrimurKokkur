@@ -2,14 +2,14 @@
 export default function Head() {
   return (
     <>
-      {/* 1) Viewport meta */}
+      {/* 1) Viewport meta for responsive sizing */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {/* 2) Inline critical CSS for HeroSection + HeroCarousel to avoid chaining */}
+      {/* 2) Inline only the critical CSS for HeroSection (desktop) and HeroCarousel (mobile). */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
-            /* ===== HeroSection.module.scss (critical subset) ===== */
+            /* ===== HeroSection.module.scss (Desktop Hero) ===== */
             .HeroSection_hero__5yfb5 {
               position: relative;
               height: 100vh;
@@ -44,7 +44,7 @@ export default function Head() {
               text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
             }
 
-            /* ===== HeroCarousel.module.scss (critical subset) ===== */
+            /* ===== HeroCarousel.module.scss (Mobile Carousel) ===== */
             .HeroCarousel_carouselWrapper__IxtcD {
               position: relative;
               overflow: hidden;
@@ -81,7 +81,7 @@ export default function Head() {
         }}
       />
 
-      {/* 3) Preload desktop‐hero images (only for ≥ 769px) */}
+      {/* 3) Preload all four desktop-hero images when viewport is ≥ 769px */}
       <link
         rel="preload"
         as="image"
