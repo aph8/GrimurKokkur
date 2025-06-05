@@ -2,14 +2,14 @@
 export default function Head() {
   return (
     <>
-      {/* 1) Viewport meta for responsive sizing */}
+      {/* 1) Viewport meta */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {/* 2) Inline critical CSS for both DesktopHero and MobileHeroCarousel */}
+      {/* 2) Inline critical CSS for HeroSection + HeroCarousel to avoid chaining */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
-            /* ===== DesktopHero critical CSS (from HeroSection.module.scss) ===== */
+            /* ===== HeroSection.module.scss (critical subset) ===== */
             .HeroSection_hero__5yfb5 {
               position: relative;
               height: 100vh;
@@ -44,31 +44,31 @@ export default function Head() {
               text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
             }
 
-            /* ===== MobileHeroCarousel critical CSS (from HeroCarousel.module.scss) ===== */
+            /* ===== HeroCarousel.module.scss (critical subset) ===== */
             .HeroCarousel_carouselWrapper__IxtcD {
               position: relative;
               overflow: hidden;
               width: 100%;
               aspect-ratio: 20 / 30;
             }
-            .HeroCarousel_slides__H7M-7 {
+            .HeroCarousel_slides__7gJQk {
               display: flex;
               transition: transform 1s ease;
               height: 100%;
             }
-            .HeroCarousel_slide__0JfQ3 {
+            .HeroCarousel_slide__n9ZBp {
               position: relative;
               min-width: 100%;
               height: 100%;
             }
-            .HeroCarousel_overlayContent__5Is7h {
+            .HeroCarousel_overlayContent__3K8Gu {
               position: absolute;
               top: 1.5rem;
               left: 1.5rem;
               z-index: 10;
               color: white;
             }
-            .HeroCarousel_overlayContent__5Is7h h1 {
+            .HeroCarousel_overlayContent__3K8Gu h1 {
               font-size: clamp(1.5rem, 4vw, 2.5rem);
               letter-spacing: 0.1em;
               margin: 0;
@@ -81,7 +81,7 @@ export default function Head() {
         }}
       />
 
-      {/* 3) Preload desktop hero images when viewport ≥ 769px */}
+      {/* 3) Preload desktop‐hero images (only for ≥ 769px) */}
       <link
         rel="preload"
         as="image"

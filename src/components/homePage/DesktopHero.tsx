@@ -12,7 +12,7 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
   return (
     <header className={styles.hero} role="banner" aria-labelledby="hero-title">
       {panels.map((p, i) => {
-        // Only “Fiskibollur” (index 1) loads eagerly; others lazy‐load.
+        // Only “Fiskibollur” (index 1) loads eagerly; the rest lazy‐load
         const isFiskibollur = p.url.endsWith('fiskibollur_portrait.jpg');
 
         return (
@@ -25,7 +25,7 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
               alt={p.alt || ''}
               priority={isFiskibollur}
               fill
-              // Properly size: 100vw on mobile; ~25vw on desktop (four panels side by side).
+              // 100vw on mobile; ~25vw on desktop (4 panels)
               sizes="(max-width: 768px) 100vw, 25vw"
               style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
