@@ -27,8 +27,9 @@ export default function Footer() {
           <Image
             src="/RGB_FF 2024-Ice-Red-Horz.png"
             alt="Framúrskarandi fyrirtæki 2024"
-            width={240}
-            height={60}
+            /** ← changed from 240×60 to 256×68 to match the actual image file. */
+            width={256}
+            height={68}
           />
 
           <div className={styles.socialIcons}>
@@ -60,7 +61,6 @@ export default function Footer() {
 
         {/* Column 2: Contact */}
         <div className={styles.column}>
-          {/* Change this from <h3> to <h2> so it follows the page's <h1> */}
           <h2>Hafa samband</h2>
           <p>
             <strong>Heimilisfang:</strong> Hlíðavegi 5, 900 Vestmannaeyjar
@@ -87,7 +87,6 @@ export default function Footer() {
 
         {/* Column 3: Opening hours */}
         <div className={styles.column}>
-          {/* Now that “Hafa samband” is <h2>, it’s correct for this to be <h3> */}
           <h3>Opnunartími</h3>
           <p>
             <strong>Mán – Fös:</strong>
