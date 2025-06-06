@@ -14,6 +14,9 @@ import styles from '@/styles/vorur/ProductLayout.module.scss';
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+/**
+ * Generates page metadata for a specific product.
+ */
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -36,6 +39,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
   };
 }
+/**
+ * Renders a single product page with images and nutrition facts.
+ */
 
 export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params;

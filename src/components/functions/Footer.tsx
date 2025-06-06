@@ -6,6 +6,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Facebook } from 'lucide-react';
 import styles from '@/styles/Footer.module.scss';
+/**
+ * Displays the global site footer with contact details and social links.
+ */
 
 export default function Footer() {
   return (

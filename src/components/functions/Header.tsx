@@ -13,6 +13,12 @@ const navLinks = [
   { href: '/about', label: 'Um okkur' },
   { href: '/contact', label: 'Hafðu samband' },
 ];
+/**
+ * Main site header with navigation.
+ *
+ * The header hides when the page title scrolls under it and provides a hamburger
+ * menu for smaller screens.
+ */
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

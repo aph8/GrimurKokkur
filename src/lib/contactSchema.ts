@@ -1,6 +1,9 @@
 // src/lib/contactSchema.ts
 
 import { z } from 'zod';
+/**
+ * Helper to trim a string and enforce length constraints.
+ */
 
 const trimmedString = (min?: number, minMsg?: string, max?: number, maxMsg?: string) =>
   z.preprocess(

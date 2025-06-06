@@ -10,6 +10,9 @@ interface HeroImageProps {
   blurDataURL?: string; // base64 LQIP string, if available
   className?: string; // e.g. "asymmetric" to trigger slanted-edge styling
 }
+/**
+ * Displays a responsive hero image while avoiding CLS using padding.
+ */
 
 const HeroImage: React.FC<HeroImageProps> = ({
   src,

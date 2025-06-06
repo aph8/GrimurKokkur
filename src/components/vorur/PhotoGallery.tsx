@@ -16,6 +16,9 @@ interface PhotoGalleryProps {
   imageSizes?: string;
   imageQuality?: number;
 }
+/**
+ * Interactive photo gallery with keyboard navigation.
+ */
 
 const PhotoGallery: React.FC<PhotoGalleryProps> = ({
   images,

@@ -5,6 +5,9 @@ import { ContactSchema } from '@/lib/contactSchema';
 import { sendContactEmail } from '@/lib/mail';
 
 export const runtime = 'nodejs';
+/**
+ * Handles contact form submissions and sends an email using nodemailer.
+ */
 
 export async function POST(request: NextRequest) {
   let data: unknown;

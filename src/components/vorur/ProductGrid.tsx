@@ -10,6 +10,9 @@ import styles from '@/styles/Products.module.scss';
 interface ProductGridProps {
   products: ProductCard[];
 }
+/**
+ * Grid of product cards linking to individual product pages.
+ */
 
 function ProductGrid({ products }: ProductGridProps) {
   return (

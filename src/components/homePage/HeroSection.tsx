@@ -16,6 +16,9 @@ const panels = [
   { src: fiskistangir, alt: 'Fiskistangir' },
   { src: plokkfiskur, alt: 'Plokkfiskur' },
 ];
+/**
+ * Chooses between the mobile carousel and desktop hero based on screen size.
+ */
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);

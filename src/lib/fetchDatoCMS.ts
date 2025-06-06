@@ -14,6 +14,11 @@ if (!token) {
 const client = new GraphQLClient(endpoint, {
   headers: { authorization: `Bearer ${token}` },
 });
+/**
+ * Executes a GraphQL request against DatoCMS.
+ * @param query - GraphQL query string
+ * @param variables - Optional variables for the query
+ */
 
 export async function fetchDatoCMS<T>(
   query: string,

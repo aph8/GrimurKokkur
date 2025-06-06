@@ -10,6 +10,10 @@ interface HeroCarouselProps {
   intervalMs?: number;
   startImmediately?: boolean;
 }
+/**
+ * Simple image carousel used for the mobile hero.
+ * Images cycle at a fixed interval.
+ */
 
 export default function HeroCarousel({
   images,

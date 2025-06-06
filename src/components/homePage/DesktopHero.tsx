@@ -7,6 +7,9 @@ type Panel = { src: StaticImageData; alt?: string };
 interface DesktopHeroProps {
   panels: Panel[];
 }
+/**
+ * Displays the hero section for desktop layouts with slanted panels.
+ */
 
 export default function DesktopHero({ panels }: DesktopHeroProps) {
   return (

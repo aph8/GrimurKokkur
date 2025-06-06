@@ -8,6 +8,9 @@ export const metadata = {
   title: 'Hafa samband – Grímur Kokkur',
   description: 'Sendu okkur skilaboð eða fyrirspurnir í gegnum formið hér að neðan.',
 };
+/**
+ * Contact page containing the contact form and map.
+ */
 
 export default function ContactPage() {
   return (
