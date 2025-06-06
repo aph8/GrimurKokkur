@@ -3,8 +3,10 @@
 
 import { useState, useEffect } from 'react';
 import useIsMobile from './useIsMobile';
+import useIsTablet from './useIsTablet';
 import DesktopHero from './DesktopHero';
 import MobileHeroCarousel from './MobileHeroCarousel';
+import TabletHeroCarousel from './TabletHeroCarousel';
 import humarsupa from '../../../public/humarsupa_portrait.jpg';
 import fiskibollur from '../../../public/fiskibollur_portrait.jpg';
 import fiskistangir from '../../../public/fiskistangir_portrait.jpg';
@@ -28,6 +30,7 @@ export default function HeroSection() {
   }, []);
 
   const isMobile = useIsMobile();
+  const isTablet = useIsTablet();
 
   if (!mounted) {
     return <DesktopHero panels={panels} />;
@@ -35,6 +38,8 @@ export default function HeroSection() {
 
   return isMobile ? (
     <MobileHeroCarousel panels={panels} startImmediately />
+  ) : isTablet ? (
+    <TabletHeroCarousel panels={panels.slice(0, 2)} startImmediately />
   ) : (
     <DesktopHero panels={panels} />
   );

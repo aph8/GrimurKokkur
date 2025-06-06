@@ -62,6 +62,7 @@ export default function Header() {
               fetchPriority="high"
             />
           </Link>
+          <span className={styles.siteName}>Grímur Kokkur</span>
         </div>
 
         <div className={styles.controls}>
