@@ -39,7 +39,7 @@ export default function HeroSection() {
   return isMobile ? (
     <MobileHeroCarousel panels={panels} startImmediately />
   ) : isTablet ? (
-    <TabletHeroCarousel panels={panels.slice(0, 2)} startImmediately />
+    <TabletHeroCarousel panels={panels} startImmediately />
   ) : (
     <DesktopHero panels={panels} />
   );
