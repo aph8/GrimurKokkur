@@ -7,8 +7,8 @@ interface HeroImageProps {
   src: string;
   alt?: string;
   ratio?: string;     
-  blurDataURL?: string; 
-  className?: string;   
+  blurDataURL?: string;
+  className?: string;  
 }
 
 const HeroImage: React.FC<HeroImageProps> = ({
@@ -19,7 +19,7 @@ const HeroImage: React.FC<HeroImageProps> = ({
   className = '',
 }) => {
   const [w, h] = ratio.split(':').map(Number);
-  const paddingBottom = `${(h / w) * 100}%`;
+  const paddingBottom = `${(h / w) * 100}%`; 
 
   return (
     <div
@@ -30,7 +30,11 @@ const HeroImage: React.FC<HeroImageProps> = ({
         src={src}
         alt={alt}
         fill
-        sizes="(max-width: 640px) calc(100vw - 2rem), 560px"
+        sizes="
+          (max-width: 640px) calc(100vw - 2rem),
+          (max-width: 1440px) calc((100vw - 2rem) * 0.4),
+          560px
+        "
         placeholder={blurDataURL ? 'blur' : 'empty'}
         blurDataURL={blurDataURL}
         priority
