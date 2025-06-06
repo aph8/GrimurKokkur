@@ -13,6 +13,10 @@
   margin-bottom: 2rem;
   color: var(--foreground);
   position: relative;
+
+  &::before {
+    /* …your slanted underline/styling… */
+  }
 }
 
 .section {
@@ -26,15 +30,16 @@
   }
 }
 
-.loading {
-  color: var(--foreground);
-  font-style: italic;
-}
-
+/* 
+  This placeholder has exactly the same height as PhotoGallery’s
+  final rendered container (which is 24rem on mobile, 28rem on md+).
+  If your gallery shows two rows at desktop, adjust accordingly.
+*/
 .loadingContainer {
   width: 100%;
-  height: calc(2 * 28rem + 1rem);
-  background: var(--accent-bg);
+  /* Two rows of 28rem (one row is 24rem on mobile if only one row shows): */
+  height: calc(2 * 28rem + 1rem); /* 1rem is the grid-gap between rows */
+  background: var(--accent-bg);   /* optional, makes the space visible while loading */
 }
 
 .error {
@@ -49,3 +54,6 @@
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
+
+/* If you need to tweak mobile vs. desktop number of rows,
+   make sure `.loadingContainer`'s height still matches perfectly. */
