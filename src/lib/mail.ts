@@ -1,4 +1,5 @@
 // src/lib/mail.ts
+
 import nodemailer, { Transporter } from 'nodemailer';
 import sanitizeHtml from 'sanitize-html';
 

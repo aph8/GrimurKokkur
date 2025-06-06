@@ -1,4 +1,5 @@
 // src/app/api/contact/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { ContactSchema } from '@/lib/contactSchema';
 import { sendContactEmail } from '@/lib/mail';
@@ -17,7 +18,7 @@ export async function POST(request: NextRequest) {
   // 2) Validate with Zod
   const result = ContactSchema.safeParse(data);
   if (!result.success) {
-    // Flatten Zod errors into { field: [messages], _errors: [...] }
+    // Flatten Zod errors into { field: [messages], _errors: […] }
     const errors = result.error.flatten();
     return NextResponse.json({ errors }, { status: 422 });
   }

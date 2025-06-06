@@ -32,14 +32,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="is">
       <head>
-        {/* Preload all four hero images so they can be fetched ASAP */}
+        {/* Your existing hero‐image preloads */}
         <link
           rel="preload"
           as="image"
           href="/fiskibollur_portrait.jpg"
           media="(min-width: 769px)"
         />
-        <link rel="preload" as="image" href="/humarsupa_portrait.jpg" media="(min-width: 769px)" />
+        <link
+          rel="preload"
+          as="image"
+          href="/humarsupa_portrait.jpg"
+          media="(min-width: 769px)"
+        />
         <link
           rel="preload"
           as="image"
@@ -52,6 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="/plokkfiskur_portrait.jpg"
           media="(min-width: 769px)"
         />
+
+        {/* ───── Preconnect to Google Maps (for Contact page) ───── */}
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="preconnect" href="https://maps.gstatic.com" />
+        <link rel="preconnect" href="https://maps.google.com" />
+        {/* ──────────────────────────────────────────────────────── */}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <a href="#main-content" className="skip-link">
