@@ -11,6 +11,9 @@ interface MobileHeroCarouselProps {
   panels: Panel[];
   startImmediately?: boolean;
 }
+/**
+ * Mobile version of the hero section with automatic carousel cycling.
+ */
 
 export default function MobileHeroCarousel({ panels, startImmediately }: MobileHeroCarouselProps) {
   const [index, setIndex] = useState(0);

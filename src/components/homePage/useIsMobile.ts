@@ -2,6 +2,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+/**
+ * Determines if the screen width is 768px or less using matchMedia.
+ */
 
 export default function useIsMobile(): boolean | undefined {
   const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);

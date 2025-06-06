@@ -9,6 +9,9 @@ import styles from '@/styles/Products.module.scss';
 interface ProductsPageClientProps {
   products: ProductCard[];
 }
+/**
+ * Client component handling vegan filter toggling and displaying the product grid.
+ */
 
 function ProductsPageClient({ products }: ProductsPageClientProps) {
   const [veganOnly, setVeganOnly] = useState(false);

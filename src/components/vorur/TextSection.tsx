@@ -16,6 +16,9 @@ interface TextSectionProps {
   isMarkdown?: boolean;
   children?: ReactNode;
 }
+/**
+ * Reusable text section supporting Markdown or raw text.
+ */
 
 const TextSectionComponent: React.FC<TextSectionProps> = ({
   title,

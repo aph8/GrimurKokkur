@@ -3,6 +3,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
+/**
+ * Lazy-loads a Google Maps iframe once visible to the user.
+ *
+ * The placeholder reserves space to avoid layout shift and uses an
+ * IntersectionObserver to load the iframe only when needed.
+ */
 export default function MapPlaceholder() {
   const ref = useRef<HTMLDivElement>(null);
   const [showMap, setShowMap] = useState(false);

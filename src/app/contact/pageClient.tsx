@@ -12,6 +12,9 @@ type ContactInput = {
 };
 
 type Status = 'idle' | 'pending' | 'success' | 'error';
+/**
+ * Client side form logic for the contact page.
+ */
 
 export default function ContactPageClient() {
   const [form, setForm] = useState<ContactInput>({ name: '', email: '', message: '' });

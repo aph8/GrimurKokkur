@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     apple: '/Grimur_kokkur_logo.svg',
   },
 };
+/**
+ * Products page listing all available items.
+ */
 
 export default async function VorurPage() {
   const products: ProductCard[] | null = await getAllProducts();

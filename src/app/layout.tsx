@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     apple: '/Grimur_kokkur_logo.svg',
   },
 };
+/**
+ * Application root layout applied to every page.
+ */
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

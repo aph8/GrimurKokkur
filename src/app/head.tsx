@@ -3,6 +3,9 @@ import humarsupa from '../../public/humarsupa_portrait.jpg';
 import fiskibollur from '../../public/fiskibollur_portrait.jpg';
 import fiskistangir from '../../public/fiskistangir_portrait.jpg';
 import plokkfiskur from '../../public/plokkfiskur_portrait.jpg';
+/**
+ * Injects preload links and critical CSS in the head.
+ */
 
 export default function Head() {
   return (

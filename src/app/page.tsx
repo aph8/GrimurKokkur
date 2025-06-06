@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Grímur Kokkur – Heim',
   description: 'Kynntu þér úrval veisludýrlegra sjávarrétta frá Grími kokki.',
 };
+/**
+ * Home page showing the hero section.
+ */
 
 export default function HomePage() {
   return <HeroSection />;

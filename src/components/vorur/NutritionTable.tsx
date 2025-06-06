@@ -14,6 +14,9 @@ export type NutritionRow = {
 interface NutritionTableProps {
   data: NutritionRow[];
 }
+/**
+ * Table showing nutrition facts for a product.
+ */
 
 const NutritionTable: React.FC<NutritionTableProps> = ({ data }) => (
   <div className={styles.wrapper}>

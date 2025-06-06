@@ -2,6 +2,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+/**
+ * Returns `true` if the viewport width is below the provided breakpoint.
+ */
 
 export default function useIsMobile(breakpoint = 768): boolean {
   const [isMobile, setIsMobile] = useState(false);

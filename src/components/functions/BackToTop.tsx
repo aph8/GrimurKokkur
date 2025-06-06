@@ -2,6 +2,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+/**
+ * Button that smoothly scrolls the page back to the top when clicked.
+ *
+ * The button only appears after the user has scrolled down a bit.
+ */
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false);

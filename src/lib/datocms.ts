@@ -60,6 +60,7 @@ const ALL_PRODUCTS_QUERY = gql`
   }
 `;
 
+/** Fetches all products sorted by title. */
 export async function getAllProducts(): Promise<ProductCard[] | null> {
   try {
     const { allProducts } = await fetchDatoCMS<{ allProducts: ProductCard[] }>(ALL_PRODUCTS_QUERY);
@@ -99,6 +100,7 @@ const PRODUCT_BY_SLUG_QUERY = gql`
     }
   }
 `;
+/** Fetches a single product by slug. */
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
@@ -130,6 +132,7 @@ const ALL_ABOUT_QUERY = gql`
       }
     }
   }
+/** Returns all "about" sections for the about page. */
 `;
 
 export async function getAllAboutSections(): Promise<AboutSection[] | null> {
@@ -161,6 +164,7 @@ const ABOUT_BY_SLUG_QUERY = gql`
         url
       }
     }
+/** Fetches a single "about" section by slug. */
   }
 `;
 

@@ -13,6 +13,11 @@ const PhotoGallery = dynamic(() => import('@/components/vorur/PhotoGallery'), {
 interface AboutSectionsProps {
   sections: AboutSection[];
 }
+/**
+ * Renders a list of "about" sections with optional hero images, text and photo galleries.
+ *
+ * Each section uses a slug for headings and supports Markdown content.
+ */
 
 export default function AboutSections({ sections }: AboutSectionsProps) {
   return (

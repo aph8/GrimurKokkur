@@ -11,6 +11,9 @@ if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_EMAIL) {
 
 const isDev = NODE_ENV !== 'production';
 let transporter: Transporter;
+/**
+ * Lazily creates and returns a nodemailer transporter.
+ */
 
 function getTransporter() {
   if (!transporter) {
@@ -27,6 +30,9 @@ function getTransporter() {
   }
   return transporter;
 }
+/**
+ * Sends the contact form email using the transporter.
+ */
 
 export async function sendContactEmail({
   name,

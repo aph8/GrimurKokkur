@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     apple: '/Grimur_kokkur_logo.svg',
   },
 };
+/**
+ * About page fetching section content from DatoCMS.
+ */
 
 export default async function AboutPage() {
   const sections: AboutSection[] | null = await getAllAboutSections();
