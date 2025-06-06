@@ -16,8 +16,12 @@ interface MobileHeroCarouselProps {
   startImmediately?: boolean;
 }
 
-export default function MobileHeroCarousel({ panels, startImmediately = false }: MobileHeroCarouselProps) {
-  const [index, setIndex] = useState(0);
+
+export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) {
+  const slides = [panels[panels.length - 1], ...panels, panels[0]];
+
+  const [index, setIndex] = useState(1);
+
   const [enableTransition, setEnableTransition] = useState(true);
 
   // Optionally jump to the second slide on mount so the carousel
@@ -37,20 +41,19 @@ export default function MobileHeroCarousel({ panels, startImmediately = false }:
     return () => clearInterval(interval);
   }, []);
 
-  // When we slide past the last real panel, jump back to the first without
-  // animation once the transition completes. This creates an infinite loop that
-  // only moves forward.
+  // When we slide onto the duplicate at the end, jump back to the
+  // first real panel without animation once the transition completes.
   useEffect(() => {
-    if (index === panels.length) {
+    if (index === slides.length - 1) {
       const timeout = setTimeout(() => {
         setEnableTransition(false);
-        setIndex(0);
+        setIndex(1);
       }, 1000); // match CSS transition duration
       return () => clearTimeout(timeout);
     }
 
     setEnableTransition(true);
-  }, [index, panels.length]);
+  }, [index, slides.length]);
 
   return (
     <div className={styles.carouselWrapper}>
@@ -63,33 +66,20 @@ export default function MobileHeroCarousel({ panels, startImmediately = false }:
           transition: enableTransition ? 'transform 1s ease-in-out' : 'none',
         }}
       >
-        {panels.map((p, i) => (
+        {slides.map((p, i) => (
           <div key={i} className={styles.slide}>
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
               <Image
                 src={p.src}
-                alt={p.alt || `Slide ${i + 1}`}
+                alt={p.alt || ''}
                 fill
                 sizes="100vw"
-                priority={i === 0}
+                priority={i === 1}
                 style={{ objectFit: 'cover' }}
               />
             </div>
           </div>
         ))}
-        {/* Duplicate first panel to create seamless looping */}
-        <div className={styles.slide} aria-hidden="true">
-          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-            <Image
-              src={panels[0].src}
-              alt={panels[0].alt || 'Slide 1'}
-              fill
-              sizes="100vw"
-              priority={false}
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
-        </div>
       </div>
 
       {/* Overlay title on top of the carousel */}

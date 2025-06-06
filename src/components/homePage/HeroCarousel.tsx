@@ -15,8 +15,14 @@ interface HeroCarouselProps {
   startImmediately?: boolean;
 }
 
-export default function HeroCarousel({ images, intervalMs = 3000, startImmediately = false }: HeroCarouselProps) {
-  const [index, setIndex] = useState(0);
+
+export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarouselProps) {
+  // Duplicate first and last images so we can seamlessly loop in one direction
+  const slides = [images[images.length - 1], ...images, images[0]];
+
+  // Start on the first real slide (index 1 within the duplicated list)
+  const [index, setIndex] = useState(1);
+  
   const [enableTransition, setEnableTransition] = useState(true);
 
   useEffect(() => {
@@ -32,18 +38,21 @@ export default function HeroCarousel({ images, intervalMs = 3000, startImmediate
       setIndex((i) => i + 1);
     }, intervalMs);
     return () => clearInterval(tid);
-  }, [images.length, intervalMs]);
+  }, [intervalMs]);
 
   useEffect(() => {
-    if (index === images.length) {
+    // When we slide onto the duplicate at the end, jump back to the
+    // first real slide without animation once the transition is done.
+    if (index === slides.length - 1) {
       const timeout = setTimeout(() => {
         setEnableTransition(false);
-        setIndex(0);
+        setIndex(1);
       }, 1000); // match CSS transition duration
       return () => clearTimeout(timeout);
     }
+
     setEnableTransition(true);
-  }, [index, images.length]);
+  }, [index, slides.length]);
 
   return (
     <div className={styles.carouselWrapper}>
@@ -56,29 +65,18 @@ export default function HeroCarousel({ images, intervalMs = 3000, startImmediate
         aria-live="polite"
         aria-atomic="true"
       >
-        {images.map((img, i) => (
+        {slides.map((img, i) => (
           <div key={i} className={styles.slide}>
             <Image
               src={img.src}
-              alt={img.alt || `Slide ${i + 1}`}
+              alt={img.alt || ''}
               fill
-              priority={true}
+              priority={i === 1}
               sizes="100vw"
               style={{ objectFit: 'cover' }}
             />
           </div>
         ))}
-        {/* duplicate first slide for seamless looping */}
-        <div className={styles.slide} aria-hidden="true">
-          <Image
-            src={images[0].src}
-            alt={images[0].alt || 'Slide 1'}
-            fill
-            priority={false}
-            sizes="100vw"
-            style={{ objectFit: 'cover' }}
-          />
-        </div>
       </div>
     </div>
   );
