@@ -1,3 +1,4 @@
+// src/components/vorur/HeroImage.tsx
 import React from 'react';
 import Image from 'next/image';
 import styles from '@/styles/vorur/HeroImage.module.scss';
@@ -6,7 +7,7 @@ interface HeroImageProps {
   src: string;
   alt?: string;
   ratio?: string;     
-  blurDataURL?: string; 
+  blurDataURL?: string;
   className?: string;  
 }
 
@@ -18,7 +19,7 @@ const HeroImage: React.FC<HeroImageProps> = ({
   className = '',
 }) => {
   const [w, h] = ratio.split(':').map(Number);
-  const paddingBottom = `${(h / w) * 100}%`; 
+  const paddingBottom = `${(h / w) * 100}%`;
 
   return (
     <div
@@ -29,7 +30,7 @@ const HeroImage: React.FC<HeroImageProps> = ({
         src={src}
         alt={alt}
         fill
-        sizes="(max-width: 640px) 100vw, 1440px"
+        sizes="(max-width: 640px) 100vw, 560px"
         placeholder={blurDataURL ? 'blur' : 'empty'}
         blurDataURL={blurDataURL}
         priority
