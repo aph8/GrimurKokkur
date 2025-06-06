@@ -13,6 +13,7 @@ interface ProductsPageClientProps {
 function ProductsPageClient({ products }: ProductsPageClientProps) {
   const [veganOnly, setVeganOnly] = useState(false);
 
+  // Memoize the filtered array so that ProductGrid can avoid re-renders when possible
   const displayed = useMemo(
     () => (veganOnly ? products.filter((p) => p.vegan) : products),
     [veganOnly, products],

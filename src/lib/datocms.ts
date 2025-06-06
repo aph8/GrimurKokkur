@@ -1,11 +1,14 @@
-// src/lib/datocms.ts
 import { gql } from 'graphql-request';
 import { fetchDatoCMS } from './fetchDatoCMS';
 
 export interface ProductCard {
   slug: string;
   title: string;
-  image?: { url: string; alt?: string };
+  image?: {
+    url: string;
+    alt?: string;
+    blurUpThumb?: string;
+  };
   vegan?: boolean;
 }
 
@@ -38,15 +41,17 @@ export interface AboutSection {
 // PRODUCTS
 // ──────────────────────────────────────────────────────────────────────────
 
+// We order by title ascending, and also fetch blurUpThumb for LQIP
 const ALL_PRODUCTS_QUERY = gql`
   query AllProducts {
-    allProducts {
+    allProducts(orderBy: title_ASC) {
       slug
       title
       vegan
       image {
         url
         alt
+        blurUpThumb
       }
     }
   }

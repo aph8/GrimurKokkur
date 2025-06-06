@@ -32,14 +32,14 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
         {panels.map((p, i) => (
           <div key={i} className={styles.slide}>
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                <Image
-                    src={p.url}
-                    alt={p.alt || `Slide ${i + 1}`}
-                    fill
-                    sizes="100vw"
-                    priority={i === 0}       
-                    style={{ objectFit: 'cover' }}
-                />
+              <Image
+                src={p.url}
+                alt={p.alt || `Slide ${i + 1}`}
+                fill
+                sizes="100vw"
+                priority={i === 0}
+                style={{ objectFit: 'cover' }}
+              />
             </div>
           </div>
         ))}

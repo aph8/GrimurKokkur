@@ -1,5 +1,5 @@
 // src/app/vorur/page.tsx
-export const revalidate = false;
+export const revalidate = 60; // Revalidate at most once every 60 seconds
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
@@ -21,9 +21,6 @@ export default async function VorurPage() {
   const products: ProductCard[] | null = await getAllProducts();
   if (!products) return notFound();
 
-  const sortedProducts = [...products].sort((a, b) =>
-    a.title.localeCompare(b.title, 'is', { sensitivity: 'base' }),
-  );
-
-  return <ProductsPageClient products={sortedProducts} />;
+  // The result from DatoCMS is already ordered by title_ASC
+  return <ProductsPageClient products={products} />;
 }
