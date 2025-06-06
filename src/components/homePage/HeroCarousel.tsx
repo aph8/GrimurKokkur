@@ -2,11 +2,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import styles from '@/styles/HeroCarousel.module.scss';
 
 interface HeroCarouselProps {
-  images: { url: string; alt?: string }[];
+  images: { src: StaticImageData; alt?: string }[];
   intervalMs?: number;
 }
 
@@ -32,7 +32,7 @@ export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarousel
         {images.map((img, i) => (
           <div key={i} className={styles.slide}>
             <Image
-              src={img.url}
+              src={img.src}
               alt={img.alt || `Slide ${i + 1}`}
               fill
               priority={true}

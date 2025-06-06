@@ -1,8 +1,8 @@
 // src/components/homePage/DesktopHero.tsx
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import styles from '@/styles/HeroSection.module.scss';
 
-type Panel = { url: string; alt?: string };
+type Panel = { src: StaticImageData; alt?: string };
 
 interface DesktopHeroProps {
   panels: Panel[];
@@ -13,12 +13,12 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
     <header className={styles.hero} role="banner" aria-labelledby="hero-title">
       {panels.map((p, i) => {
         // The first panel is Humarsúpa; mark it as priority so it isn't lazy-loaded
-        const isHumarsupa = p.url.endsWith('humarsupa_portrait.jpg');
+        const isHumarsupa = /humarsupa_portrait/.test(p.src.src);
 
         return (
           <div key={i} className={`${styles.panel} ${styles[`panel${i + 1}`]}`}>
             <Image
-              src={p.url}
+              src={p.src}
               alt={p.alt || ''}
               priority={isHumarsupa}
               fill
