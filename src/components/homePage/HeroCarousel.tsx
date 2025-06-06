@@ -8,7 +8,13 @@ import styles from '@/styles/HeroCarousel.module.scss';
 interface HeroCarouselProps {
   images: { src: StaticImageData; alt?: string }[];
   intervalMs?: number;
+  /**
+   * If true, begin sliding immediately on mount rather than waiting
+   * for the first interval tick.
+   */
+  startImmediately?: boolean;
 }
+
 
 export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarouselProps) {
   // Duplicate first and last images so we can seamlessly loop in one direction
@@ -16,7 +22,15 @@ export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarousel
 
   // Start on the first real slide (index 1 within the duplicated list)
   const [index, setIndex] = useState(1);
+  
   const [enableTransition, setEnableTransition] = useState(true);
+
+  useEffect(() => {
+    if (startImmediately) {
+      const t = setTimeout(() => setIndex(1), 0);
+      return () => clearTimeout(t);
+    }
+  }, [startImmediately]);
 
   // Auto‐advance
   useEffect(() => {

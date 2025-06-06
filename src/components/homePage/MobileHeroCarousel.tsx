@@ -9,13 +9,29 @@ type Panel = { src: StaticImageData; alt?: string };
 
 interface MobileHeroCarouselProps {
   panels: Panel[];
+  /**
+   * If true, advance to the second slide immediately after mount
+   * instead of waiting for the first interval tick.
+   */
+  startImmediately?: boolean;
 }
+
 
 export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) {
   const slides = [panels[panels.length - 1], ...panels, panels[0]];
 
   const [index, setIndex] = useState(1);
+
   const [enableTransition, setEnableTransition] = useState(true);
+
+  // Optionally jump to the second slide on mount so the carousel
+  // begins animating right away.
+  useEffect(() => {
+    if (startImmediately) {
+      const t = setTimeout(() => setIndex(1), 0);
+      return () => clearTimeout(t);
+    }
+  }, [startImmediately]);
 
   // Auto‐advance every 3s
   useEffect(() => {
