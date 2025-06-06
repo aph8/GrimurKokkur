@@ -8,11 +8,23 @@ import styles from '@/styles/HeroCarousel.module.scss';
 interface HeroCarouselProps {
   images: { src: StaticImageData; alt?: string }[];
   intervalMs?: number;
+  /**
+   * If true, begin sliding immediately on mount rather than waiting
+   * for the first interval tick.
+   */
+  startImmediately?: boolean;
 }
 
-export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarouselProps) {
+export default function HeroCarousel({ images, intervalMs = 3000, startImmediately = false }: HeroCarouselProps) {
   const [index, setIndex] = useState(0);
   const [enableTransition, setEnableTransition] = useState(true);
+
+  useEffect(() => {
+    if (startImmediately) {
+      const t = setTimeout(() => setIndex(1), 0);
+      return () => clearTimeout(t);
+    }
+  }, [startImmediately]);
 
   // Auto‐advance
   useEffect(() => {
