@@ -1,7 +1,6 @@
 export const revalidate = 60;
 
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getAllAboutSections, type AboutSection } from '@/lib/datocms';
 import AboutSections from '@/components/about/AboutSections';
 import styles from '@/styles/AboutPage.module.scss';
@@ -21,10 +20,22 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const sections: AboutSection[] | null = await getAllAboutSections();
-  if (!sections) return notFound();
+  if (!sections) {
+    return (
+      <main className={styles.main}>
+        <h1 id="pageTitle" className={styles.pageTitle}>
+          Um okkur
+        </h1>
+        <p className={styles.error}>Ekki tókst að hlaða síðuna.</p>
+      </main>
+    );
+  }
 
   return (
     <main className={styles.main}>
+      <h1 id="pageTitle" className={styles.pageTitle}>
+        Um okkur
+      </h1>
       <AboutSections sections={sections} />
     </main>
   );
