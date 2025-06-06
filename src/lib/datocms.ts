@@ -32,16 +32,23 @@ export interface AboutSection {
   slug: string;
   title: string;
   discription?: string;
-  image?: { url: string; alt?: string };
-  imagegallery?: Array<{ url: string; alt?: string }>;
+  image?: {
+    url: string;
+    alt?: string;
+    blurUpThumb?: string;
+  };
+  imagegallery?: Array<{
+    url: string;
+    alt?: string;
+    blurUpThumb?: string;
+  }>;
   video?: { url: string };
 }
 
 // ──────────────────────────────────────────────────────────────────────────
-// PRODUCTS
+// PRODUCTS (unchanged from before, except that ProductCard.image already has blurUpThumb)
 // ──────────────────────────────────────────────────────────────────────────
 
-// We order by title ascending, and also fetch blurUpThumb for LQIP
 const ALL_PRODUCTS_QUERY = gql`
   query AllProducts {
     allProducts(orderBy: title_ASC) {
@@ -59,7 +66,9 @@ const ALL_PRODUCTS_QUERY = gql`
 
 export async function getAllProducts(): Promise<ProductCard[] | null> {
   try {
-    const { allProducts } = await fetchDatoCMS<{ allProducts: ProductCard[] }>(ALL_PRODUCTS_QUERY);
+    const { allProducts } = await fetchDatoCMS<{ allProducts: ProductCard[] }>(
+      ALL_PRODUCTS_QUERY
+    );
     return allProducts;
   } catch {
     return null;
@@ -99,7 +108,10 @@ const PRODUCT_BY_SLUG_QUERY = gql`
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
-    const { product } = await fetchDatoCMS<{ product: Product }>(PRODUCT_BY_SLUG_QUERY, { slug });
+    const { product } = await fetchDatoCMS<{ product: Product }>(
+      PRODUCT_BY_SLUG_QUERY,
+      { slug }
+    );
     return product;
   } catch {
     return null;
@@ -107,7 +119,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
 }
 
 // ──────────────────────────────────────────────────────────────────────────
-// ABOUT SECTIONS
+// ABOUT SECTIONS (UPDATED to pull blurUpThumb for hero + gallery images)
 // ──────────────────────────────────────────────────────────────────────────
 
 const ALL_ABOUT_QUERY = gql`
@@ -119,10 +131,12 @@ const ALL_ABOUT_QUERY = gql`
       image {
         url
         alt
+        blurUpThumb
       }
       imagegallery {
         url
         alt
+        blurUpThumb
       }
       video {
         url
@@ -133,7 +147,9 @@ const ALL_ABOUT_QUERY = gql`
 
 export async function getAllAboutSections(): Promise<AboutSection[] | null> {
   try {
-    const { allAbouts } = await fetchDatoCMS<{ allAbouts: AboutSection[] }>(ALL_ABOUT_QUERY);
+    const { allAbouts } = await fetchDatoCMS<{ allAbouts: AboutSection[] }>(
+      ALL_ABOUT_QUERY
+    );
     return allAbouts;
   } catch {
     return null;
@@ -149,10 +165,12 @@ const ABOUT_BY_SLUG_QUERY = gql`
       image {
         url
         alt
+        blurUpThumb
       }
       imagegallery {
         url
         alt
+        blurUpThumb
       }
       video {
         url
@@ -161,9 +179,14 @@ const ABOUT_BY_SLUG_QUERY = gql`
   }
 `;
 
-export async function getAboutBySlug(slug: string): Promise<AboutSection | null> {
+export async function getAboutBySlug(
+  slug: string
+): Promise<AboutSection | null> {
   try {
-    const { about } = await fetchDatoCMS<{ about: AboutSection }>(ABOUT_BY_SLUG_QUERY, { slug });
+    const { about } = await fetchDatoCMS<{ about: AboutSection }>(
+      ABOUT_BY_SLUG_QUERY,
+      { slug }
+    );
     return about;
   } catch {
     return null;

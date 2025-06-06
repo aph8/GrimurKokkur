@@ -24,6 +24,8 @@ export default async function AboutPage() {
 
   return (
     <main className={styles.main}>
+      {/* Explicit <h1> reserves space so nothing “jumps” when the hero image arrives */}
+      <h1 className={styles.pageTitle}>Um okkur</h1>
       <AboutSections sections={sections} />
     </main>
   );
