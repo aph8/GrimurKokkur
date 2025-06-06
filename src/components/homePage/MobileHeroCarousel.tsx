@@ -17,7 +17,7 @@ interface MobileHeroCarouselProps {
 }
 
 
-export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) {
+export default function MobileHeroCarousel({ panels, startImmediately }: MobileHeroCarouselProps) {
   const slides = [panels[panels.length - 1], ...panels, panels[0]];
 
   const [index, setIndex] = useState(1);
