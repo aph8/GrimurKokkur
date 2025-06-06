@@ -16,6 +16,11 @@ interface TabletHeroCarouselProps {
 export default function TabletHeroCarousel({ panels, startImmediately }: TabletHeroCarouselProps) {
   const [index, setIndex] = useState(0);
 
+  const pairs: { src: StaticImageData; alt?: string }[][] = [];
+  for (let i = 0; i < panels.length; i += 2) {
+    pairs.push(panels.slice(i, i + 2));
+  }
+
   useEffect(() => {
     if (startImmediately) {
       const t = setTimeout(() => setIndex(1), 0);
@@ -25,25 +30,29 @@ export default function TabletHeroCarousel({ panels, startImmediately }: TabletH
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((i) => (i + 1) % panels.length);
+      setIndex((i) => (i + 1) % pairs.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [panels.length]);
+  }, [pairs.length]);
 
   return (
     <div className={styles.carouselWrapper}>
       <div className={styles.slides} aria-live="polite" aria-atomic="true">
-        {panels.map((p, i) => (
+        {pairs.map((pair, i) => (
           <div key={i} className={styles.slide} style={{ opacity: i === index ? 1 : 0 }}>
-            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-              <Image
-                src={p.src}
-                alt={p.alt || ''}
-                fill
-                sizes="100vw"
-                priority={i === 0}
-                style={{ objectFit: 'cover' }}
-              />
+            <div className={styles.pair}>
+              {pair.map((p, j) => (
+                <div key={j} className={styles.pairImage}>
+                  <Image
+                    src={p.src}
+                    alt={p.alt || ''}
+                    fill
+                    sizes="50vw"
+                    priority={i === 0 && j === 0}
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         ))}
