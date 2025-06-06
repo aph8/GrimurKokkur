@@ -16,7 +16,11 @@ interface HeroCarouselProps {
 }
 
 
-export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarouselProps) {
+export default function HeroCarousel({
+  images,
+  intervalMs = 3000,
+  startImmediately = false,
+}: HeroCarouselProps) {
   // Duplicate first and last images so we can seamlessly loop in one direction
   const slides = [images[images.length - 1], ...images, images[0]];
 
