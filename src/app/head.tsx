@@ -1,4 +1,9 @@
 // src/app/head.tsx
+import humarsupa from '../../public/humarsupa_portrait.jpg';
+import fiskibollur from '../../public/fiskibollur_portrait.jpg';
+import fiskistangir from '../../public/fiskistangir_portrait.jpg';
+import plokkfiskur from '../../public/plokkfiskur_portrait.jpg';
+
 export default function Head() {
   return (
     <>
@@ -82,10 +87,10 @@ export default function Head() {
       />
 
       {/* 3) Preload all four desktop-hero images when viewport is ≥ 769px */}
-      <link rel="preload" as="image" href="/humarsupa_portrait.jpg" media="(min-width: 769px)" />
-      <link rel="preload" as="image" href="/fiskibollur_portrait.jpg" media="(min-width: 769px)" />
-      <link rel="preload" as="image" href="/fiskistangir_portrait.jpg" media="(min-width: 769px)" />
-      <link rel="preload" as="image" href="/plokkfiskur_portrait.jpg" media="(min-width: 769px)" />
+      <link rel="preload" as="image" href={humarsupa.src} media="(min-width: 769px)" />
+      <link rel="preload" as="image" href={fiskibollur.src} media="(min-width: 769px)" />
+      <link rel="preload" as="image" href={fiskistangir.src} media="(min-width: 769px)" />
+      <link rel="preload" as="image" href={plokkfiskur.src} media="(min-width: 769px)" />
     </>
   );
 }

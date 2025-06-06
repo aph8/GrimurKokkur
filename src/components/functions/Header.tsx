@@ -52,6 +52,8 @@ export default function Header() {
               alt="Grímur Kokkur logo"
               width={100}
               height={100}
+              priority
+              fetchPriority="high"
             />
           </Link>
         </div>

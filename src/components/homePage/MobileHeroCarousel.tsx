@@ -2,11 +2,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 import styles from '@/styles/HeroCarousel.module.scss';
 
-type Panel = { url: string; alt?: string };
+type Panel = { src: StaticImageData; alt?: string };
 
 interface MobileHeroCarouselProps {
   panels: Panel[];
@@ -33,7 +33,7 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
           <div key={i} className={styles.slide}>
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
               <Image
-                src={p.url}
+                src={p.src}
                 alt={p.alt || `Slide ${i + 1}`}
                 fill
                 sizes="100vw"

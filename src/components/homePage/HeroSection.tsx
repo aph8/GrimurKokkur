@@ -5,12 +5,16 @@ import { useState, useEffect } from 'react';
 import useIsMobile from './useIsMobile';
 import DesktopHero from './DesktopHero';
 import MobileHeroCarousel from './MobileHeroCarousel';
+import humarsupa from '../../../public/humarsupa_portrait.jpg';
+import fiskibollur from '../../../public/fiskibollur_portrait.jpg';
+import fiskistangir from '../../../public/fiskistangir_portrait.jpg';
+import plokkfiskur from '../../../public/plokkfiskur_portrait.jpg';
 
 const panels = [
-  { url: '/humarsupa_portrait.jpg', alt: 'Humarsúpa' },
-  { url: '/fiskibollur_portrait.jpg', alt: 'Fiskibollur' },
-  { url: '/fiskistangir_portrait.jpg', alt: 'Fiskistangir' },
-  { url: '/plokkfiskur_portrait.jpg', alt: 'Plokkfiskur' },
+  { src: humarsupa, alt: 'Humarsúpa' },
+  { src: fiskibollur, alt: 'Fiskibollur' },
+  { src: fiskistangir, alt: 'Fiskistangir' },
+  { src: plokkfiskur, alt: 'Plokkfiskur' },
 ];
 
 export default function HeroSection() {
