@@ -3,10 +3,6 @@
 
 import { useState, useEffect } from 'react';
 
-/**
- * Returns true whenever `window.innerWidth <= breakpoint`.
- * Only runs on the client.
- */
 export default function useIsMobile(breakpoint = 768): boolean {
   const [isMobile, setIsMobile] = useState(false);
 

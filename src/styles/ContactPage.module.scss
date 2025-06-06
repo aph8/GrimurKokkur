@@ -69,7 +69,6 @@
   }
 }
 
-/* Sjálfur formWrapper gerður að flex-container til að ýta hnappinum niður og til hægri */
 .formWrapper {
   display: flex;
   flex-direction: column;
@@ -121,7 +120,6 @@
   cursor: pointer;
   transition: filter 0.2s;
 
-  /* Ýtir hnappinum til hægri innan flex-container */
   margin-left: auto;
 
   &:hover:not(:disabled) {

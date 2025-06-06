@@ -6,9 +6,9 @@ import styles from '@/styles/vorur/HeroImage.module.scss';
 interface HeroImageProps {
   src: string;
   alt?: string;
-  ratio?: string;      // e.g. "16:9" by default
+  ratio?: string; // e.g. "16:9" by default
   blurDataURL?: string; // base64 LQIP string, if available
-  className?: string;   // e.g. "asymmetric" to trigger slanted-edge styling
+  className?: string; // e.g. "asymmetric" to trigger slanted-edge styling
 }
 
 const HeroImage: React.FC<HeroImageProps> = ({
@@ -23,10 +23,7 @@ const HeroImage: React.FC<HeroImageProps> = ({
   const paddingBottom = `${(h / w) * 100}%`; // e.g. "56.25%" for 16:9
 
   return (
-    <div
-      className={`${styles.heroWrapper} ${className}`}
-      style={{ paddingBottom }}
-    >
+    <div className={`${styles.heroWrapper} ${className}`} style={{ paddingBottom }}>
       <Image
         src={src}
         alt={alt}

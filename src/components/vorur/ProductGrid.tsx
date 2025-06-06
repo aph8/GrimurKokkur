@@ -17,7 +17,6 @@ function ProductGrid({ products }: ProductGridProps) {
       {products.map((product, i) => (
         <li key={product.slug} className={styles.productCard}>
           <Link href={`/vorur/${product.slug}`}>
-            {/* If there’s an image, render it with LQIP blur and lower quality */}
             {product.image?.url && (
               <div className={styles.productImageWrapper}>
                 <Image
@@ -25,12 +24,10 @@ function ProductGrid({ products }: ProductGridProps) {
                   alt={product.image.alt || product.title}
                   fill
                   sizes="(max-width: 640px) 100vw, 260px"
-                  // Remove quality={100} so Next.js uses default (75)
                   placeholder="blur"
                   blurDataURL={product.image.blurUpThumb || '/placeholder.png'}
-                  // Only preload the first two images
                   priority={i < 2}
-                  unoptimized={false} // allow Next.js to optimize
+                  unoptimized={false}
                   className={styles.productImage}
                 />
               </div>

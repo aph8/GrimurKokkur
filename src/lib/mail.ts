@@ -37,16 +37,13 @@ export async function sendContactEmail({
   email: string;
   message: string;
 }) {
-  // Sanitize input (no HTML tags)
   const cleanMessage = sanitizeHtml(message, {
     allowedTags: [],
     allowedAttributes: {},
   });
 
-  // Verify SMTP connection
   await getTransporter().verify();
 
-  // Send
   await getTransporter().sendMail({
     from: `"Kontakt form" <${SMTP_USER}>`,
     to: CONTACT_EMAIL,

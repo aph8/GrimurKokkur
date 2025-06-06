@@ -16,7 +16,7 @@ export default function MapPlaceholder() {
           io.disconnect();
         }
       },
-      { rootMargin: '200px' } // trigger 200px before it enters viewport
+      { rootMargin: '200px' },
     );
     io.observe(ref.current);
     return () => io.disconnect();

@@ -15,9 +15,6 @@ const client = new GraphQLClient(endpoint, {
   headers: { authorization: `Bearer ${token}` },
 });
 
-/**
- * Generic fetch helper for arbitrary GraphQL queries against DatoCMS
- */
 export async function fetchDatoCMS<T>(
   query: string,
   variables?: Record<string, unknown>,

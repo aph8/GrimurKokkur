@@ -12,7 +12,7 @@ const trimmedString = (min?: number, minMsg?: string, max?: number, maxMsg?: str
       })
       .refine((s) => (max !== undefined ? s.length <= max : true), {
         message: maxMsg,
-      })
+      }),
   );
 
 export const ContactSchema = z
@@ -20,13 +20,13 @@ export const ContactSchema = z
     name: trimmedString(1, 'Nafn má ekki vera tómt', 100, 'Nafn má ekki vera lengra en 100 stafir'),
     email: z.preprocess(
       (val) => (typeof val === 'string' ? val.trim() : val),
-      z.string().email('Netfang er ekki gilt')
+      z.string().email('Netfang er ekki gilt'),
     ),
     message: trimmedString(
       1,
       'Skilaboð mega ekki vera tóm',
       2000,
-      'Skilaboð mega ekki vera lengri en 2000 stafir'
+      'Skilaboð mega ekki vera lengri en 2000 stafir',
     ),
   })
   .strict();

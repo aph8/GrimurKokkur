@@ -7,10 +7,8 @@ import plokkfiskur from '../../public/plokkfiskur_portrait.jpg';
 export default function Head() {
   return (
     <>
-      {/* 1) Viewport meta for responsive sizing */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {/* 2) Inline only the critical CSS for HeroSection (desktop) and HeroCarousel (mobile). */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -86,7 +84,6 @@ export default function Head() {
         }}
       />
 
-      {/* 3) Preload all four desktop-hero images when viewport is ≥ 769px */}
       <link rel="preload" as="image" href={humarsupa.src} media="(min-width: 769px)" />
       <link rel="preload" as="image" href={fiskibollur.src} media="(min-width: 769px)" />
       <link rel="preload" as="image" href={fiskistangir.src} media="(min-width: 769px)" />

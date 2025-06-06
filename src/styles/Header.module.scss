@@ -31,26 +31,22 @@
   height: 8rem;
 }
 
-/* Brand wrapper: logo + title */
 .branding {
   display: flex;
   align-items: center;
 }
 
-/* Logo itself */
 .logo {
   display: flex;
   align-items: center;
 }
 
-/* Controls wrapper: hamburger + nav */
 .controls {
   display: flex;
   align-items: center;
   gap: v.$spacing-lg;
 }
 
-/* NAVIGATION MENU */
 .nav {
   display: flex;
   gap: clamp(v.$spacing-sm, 4vw, v.$spacing-lg);
@@ -73,7 +69,6 @@
   }
 }
 
-/* HAMBURGER BUTTON */
 .hamburger {
   display: none;
   background: transparent;
@@ -104,14 +99,12 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* ACTIVE LINK */
 .activeLink {
   color: var(--nav-link);
   font-weight: 600;
   border-bottom-color: black !important;
 }
 
-/* MOBILE VIEWPORT: override nav/hamburger */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -145,7 +138,6 @@
   }
 }
 
-/* DESKTOP RESET */
 @media (min-width: 769px) {
   .nav {
     position: static;

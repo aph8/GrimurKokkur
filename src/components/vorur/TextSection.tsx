@@ -23,13 +23,11 @@ const TextSectionComponent: React.FC<TextSectionProps> = ({
   isMarkdown = false,
   children,
 }) => {
-  // Búa til unik id fyrir aria-labelledby
   const sectionId = useMemo(
     () => `text-section-${title.toLowerCase().replace(/\s+/g, '-')}`,
     [title],
   );
 
-  // Memo-aða Markdown‐útkomu svo ReactMarkdown fái ekki nýjan strengi á hverju renderi
   const markdown = useMemo(() => text, [text]);
 
   return (

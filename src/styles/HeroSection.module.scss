@@ -1,7 +1,6 @@
 /* src/styles/HeroSection.module.scss */
 @use './variables' as v;
 
-/* Desktop‐only hero (4 overlapping panels) */
 .hero {
   position: relative;
   height: 100vh;
@@ -14,7 +13,6 @@
     z-index: 1;
   }
 
-  /* Overlap each panel after the first */
   .panel + .panel {
     margin-left: -5%;
   }
@@ -24,7 +22,6 @@
   }
 }
 
-/* Shared overlay content on desktop */
 .overlayContent {
   position: absolute;
   top: 1.5rem;

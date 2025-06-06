@@ -9,19 +9,12 @@ type Panel = { src: StaticImageData; alt?: string };
 
 interface MobileHeroCarouselProps {
   panels: Panel[];
-  /**
-   * If true, advance to the second slide immediately after mount
-   * instead of waiting for the first interval tick.
-   */
   startImmediately?: boolean;
 }
-
 
 export default function MobileHeroCarousel({ panels, startImmediately }: MobileHeroCarouselProps) {
   const [index, setIndex] = useState(0);
 
-  // Optionally jump to the second slide on mount so the carousel
-  // begins animating right away.
   useEffect(() => {
     if (startImmediately) {
       const t = setTimeout(() => setIndex(1), 0);
@@ -29,7 +22,6 @@ export default function MobileHeroCarousel({ panels, startImmediately }: MobileH
     }
   }, [startImmediately]);
 
-  // Auto‐advance every 3s
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((i) => (i + 1) % panels.length);
@@ -41,11 +33,7 @@ export default function MobileHeroCarousel({ panels, startImmediately }: MobileH
     <div className={styles.carouselWrapper}>
       <div className={styles.slides} aria-live="polite" aria-atomic="true">
         {panels.map((p, i) => (
-          <div
-            key={i}
-            className={styles.slide}
-            style={{ opacity: i === index ? 1 : 0 }}
-          >
+          <div key={i} className={styles.slide} style={{ opacity: i === index ? 1 : 0 }}>
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
               <Image
                 src={p.src}
@@ -60,7 +48,6 @@ export default function MobileHeroCarousel({ panels, startImmediately }: MobileH
         ))}
       </div>
 
-      {/* Overlay title on top of the carousel */}
       <div className={styles.overlayContent}>
         <h1 id="hero-title">Grímur Kokkur</h1>
       </div>

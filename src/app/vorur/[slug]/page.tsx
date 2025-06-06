@@ -15,7 +15,6 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Generate per-product <head> metadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
@@ -60,7 +59,6 @@ export default async function ProductPage({ params }: PageProps) {
       </h1>
 
       <div className={styles.wrapper}>
-        {/* HERO COLUMN */}
         {image?.url && (
           <div className={styles.heroContainer}>
             <HeroImage
@@ -70,14 +68,12 @@ export default async function ProductPage({ params }: PageProps) {
               className="asymmetric"
             />
 
-            {/* Nutrition on desktop */}
             {nutritionfacts.length > 0 && (
               <div className={styles.desktopOnly}>
                 <NutritionTable data={nutritionfacts as NutritionRow[]} />
               </div>
             )}
 
-            {/* Video */}
             {video?.url && (
               <div className="mt-8">
                 <h2 className="text-xl font-semibold mb-2">Myndband</h2>
@@ -90,7 +86,6 @@ export default async function ProductPage({ params }: PageProps) {
               </div>
             )}
 
-            {/* Photo gallery */}
             {imagegallery.length > 0 && (
               <div className="mt-8">
                 <TextSection title="Myndagallerí">
@@ -105,12 +100,10 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
         )}
 
-        {/* CONTENT COLUMN */}
         <div className={styles.contentContainer}>
           {discription && <TextSection title="Lýsing" text={discription} isMarkdown />}
           {ingredient && <TextSection title="Innihaldsefni" text={ingredient} isMarkdown />}
 
-          {/* Nutrition on mobile */}
           {nutritionfacts.length > 0 && (
             <div className={styles.mobileOnly}>
               <TextSection title="Næringargögn">

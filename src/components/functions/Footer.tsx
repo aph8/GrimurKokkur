@@ -10,9 +10,7 @@ import styles from '@/styles/Footer.module.scss';
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      {/* Top section: exactly 3 equal-width columns */}
       <div className={styles.top}>
-        {/* Column 1: Logo, description, award, social */}
         <div className={styles.column}>
           <Image src="/Grimur_kokkur_logo.svg" alt="Grímur Kokkur logo" width={80} height={80} />
           <p className={styles.description}>
@@ -22,13 +20,11 @@ export default function Footer() {
           <Image
             src="/RGB_FF 2024-Ice-Red-Horz.png"
             alt="Framúrskarandi fyrirtæki 2024"
-            /** ← changed from 240×60 to 256×68 to match the actual image file. */
             width={256}
             height={68}
           />
 
           <div className={styles.socialIcons}>
-            {/* Instagram */}
             <Link
               href="https://www.instagram.com/grimurkokkur/"
               target="_blank"
@@ -40,7 +36,6 @@ export default function Footer() {
               </div>
             </Link>
 
-            {/* Facebook */}
             <Link
               href="https://www.facebook.com/Grimurkokkur"
               target="_blank"
@@ -54,7 +49,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Column 2: Contact */}
         <div className={styles.column}>
           <h2>Hafa samband</h2>
           <p>
@@ -80,7 +74,6 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* Column 3: Opening hours */}
         <div className={styles.column}>
           <h3>Opnunartími</h3>
           <p>
@@ -96,14 +89,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className={styles.bottom}>
-        {/* Left: copyright */}
         <div className={styles.bottomLeft}>
           <span>Allur réttur áskilinn. {new Date().getFullYear()}. Grímur Kokkur</span>
         </div>
 
-        {/* Right: nav links + back-to-top */}
         <div className={styles.bottomRight}>
           <nav className={styles.navLinks}>
             <Link href="/vorur">Vörur</Link>

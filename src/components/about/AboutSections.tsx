@@ -6,18 +6,9 @@ import TextSection from '@/components/vorur/TextSection'; // now a server compon
 import type { AboutSection } from '@/lib/datocms';
 import styles from '@/styles/AboutPage.module.scss';
 
-/**
- * PhotoGallery is now server-rendered (no ssr:false).
- * We keep a <div className={styles.loadingContainer}/> placeholder only
- * if the client JS hasn’t hydrated yet, but it has exactly the same height
- * as the gallery, so the footer never moves.
- */
-const PhotoGallery = dynamic(
-  () => import('@/components/vorur/PhotoGallery'),
-  {
-    loading: () => <div className={styles.loadingContainer} />,
-  }
-);
+const PhotoGallery = dynamic(() => import('@/components/vorur/PhotoGallery'), {
+  loading: () => <div className={styles.loadingContainer} />,
+});
 
 interface AboutSectionsProps {
   sections: AboutSection[];
@@ -27,11 +18,7 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
   return (
     <>
       {sections.map((sec) => (
-        <section
-          key={sec.slug}
-          aria-labelledby={`about-${sec.slug}`}
-          className={styles.section}
-        >
+        <section key={sec.slug} aria-labelledby={`about-${sec.slug}`} className={styles.section}>
           {sec.image && (
             <HeroImage
               src={sec.image.url}
@@ -41,16 +28,7 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
             />
           )}
 
-          {/**
-            * TextSection must be a server component so that the <h2> “UM OKKUR”
-            * is in the initial HTML. If TextSection is currently a client component,
-            * move its logic (markdown parse + rendering) into a server component.
-            */}
-          <TextSection
-            title={sec.title}
-            text={sec.discription ?? ''}
-            isMarkdown
-          />
+          <TextSection title={sec.title} text={sec.discription ?? ''} isMarkdown />
 
           {sec.imagegallery && sec.imagegallery.length > 0 && (
             <div className={styles.galleryWrapper}>

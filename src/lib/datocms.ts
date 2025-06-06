@@ -45,10 +45,6 @@ export interface AboutSection {
   video?: { url: string };
 }
 
-// ──────────────────────────────────────────────────────────────────────────
-// PRODUCTS (unchanged from before, except that ProductCard.image already has blurUpThumb)
-// ──────────────────────────────────────────────────────────────────────────
-
 const ALL_PRODUCTS_QUERY = gql`
   query AllProducts {
     allProducts(orderBy: title_ASC) {
@@ -112,10 +108,6 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
     return null;
   }
 }
-
-// ──────────────────────────────────────────────────────────────────────────
-// ABOUT SECTIONS (UPDATED to pull blurUpThumb for hero + gallery images)
-// ──────────────────────────────────────────────────────────────────────────
 
 const ALL_ABOUT_QUERY = gql`
   query AllAboutSections {

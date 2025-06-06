@@ -12,7 +12,6 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
   return (
     <header className={styles.hero} role="banner" aria-labelledby="hero-title">
       {panels.map((p, i) => {
-        // The first panel is Humarsúpa; mark it as priority so it isn't lazy-loaded
         const isHumarsupa = /humarsupa_portrait/.test(p.src.src);
 
         return (
@@ -22,7 +21,6 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
               alt={p.alt || ''}
               priority={isHumarsupa}
               fill
-              // 100vw on mobile, ~25vw on desktop (4 panels side-by-side)
               sizes="(max-width: 768px) 100vw, 25vw"
               style={{ objectFit: 'cover', objectPosition: 'center' }}
             />

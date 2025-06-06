@@ -8,13 +8,8 @@ import styles from '@/styles/HeroCarousel.module.scss';
 interface HeroCarouselProps {
   images: { src: StaticImageData; alt?: string }[];
   intervalMs?: number;
-  /**
-   * If true, begin sliding immediately on mount rather than waiting
-   * for the first interval tick.
-   */
   startImmediately?: boolean;
 }
-
 
 export default function HeroCarousel({
   images,
@@ -30,7 +25,6 @@ export default function HeroCarousel({
     }
   }, [startImmediately]);
 
-  // Auto-advance
   useEffect(() => {
     const tid = setInterval(() => {
       setIndex((i) => (i + 1) % images.length);
@@ -42,11 +36,7 @@ export default function HeroCarousel({
     <div className={styles.carouselWrapper}>
       <div className={styles.slides} aria-live="polite" aria-atomic="true">
         {images.map((img, i) => (
-          <div
-            key={i}
-            className={styles.slide}
-            style={{ opacity: i === index ? 1 : 0 }}
-          >
+          <div key={i} className={styles.slide} style={{ opacity: i === index ? 1 : 0 }}>
             <Image
               src={img.src}
               alt={img.alt || ''}

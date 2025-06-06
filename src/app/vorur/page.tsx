@@ -1,5 +1,5 @@
 // src/app/vorur/page.tsx
-export const revalidate = 60; // Revalidate at most once every 60 seconds
+export const revalidate = 60;
 export const dynamic = 'force-static';
 
 import type { Metadata } from 'next';
@@ -21,6 +21,5 @@ export default async function VorurPage() {
   const products: ProductCard[] | null = await getAllProducts();
   if (!products) return notFound();
 
-  // The result from DatoCMS is already ordered by title_ASC
   return <ProductsPageClient products={products} />;
 }

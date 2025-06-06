@@ -1,11 +1,10 @@
-/* src/styles/globals.scss */
 @use 'sass:color';
 @use './variables' as *;
 @use './mixins' as *;
 @use './functions' as *;
 @use './breakpoints';
 @use './helpers' as *;
-@use './base'; /* reset + element base */
+@use './base';
 
 :root {
   --background: #{$color-background};
@@ -25,9 +24,6 @@
   }
 }
 
-/* ============================================= */
-/* Skip-link                                     */
-/* ============================================= */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -44,9 +40,6 @@
   }
 }
 
-/* ============================================= */
-/* Back-to-top button                             */
-/* ============================================= */
 .back-to-top {
   position: fixed;
   right: 1rem;
@@ -75,18 +68,12 @@
   }
 }
 
-/* ============================================= */
-/* Layout                                        */
-/* ============================================= */
 body > main {
   padding: 2rem 1rem;
   max-width: 95%;
   margin: 0 auto;
 }
 
-/* ============================================= */
-/* Global links                                  */
-/* ============================================= */
 a {
   color: var(--primary);
   text-decoration: none;
@@ -98,9 +85,6 @@ a {
   }
 }
 
-/* ============================================= */
-/* Form controls & buttons                       */
-/* ============================================= */
 button:focus,
 input:focus,
 textarea:focus {
@@ -108,9 +92,6 @@ textarea:focus {
   outline-offset: 2px;
 }
 
-/* ============================================= */
-/* Tabs                                          */
-/* ============================================= */
 .tabs {
   display: flex;
   border-bottom: 1px solid #ddd;

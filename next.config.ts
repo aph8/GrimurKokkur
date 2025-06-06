@@ -29,7 +29,6 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Cache your own “insights/script.js” long‐term
         source: '/insights/script.js',
         headers: [
           {
@@ -39,7 +38,6 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Cache all Next.js static files under /_next/static forever
         source: '/_next/static/:path*',
         headers: [
           {

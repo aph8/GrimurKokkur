@@ -54,7 +54,6 @@ export default function ContactPageClient() {
       });
       const json = await res.json();
       if (!res.ok) {
-        // If you returned Zod‐flattened errors, they’ll be in json.errors._errors or json.errors.fieldName
         const errMsg = (json.errors?._errors ?? json.error) as string | undefined;
         throw new Error(errMsg || 'Unknown error');
       }
@@ -71,14 +70,12 @@ export default function ContactPageClient() {
 
   return (
     <div className={styles.contactWrapper}>
-      {/* ── LEFT: Lazy‐loaded Google Map ── */}
       <div className={styles.mapWrapper}>
         <div className={styles.mapContainer}>
           <MapPlaceholder />
         </div>
       </div>
 
-      {/* ── RIGHT: Contact Form ── */}
       <form className={styles.formWrapper} onSubmit={handleSubmit} noValidate>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Upplýsingar</legend>
@@ -149,7 +146,13 @@ export default function ContactPageClient() {
           {status === 'pending' ? 'Sæki...' : 'Senda'}
         </button>
 
-        <div role="alert" aria-live="assertive" tabIndex={-1} ref={liveRef} className={styles.liveMessage}>
+        <div
+          role="alert"
+          aria-live="assertive"
+          tabIndex={-1}
+          ref={liveRef}
+          className={styles.liveMessage}
+        >
           {status === 'success' && <p className={styles.success}>Skilaboðin voru send!</p>}
           {status === 'error' && <p className={styles.error}>Villa kom upp. Reyndu aftur.</p>}
         </div>

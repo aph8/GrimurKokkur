@@ -1,9 +1,6 @@
 @use './variables' as v;
 @use './mixins' as m;
 
-/* ────────────────────────────────────────────────────────── */
-/* Main container                                            */
-/* ────────────────────────────────────────────────────────── */
 .main {
   max-width: 90rem;
   margin: 0 auto;
@@ -12,9 +9,6 @@
   flex-direction: column;
 }
 
-/* ────────────────────────────────────────────────────────── */
-/* Header row: titill til vinstri, toggle til hægri          */
-/* ────────────────────────────────────────────────────────── */
 .headerRow {
   display: flex;
   justify-content: space-between;
@@ -42,33 +36,23 @@
   }
 }
 
-/* ────────────────────────────────────────────────────────── */
-/* Vörugríð (4 vörur í röð á desktop, annars færri)        */
-/* ────────────────────────────────────────────────────────── */
 .productList {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
   gap: clamp(v.$spacing-md, 2vw, v.$spacing-lg);
-
-  /* Mobile: 1 dálkur */
   grid-template-columns: 1fr;
 
-  /* Tablet: 2 dálkar */
   @include m.respond-to(md) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Desktop: 4 dálkar */
   @include m.respond-to(lg) {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* ────────────────────────────────────────────────────────── */
-/* Einstakur vörukassi                                        */
-/* ────────────────────────────────────────────────────────── */
 .productCard {
   position: relative;
   background: var(--card-bg);
@@ -95,7 +79,7 @@
 .productImageWrapper {
   position: relative;
   width: 100%;
-  padding-top: 66.666%; /* 3:2 aspect ratio */
+  padding-top: 66.666%;
   background: var(--accent-bg);
 }
 

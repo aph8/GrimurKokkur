@@ -1,10 +1,5 @@
 // src/styles/_base.scss
-
 @use './variables' as v;
-
-/* ──────────────────────────────────────────────── */
-/* Reset / element base styles                     */
-/* ──────────────────────────────────────────────── */
 
 *,
 *::before,
@@ -13,7 +8,6 @@
 }
 
 html {
-  /* reserve space for scrollbars */
   scrollbar-gutter: stable both-edges;
 }
 

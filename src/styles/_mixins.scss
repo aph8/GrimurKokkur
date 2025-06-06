@@ -1,10 +1,6 @@
-// src/styles/_mixins.scss
 @use 'sass:map';
 @use './variables' as vars;
 
-/// Slanted‐edge overlay, top or bottom
-/// @param $side top|bottom
-/// @param $height CSS unit (e.g. 0.1 => 0.1rem or 12% if passed)
 @mixin slanted-edge($side: top, $height: 0.1) {
   content: '';
   position: absolute;
@@ -22,8 +18,6 @@
   z-index: 0;
 }
 
-/// Media‐query helper
-/// Usage: @include respond-to(md) { … }
 @mixin respond-to($break) {
   $value: map.get(vars.$breakpoints, $break);
   @if $value {

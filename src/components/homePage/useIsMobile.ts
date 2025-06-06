@@ -3,12 +3,6 @@
 
 import { useState, useEffect } from 'react';
 
-/**
- * Returns:
- *   - undefined until hydration (SSR & first-client-render match).
- *   - true if viewport ≤ 768px.
- *   - false if viewport > 768px.
- */
 export default function useIsMobile(): boolean | undefined {
   const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
 
