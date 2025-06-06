@@ -58,8 +58,10 @@ export default function Header() {
               alt="Grímur Kokkur logo"
               width={100}
               height={100}
+              // `priority` already sets fetchPriority="high" and loading="eager" on the server.
+              // Explicitly passing fetchPriority caused a hydration mismatch in React 19.
+              // Removing it keeps the markup consistent between server and client.
               priority
-              fetchPriority="high"
             />
           </Link>
           <span className={styles.siteName}>Grímur Kokkur</span>
