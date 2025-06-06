@@ -57,14 +57,14 @@ export default function Head() {
               aspect-ratio: 20 / 30;
             }
             .HeroCarousel_slides__7gJQk {
-              display: flex;
-              transition: transform 1s ease;
+              position: relative;
               height: 100%;
             }
             .HeroCarousel_slide__n9ZBp {
-              position: relative;
-              min-width: 100%;
-              height: 100%;
+              position: absolute;
+              inset: 0;
+              opacity: 0;
+              transition: opacity 1s ease;
             }
             .HeroCarousel_overlayContent__3K8Gu {
               position: absolute;
