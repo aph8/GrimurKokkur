@@ -1,5 +1,3 @@
-// src/app/about/page.tsx
-export const runtime = 'edge';
 export const revalidate = 60;
 
 import type { Metadata } from 'next';
@@ -24,7 +22,7 @@ export default async function AboutPage() {
 
   return (
     <main className={styles.main}>
-      {/* Explicit <h1> reserves space so nothing “jumps” when the hero image arrives */}
+      <h1 className={styles.pageTitle}>Um okkur</h1>
       <AboutSections sections={sections} />
     </main>
   );

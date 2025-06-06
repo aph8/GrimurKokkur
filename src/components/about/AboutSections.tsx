@@ -1,4 +1,3 @@
-// src/components/about/AboutSections.tsx
 'use client';
 
 import React from 'react';
@@ -8,12 +7,12 @@ import TextSection from '@/components/vorur/TextSection';
 import type { AboutSection } from '@/lib/datocms';
 import styles from '@/styles/AboutPage.module.scss';
 
-
 const PhotoGallery = dynamic(
   () => import('@/components/vorur/PhotoGallery'),
   {
-    ssr: false,
-    loading: () => <p className={styles.loading}>Hleður myndum…</p>,
+    // Allow SSR by default (no `ssr: false`). That way the gallery’s HTML
+    // is already present on the server, so its fixed height is reserved.
+    loading: () => <div className={styles.loadingContainer} />,
   }
 );
 
@@ -30,28 +29,33 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
           aria-labelledby={`about-${sec.slug}`}
           className={styles.section}
         >
-          {/* If there is a banner image, render it as a HeroImage */}
           {sec.image && (
             <HeroImage
               src={sec.image.url}
               alt={sec.image.alt || sec.title}
-              // Pass down the LQIP from DatoCMS
+              blurDataURL={sec.image.blurUpThumb}
               ratio="16:9"
             />
           )}
 
-          {/* Render the title + description as Markdown */}
           <TextSection
             title={sec.title}
             text={sec.discription ?? ''}
             isMarkdown
           />
 
-          {/* If there is an image gallery, show PhotoGallery */}
           {sec.imagegallery && sec.imagegallery.length > 0 && (
             <div className={styles.galleryWrapper}>
               <h2 className={styles.galleryTitle}>Myndagallerí</h2>
-              <PhotoGallery images={sec.imagegallery} />
+              <PhotoGallery
+                images={sec.imagegallery.map((img) => ({
+                  url: img.url,
+                  alt: img.alt,
+                  blurUpThumb: img.blurUpThumb,
+                }))}
+                imageSizes="(max-width: 640px) 100vw, 600px"
+                imageQuality={75}
+              />
             </div>
           )}
         </section>

@@ -1,4 +1,3 @@
-/* src/styles/AboutPage.module.scss */
 @use './slantTheme' as slantTheme;
 
 .main {
@@ -15,9 +14,6 @@
   color: var(--foreground);
   position: relative;
 
-  &::before {
-    /* You can keep existing slanted underline or whatever you had */
-  }
 }
 
 .section {
@@ -36,6 +32,13 @@
   font-style: italic;
 }
 
+
+.loadingContainer {
+  width: 100%;
+  height: calc(2 * 28rem + 1rem); 
+  background: var(--accent-bg);   
+}
+
 .error {
   color: #e53935;
 }
@@ -49,48 +52,4 @@
   margin-bottom: 1rem;
 }
 
-/* ———————————————————————————————————————————————————————————————— */
-/* Gallery grid: 2 columns on tablet, 3 on desktop (adjust as you wish) */
-/* ———————————————————————————————————————————————————————————————— */
-.galleryList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 1rem;
 
-  /* Mobile: single column */
-  grid-template-columns: 1fr;
-
-  @media (min-width: 640px) {
-    /* 2 columns */
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1024px) {
-    /* 3 columns */
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Each gallery item reserves a 3:2 aspect ratio */
-.galleryItem {
-  position: relative;
-  width: 100%;
-  padding-top: 66.666%; /* 3:2 */
-  background: var(--accent-bg);
-  overflow: hidden;
-  border-radius: 0.5rem;
-}
-
-.galleryImageWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.galleryImage {
-  object-fit: cover;
-}
