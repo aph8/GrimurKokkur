@@ -1,7 +1,7 @@
 // src/app/contact/page.tsx
 
 import React from 'react';
-import ContactPageClient from './page.client';
+import ContactPageClient from './pageClient';
 import styles from '@/styles/ContactPage.module.scss';
 
 export const metadata = {
