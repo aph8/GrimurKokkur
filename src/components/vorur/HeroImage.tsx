@@ -7,8 +7,8 @@ interface HeroImageProps {
   src: string;
   alt?: string;
   ratio?: string;     
-  blurDataURL?: string;
-  className?: string;  
+  blurDataURL?: string; 
+  className?: string;   
 }
 
 const HeroImage: React.FC<HeroImageProps> = ({
@@ -30,7 +30,7 @@ const HeroImage: React.FC<HeroImageProps> = ({
         src={src}
         alt={alt}
         fill
-        sizes="(max-width: 640px) 100vw, 560px"
+        sizes="(max-width: 640px) calc(100vw - 2rem), 560px"
         placeholder={blurDataURL ? 'blur' : 'empty'}
         blurDataURL={blurDataURL}
         priority
