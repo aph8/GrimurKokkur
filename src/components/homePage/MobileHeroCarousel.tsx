@@ -18,11 +18,7 @@ interface MobileHeroCarouselProps {
 
 
 export default function MobileHeroCarousel({ panels, startImmediately }: MobileHeroCarouselProps) {
-  const slides = [panels[panels.length - 1], ...panels, panels[0]];
-
-  const [index, setIndex] = useState(1);
-
-  const [enableTransition, setEnableTransition] = useState(true);
+  const [index, setIndex] = useState(0);
 
   // Optionally jump to the second slide on mount so the carousel
   // begins animating right away.
@@ -36,45 +32,27 @@ export default function MobileHeroCarousel({ panels, startImmediately }: MobileH
   // Auto‐advance every 3s
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((i) => i + 1);
+      setIndex((i) => (i + 1) % panels.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
-
-  // When we slide onto the duplicate at the end, jump back to the
-  // first real panel without animation once the transition completes.
-  useEffect(() => {
-    if (index === slides.length - 1) {
-      const timeout = setTimeout(() => {
-        setEnableTransition(false);
-        setIndex(1);
-      }, 1000); // match CSS transition duration
-      return () => clearTimeout(timeout);
-    }
-
-    setEnableTransition(true);
-  }, [index, slides.length]);
+  }, [panels.length]);
 
   return (
     <div className={styles.carouselWrapper}>
-      <div
-        className={styles.slides}
-        aria-live="polite"
-        aria-atomic="true"
-        style={{
-          transform: `translateX(-${index * 100}%)`,
-          transition: enableTransition ? 'transform 1s ease-in-out' : 'none',
-        }}
-      >
-        {slides.map((p, i) => (
-          <div key={i} className={styles.slide}>
+      <div className={styles.slides} aria-live="polite" aria-atomic="true">
+        {panels.map((p, i) => (
+          <div
+            key={i}
+            className={styles.slide}
+            style={{ opacity: i === index ? 1 : 0 }}
+          >
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
               <Image
                 src={p.src}
                 alt={p.alt || ''}
                 fill
                 sizes="100vw"
-                priority={i === 1}
+                priority={i === 0}
                 style={{ objectFit: 'cover' }}
               />
             </div>

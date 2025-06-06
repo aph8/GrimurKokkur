@@ -21,13 +21,7 @@ export default function HeroCarousel({
   intervalMs = 3000,
   startImmediately = false,
 }: HeroCarouselProps) {
-  // Duplicate first and last images so we can seamlessly loop in one direction
-  const slides = [images[images.length - 1], ...images, images[0]];
-
-  // Start on the first real slide (index 1 within the duplicated list)
-  const [index, setIndex] = useState(1);
-  
-  const [enableTransition, setEnableTransition] = useState(true);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     if (startImmediately) {
@@ -36,46 +30,28 @@ export default function HeroCarousel({
     }
   }, [startImmediately]);
 
-  // Auto‐advance
+  // Auto-advance
   useEffect(() => {
     const tid = setInterval(() => {
-      setIndex((i) => i + 1);
+      setIndex((i) => (i + 1) % images.length);
     }, intervalMs);
     return () => clearInterval(tid);
-  }, [intervalMs]);
-
-  useEffect(() => {
-    // When we slide onto the duplicate at the end, jump back to the
-    // first real slide without animation once the transition is done.
-    if (index === slides.length - 1) {
-      const timeout = setTimeout(() => {
-        setEnableTransition(false);
-        setIndex(1);
-      }, 1000); // match CSS transition duration
-      return () => clearTimeout(timeout);
-    }
-
-    setEnableTransition(true);
-  }, [index, slides.length]);
+  }, [intervalMs, images.length]);
 
   return (
     <div className={styles.carouselWrapper}>
-      <div
-        className={styles.slides}
-        style={{
-          transform: `translateX(-${index * 100}%)`,
-          transition: enableTransition ? 'transform 1s ease-in-out' : 'none',
-        }}
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        {slides.map((img, i) => (
-          <div key={i} className={styles.slide}>
+      <div className={styles.slides} aria-live="polite" aria-atomic="true">
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className={styles.slide}
+            style={{ opacity: i === index ? 1 : 0 }}
+          >
             <Image
               src={img.src}
               alt={img.alt || ''}
               fill
-              priority={i === 1}
+              priority={i === 0}
               sizes="100vw"
               style={{ objectFit: 'cover' }}
             />
