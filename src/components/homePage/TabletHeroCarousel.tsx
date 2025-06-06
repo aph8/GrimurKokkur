@@ -1,21 +1,19 @@
-// src/components/homePage/MobileHeroCarousel.tsx
+// src/components/homePage/TabletHeroCarousel.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import Image, { type StaticImageData } from 'next/image';
 import styles from '@/styles/HeroCarousel.module.scss';
 
-type Panel = { src: StaticImageData; alt?: string };
-
-interface MobileHeroCarouselProps {
-  panels: Panel[];
+interface TabletHeroCarouselProps {
+  panels: { src: StaticImageData; alt?: string }[];
   startImmediately?: boolean;
 }
-/**
- * Mobile version of the hero section with automatic carousel cycling.
- */
 
-export default function MobileHeroCarousel({ panels, startImmediately }: MobileHeroCarouselProps) {
+/**
+ * Tablet version of the hero section cycling through images like the mobile carousel.
+ */
+export default function TabletHeroCarousel({ panels, startImmediately }: TabletHeroCarouselProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {

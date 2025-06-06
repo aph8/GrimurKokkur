@@ -41,6 +41,12 @@
   align-items: center;
 }
 
+.siteName {
+  margin-left: v.$spacing-sm;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+}
+
 .controls {
   display: flex;
   align-items: center;

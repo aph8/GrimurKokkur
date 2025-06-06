@@ -13,7 +13,7 @@ interface DesktopHeroProps {
 
 export default function DesktopHero({ panels }: DesktopHeroProps) {
   return (
-    <header className={styles.hero} role="banner" aria-labelledby="hero-title">
+    <header className={styles.hero} role="banner">
       {panels.map((p, i) => {
         const isHumarsupa = /humarsupa_portrait/.test(p.src.src);
 
@@ -30,9 +30,6 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
           </div>
         );
       })}
-      <div className={styles.overlayContent}>
-        <h1 id="hero-title">Grímur Kokkur</h1>
-      </div>
     </header>
   );
 }
