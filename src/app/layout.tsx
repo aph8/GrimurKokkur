@@ -7,6 +7,11 @@ import Header from '@/components/functions/Header';
 import Footer from '@/components/functions/Footer';
 import { Analytics } from '@vercel/analytics/next';
 import BackToTop from '@/components/functions/BackToTop';
+import dynamic from 'next/dynamic';
+
+const ErrorBoundary = dynamic(() => import('@/components/ErrorBoundary'), {
+  ssr: false,
+});
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -64,14 +69,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Sleppa í efni
         </a>
 
-        <Header />
+        <ErrorBoundary>
+          <Header />
 
-        <main id="main-content">{children}</main>
+          <main id="main-content">{children}</main>
 
-        <Footer />
-        <Analytics />
+          <Footer />
+          <Analytics />
 
-        <BackToTop />
+          <BackToTop />
+        </ErrorBoundary>
       </body>
     </html>
   );
