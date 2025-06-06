@@ -12,20 +12,35 @@ interface HeroCarouselProps {
 
 export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarouselProps) {
   const [index, setIndex] = useState(0);
+  const [enableTransition, setEnableTransition] = useState(true);
 
   // Auto‐advance
   useEffect(() => {
     const tid = setInterval(() => {
-      setIndex((i) => (i + 1) % images.length);
+      setIndex((i) => i + 1);
     }, intervalMs);
     return () => clearInterval(tid);
   }, [images.length, intervalMs]);
+
+  useEffect(() => {
+    if (index === images.length) {
+      const timeout = setTimeout(() => {
+        setEnableTransition(false);
+        setIndex(0);
+      }, 1000); // match CSS transition duration
+      return () => clearTimeout(timeout);
+    }
+    setEnableTransition(true);
+  }, [index, images.length]);
 
   return (
     <div className={styles.carouselWrapper}>
       <div
         className={styles.slides}
-        style={{ transform: `translateX(-${index * 100}%)` }}
+        style={{
+          transform: `translateX(-${index * 100}%)`,
+          transition: enableTransition ? 'transform 1s ease-in-out' : 'none',
+        }}
         aria-live="polite"
         aria-atomic="true"
       >
@@ -41,6 +56,17 @@ export default function HeroCarousel({ images, intervalMs = 3000 }: HeroCarousel
             />
           </div>
         ))}
+        {/* duplicate first slide for seamless looping */}
+        <div className={styles.slide} aria-hidden="true">
+          <Image
+            src={images[0].src}
+            alt={images[0].alt || 'Slide 1'}
+            fill
+            priority={false}
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
       </div>
     </div>
   );
