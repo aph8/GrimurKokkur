@@ -132,8 +132,8 @@ const ALL_ABOUT_QUERY = gql`
       }
     }
   }
-/** Returns all "about" sections for the about page. */
 `;
+/** Returns all "about" sections for the about page. */
 
 export async function getAllAboutSections(): Promise<AboutSection[] | null> {
   try {
@@ -164,9 +164,9 @@ const ABOUT_BY_SLUG_QUERY = gql`
         url
       }
     }
-/** Fetches a single "about" section by slug. */
   }
 `;
+/** Fetches a single "about" section by slug. */
 
 export async function getAboutBySlug(slug: string): Promise<AboutSection | null> {
   try {
