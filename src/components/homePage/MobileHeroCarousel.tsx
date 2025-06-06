@@ -1,9 +1,8 @@
 // src/components/homePage/MobileHeroCarousel.tsx
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image, { type StaticImageData } from 'next/image';
-import useEmblaCarousel from 'embla-carousel-react';
 import styles from '@/styles/HeroCarousel.module.scss';
 
 type Panel = { src: StaticImageData; alt?: string };
@@ -13,22 +12,43 @@ interface MobileHeroCarouselProps {
 }
 
 export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) {
-  // 1) get Embla reference & API to control the carousel
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [index, setIndex] = useState(0);
+  const [enableTransition, setEnableTransition] = useState(true);
 
-  // 2) Auto‐advance every 3s
+  // Auto‐advance every 3s
   useEffect(() => {
-    if (!emblaApi) return;
     const interval = setInterval(() => {
-      emblaApi.scrollNext();
+      setIndex((i) => i + 1);
     }, 3000);
-
     return () => clearInterval(interval);
-  }, [emblaApi]);
+  }, []);
+
+  // When we slide past the last real panel, jump back to the first without
+  // animation once the transition completes. This creates an infinite loop that
+  // only moves forward.
+  useEffect(() => {
+    if (index === panels.length) {
+      const timeout = setTimeout(() => {
+        setEnableTransition(false);
+        setIndex(0);
+      }, 1000); // match CSS transition duration
+      return () => clearTimeout(timeout);
+    }
+
+    setEnableTransition(true);
+  }, [index, panels.length]);
 
   return (
-    <div className={styles.carouselWrapper} ref={emblaRef}>
-      <div className={styles.slides} aria-live="polite" aria-atomic="true">
+    <div className={styles.carouselWrapper}>
+      <div
+        className={styles.slides}
+        aria-live="polite"
+        aria-atomic="true"
+        style={{
+          transform: `translateX(-${index * 100}%)`,
+          transition: enableTransition ? 'transform 1s ease-in-out' : 'none',
+        }}
+      >
         {panels.map((p, i) => (
           <div key={i} className={styles.slide}>
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -43,6 +63,19 @@ export default function MobileHeroCarousel({ panels }: MobileHeroCarouselProps) 
             </div>
           </div>
         ))}
+        {/* Duplicate first panel to create seamless looping */}
+        <div className={styles.slide} aria-hidden="true">
+          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+            <Image
+              src={panels[0].src}
+              alt={panels[0].alt || 'Slide 1'}
+              fill
+              sizes="100vw"
+              priority={false}
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Overlay title on top of the carousel */}
