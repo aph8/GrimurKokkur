@@ -45,7 +45,7 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
                   blurUpThumb: img.blurUpThumb,
                 }))}
                 imageSizes="(max-width: 640px) 100vw, 600px"
-                imageQuality={75}
+                imageQuality={100}
               />
             </div>
           )}

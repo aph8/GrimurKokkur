@@ -1,4 +1,4 @@
-// src/components/Header.tsx
+// src/components/functions/Header.tsx
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -13,31 +13,19 @@ const navLinks = [
   { href: '/about', label: 'Um okkur' },
   { href: '/contact', label: 'Hafðu samband' },
 ];
-/**
- * Main site header with navigation.
- *
- * The header hides when the page title scrolls under it and provides a hamburger
- * menu for smaller screens.
- */
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
-
   const toggleMenu = useCallback(() => setMenuOpen((o) => !o), []);
 
   useEffect(() => {
     const onScroll = () => {
       const titleEl = document.getElementById('pageTitle');
       const headerEl = document.getElementById('siteHeader');
-      if (!titleEl || !headerEl) {
-        setHidden(false);
-        return;
-      }
-      const headerHeight = headerEl.offsetHeight;
-      const titleTop = titleEl.getBoundingClientRect().top;
-      setHidden(titleTop <= headerHeight);
+      if (!titleEl || !headerEl) { setHidden(false); return; }
+      setHidden(titleEl.getBoundingClientRect().top <= headerEl.offsetHeight);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -58,8 +46,9 @@ export default function Header() {
               alt="Grímur Kokkur logo"
               width={100}
               height={100}
-              priority
-              fetchPriority="high"
+              unoptimized               // ← disable loader so URL never changes
+              fetchPriority="high"      // ← explicit on both SSR & client
+              loading="eager"           // ← explicit on both SSR & client
             />
           </Link>
         </div>
@@ -68,7 +57,7 @@ export default function Header() {
           <button
             className={styles.hamburger}
             onClick={toggleMenu}
-            aria-label={menuOpen ? 'Loka aðalvalmynd' : 'Opna aðalvalmynd'}
+            aria-label={menuOpen ? 'Loka valmynd' : 'Opna valmynd'}
             aria-expanded={menuOpen}
             aria-controls="primary-navigation"
           >
