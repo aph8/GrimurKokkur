@@ -132,7 +132,6 @@ const ALL_ABOUT_QUERY = gql`
       }
     }
   }
-/** Returns all "about" sections for the about page. */
 `;
 
 export async function getAllAboutSections(): Promise<AboutSection[] | null> {
@@ -164,7 +163,6 @@ const ABOUT_BY_SLUG_QUERY = gql`
         url
       }
     }
-/** Fetches a single "about" section by slug. */
   }
 `;
 
