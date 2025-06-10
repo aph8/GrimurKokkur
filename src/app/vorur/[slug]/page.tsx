@@ -98,7 +98,7 @@ export default async function ProductPage({ params }: PageProps) {
                   <PhotoGallery
                     images={imagegallery}
                     imageSizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
-                    imageQuality={85}
+                    imageQuality={100}
                   />
                 </TextSection>
               </div>

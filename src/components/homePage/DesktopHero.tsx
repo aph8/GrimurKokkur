@@ -24,6 +24,7 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
               alt={p.alt || ''}
               priority={isHumarsupa}
               fill
+              quality={100}
               sizes="(max-width: 768px) 100vw, 25vw"
               style={{ objectFit: 'cover', objectPosition: 'center' }}
             />

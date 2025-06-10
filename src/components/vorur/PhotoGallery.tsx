@@ -23,7 +23,7 @@ interface PhotoGalleryProps {
 const PhotoGallery: React.FC<PhotoGalleryProps> = ({
   images,
   imageSizes = '(max-width: 640px) 100vw, 600px',
-  imageQuality = 75,
+  imageQuality = 100,
 }) => {
   const [index, setIndex] = useState(0);
   const total = images.length;

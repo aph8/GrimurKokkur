@@ -15,7 +15,13 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.top}>
         <div className={styles.column}>
-          <Image src="/Grimur_kokkur_logo.svg" alt="Grímur Kokkur logo" width={80} height={80} />
+          <Image
+            src="/Grimur_kokkur_logo.svg"
+            alt="Grímur Kokkur logo"
+            width={80}
+            height={80}
+            quality={100}
+          />
           <p className={styles.description}>
             Grímur kokkur er fjölskyldufyrirtæki í fremstu röð í framleiðslu á tilbúnum
             sjávarréttum.
@@ -25,6 +31,7 @@ export default function Footer() {
             alt="Framúrskarandi fyrirtæki 2024"
             width={256}
             height={68}
+            quality={100}
           />
 
           <div className={styles.socialIcons}>

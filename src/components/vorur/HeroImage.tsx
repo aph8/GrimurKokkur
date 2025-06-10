@@ -6,9 +6,9 @@ import styles from '@/styles/vorur/HeroImage.module.scss';
 interface HeroImageProps {
   src: string;
   alt?: string;
-  ratio?: string;    
-  blurDataURL?: string; 
-  className?: string;   
+  ratio?: string;
+  blurDataURL?: string;
+  className?: string;
 }
 /**
  * Displays a responsive hero image while avoiding CLS using padding.
@@ -22,13 +22,10 @@ const HeroImage: React.FC<HeroImageProps> = ({
   className = '',
 }) => {
   const [w, h] = ratio.split(':').map(Number);
-  const paddingBottom = `${(h / w) * 100}%`; 
+  const paddingBottom = `${(h / w) * 100}%`;
 
   return (
-    <div
-      className={`${styles.heroWrapper} ${className}`}
-      style={{ paddingBottom }}
-    >
+    <div className={`${styles.heroWrapper} ${className}`} style={{ paddingBottom }}>
       <Image
         src={src}
         alt={alt}
@@ -42,6 +39,7 @@ const HeroImage: React.FC<HeroImageProps> = ({
         blurDataURL={blurDataURL}
         priority
         unoptimized={false}
+        quality={100}
         className={styles.heroImage}
       />
     </div>
