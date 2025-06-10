@@ -46,6 +46,7 @@ export default function HeroCarousel({
               alt={img.alt || ''}
               fill
               priority={i === 0}
+              quality={100}
               sizes="100vw"
               style={{ objectFit: 'cover' }}
             />

@@ -42,6 +42,7 @@ export default function MobileHeroCarousel({ panels, startImmediately }: MobileH
                 src={p.src}
                 alt={p.alt || ''}
                 fill
+                quality={100}
                 sizes="100vw"
                 priority={i === 0}
                 style={{ objectFit: 'cover' }}

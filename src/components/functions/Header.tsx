@@ -52,6 +52,7 @@ export default function Header() {
               unoptimized            // ← lock URL on both SSR & client
               fetchPriority="high"   // ← explicit match
               loading="eager"        // ← explicit match
+
             />
           </Link>
         </div>
