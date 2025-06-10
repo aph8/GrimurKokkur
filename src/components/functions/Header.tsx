@@ -24,7 +24,10 @@ export default function Header() {
     const onScroll = () => {
       const titleEl = document.getElementById('pageTitle');
       const headerEl = document.getElementById('siteHeader');
-      if (!titleEl || !headerEl) { setHidden(false); return; }
+      if (!titleEl || !headerEl) {
+        setHidden(false);
+        return;
+      }
       setHidden(titleEl.getBoundingClientRect().top <= headerEl.offsetHeight);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -46,9 +49,10 @@ export default function Header() {
               alt="Grímur Kokkur logo"
               width={100}
               height={100}
-              unoptimized               // ← disable loader so URL never changes
-              fetchPriority="high"      // ← explicit on both SSR & client
-              loading="eager"           // ← explicit on both SSR & client
+              quality={100}
+              unoptimized // ← disable loader so URL never changes
+              fetchPriority="high" // ← explicit on both SSR & client
+              loading="eager" // ← explicit on both SSR & client
             />
           </Link>
         </div>

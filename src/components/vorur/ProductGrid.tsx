@@ -31,6 +31,7 @@ function ProductGrid({ products }: ProductGridProps) {
                   blurDataURL={product.image.blurUpThumb || '/placeholder.png'}
                   priority={i < 2}
                   unoptimized={false}
+                  quality={100}
                   className={styles.productImage}
                 />
               </div>
