@@ -49,10 +49,9 @@ export default function Header() {
               alt="Grímur Kokkur logo"
               width={100}
               height={100}
-              unoptimized            // ← lock URL on both SSR & client
-              fetchPriority="high"   // ← explicit match
-              loading="eager"        // ← explicit match
-
+              unoptimized          
+              fetchPriority="high"   
+              loading="eager"      
             />
           </Link>
         </div>
