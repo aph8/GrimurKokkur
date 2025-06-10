@@ -11,8 +11,8 @@ import fiskistangir from '../../../public/fiskistangir_portrait.jpg';
 import plokkfiskur from '../../../public/plokkfiskur_portrait.jpg';
 
 const panels = [
-  { src: humarsupa, alt: 'Humarsúpa' },
   { src: fiskibollur, alt: 'Fiskibollur' },
+  { src: humarsupa, alt: 'Humarsúpa' },
   { src: fiskistangir, alt: 'Fiskistangir' },
   { src: plokkfiskur, alt: 'Plokkfiskur' },
 ];

@@ -24,7 +24,10 @@ export default function Header() {
     const onScroll = () => {
       const titleEl = document.getElementById('pageTitle');
       const headerEl = document.getElementById('siteHeader');
-      if (!titleEl || !headerEl) { setHidden(false); return; }
+      if (!titleEl || !headerEl) {
+        setHidden(false);
+        return;
+      }
       setHidden(titleEl.getBoundingClientRect().top <= headerEl.offsetHeight);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -46,9 +49,9 @@ export default function Header() {
               alt="Grímur Kokkur logo"
               width={100}
               height={100}
-              unoptimized               // ← disable loader so URL never changes
-              fetchPriority="high"      // ← explicit on both SSR & client
-              loading="eager"           // ← explicit on both SSR & client
+              unoptimized            // ← lock URL on both SSR & client
+              fetchPriority="high"   // ← explicit match
+              loading="eager"        // ← explicit match
             />
           </Link>
         </div>
@@ -57,7 +60,7 @@ export default function Header() {
           <button
             className={styles.hamburger}
             onClick={toggleMenu}
-            aria-label={menuOpen ? 'Loka valmynd' : 'Opna valmynd'}
+            aria-label={menuOpen ? 'Loka aðalvalmynd' : 'Opna aðalvalmynd'}
             aria-expanded={menuOpen}
             aria-controls="primary-navigation"
           >
@@ -72,17 +75,17 @@ export default function Header() {
             role="navigation"
             aria-label="Aðalvalmynd"
           >
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+            {navLinks.map(({ href, label }) => {
+              const isActive = pathname === href;
               return (
                 <Link
-                  key={link.href}
-                  href={link.href}
+                  key={href}
+                  href={href}
                   className={`${styles.tab} ${isActive ? styles.activeLink : ''}`}
                   aria-current={isActive ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
                 >
-                  {link.label}
+                  {label}
                 </Link>
               );
             })}
