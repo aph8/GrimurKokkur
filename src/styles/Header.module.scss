@@ -2,8 +2,6 @@
 @use './variables' as v;
 @use './mixins' as m;
 
-
-
 .header {
   position: sticky;
   top: 0;
@@ -49,8 +47,8 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: black;
-  transition: color 0.2s ease;
   white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
 .controls {
@@ -59,6 +57,7 @@
   gap: v.$spacing-lg;
 }
 
+/* Nav links */
 .nav {
   display: flex;
   gap: clamp(v.$spacing-sm, 4vw, v.$spacing-lg);
@@ -87,6 +86,7 @@
   border-bottom-color: black !important;
 }
 
+/* Hamburger icon */
 .hamburger {
   display: none;
   background: transparent;
@@ -104,18 +104,11 @@
   background-color: var(--foreground);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+.barOpen:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.barOpen:nth-child(2) { opacity: 0; }
+.barOpen:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-.barOpen:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-.barOpen:nth-child(2) {
-  opacity: 0;
-}
-.barOpen:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-}
-
-/* Collapse to hamburger at ≤1024px */
+/* Collapse into hamburger at ≤1024px */
 @media (max-width: 1024px) {
   .nav {
     display: none !important;
@@ -125,7 +118,7 @@
   }
 }
 
-/* Slide‐down mobile menu at ≤768px */
+/* Slide-down mobile menu at ≤768px */
 @media (max-width: 768px) {
   .nav {
     position: absolute;
@@ -155,19 +148,7 @@
   }
 }
 
-@media (max-width: 400px) {
-  /* hide the entire nav bar under 400px */
-  .nav {
-    display: none !important;
-  }
-  /* ensure the hamburger still shows */
-  .hamburger {
-    display: flex !important;
-  }
-}
-
-
-/* Desktop (≥920px) restores the horizontal menu */
+/* Desktop layout at ≥920px */
 @media (min-width: 920px) {
   .nav {
     display: flex !important;
@@ -181,5 +162,12 @@
   }
 }
 
-
-
+/* Hide nav entirely under 400px */
+@media (max-width: 400px) {
+  .nav {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
+  }
+}
