@@ -2,18 +2,30 @@
 @use './variables' as v;
 @use './mixins' as m;
 
+/* ————————————————————————————————————————————— */
+/* 1. At very narrow widths (<400px), hide all nav links */
+@media (max-width: 400px) {
+  .nav a {
+    display: none;
+    pointer-events: none;
+  }
+}
+
+/* ————————————————————————————————————————————— */
+/* Rest of your styles… */
+
 .header {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #ffffff !important;
+  background-color: #fff !important;
   color: var(--header-text);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   transition: transform 0.25s ease-in-out;
 
   @media (prefers-color-scheme: dark) {
-    background-color: #000000 !important;
+    background-color: #000 !important;
   }
 }
 
@@ -57,7 +69,6 @@
   gap: v.$spacing-lg;
 }
 
-/* Nav links */
 .nav {
   display: flex;
   gap: clamp(v.$spacing-sm, 4vw, v.$spacing-lg);
@@ -86,7 +97,6 @@
   border-bottom-color: black !important;
 }
 
-/* Hamburger icon */
 .hamburger {
   display: none;
   background: transparent;
@@ -115,7 +125,7 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* Mobile / Tablet collapse */
+/* Collapse to hamburger at ≤1024px */
 @media (max-width: 1024px) {
   .nav {
     display: none !important;
@@ -125,14 +135,14 @@
   }
 }
 
-/* Slide-down mobile menu */
+/* Slide‐down mobile menu at ≤768px */
 @media (max-width: 768px) {
   .nav {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #ffffff !important;
+    background-color: #fff !important;
     flex-direction: column;
     gap: 0;
     overflow: hidden;
@@ -140,7 +150,7 @@
     transition: max-height 0.3s ease;
 
     @media (prefers-color-scheme: dark) {
-      background-color: #000000 !important;
+      background-color: #000 !important;
     }
 
     a {
@@ -155,7 +165,7 @@
   }
 }
 
-/* Desktop (restore horizontal nav) */
+/* Desktop (≥920px) restores the horizontal menu */
 @media (min-width: 920px) {
   .nav {
     display: flex !important;
@@ -166,13 +176,5 @@
   }
   .hamburger {
     display: none;
-  }
-}
-
-
-@media (max-width: 400px) {
-  .nav a {
-    display: none;
-    pointer-events: none;
   }
 }
