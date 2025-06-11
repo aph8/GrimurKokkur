@@ -168,4 +168,11 @@
   .hamburger {
     display: none;
   }
+
+  @media (max-width: 400px) {
+    .nav a {
+      display: none;
+      pointer-events: none;
+    }
+  }
 }
