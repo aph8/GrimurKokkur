@@ -31,12 +31,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="is">
       <head>
-        {/* Preload your big portraits */}
-        
-        <link rel="preload" as="image" href="/fiskibollur_portrait.jpg" media="(min-width:769px)" />
-        <link rel="preload" as="image" href="/humarsupa_portrait.jpg" media="(min-width:769px)" />
-        <link rel="preload" as="image" href="/fiskistangir_portrait.jpg" media="(min-width:769px)" />
-        <link rel="preload" as="image" href="/plokkfiskur_portrait.jpg" media="(min-width:769px)" />
+        {/* Prefetch large portraits for later use without warnings */}
+        <link
+          rel="prefetch"
+          as="image"
+          href="/fiskibollur_portrait.jpg"
+          media="(min-width:769px)"
+        />
+        <link
+          rel="prefetch"
+          as="image"
+          href="/humarsupa_portrait.jpg"
+          media="(min-width:769px)"
+        />
+        <link
+          rel="prefetch"
+          as="image"
+          href="/fiskistangir_portrait.jpg"
+          media="(min-width:769px)"
+        />
+        <link
+          rel="prefetch"
+          as="image"
+          href="/plokkfiskur_portrait.jpg"
+          media="(min-width:769px)"
+        />
 
         {/* Preconnect for Google Maps */}
         <link rel="preconnect" href="https://maps.googleapis.com" />
@@ -44,7 +63,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://maps.google.com" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <a href="#main-content" className="skip-link">Sleppa í efni</a>
+        <a href="#main-content" className="skip-link">
+          Sleppa í efni
+        </a>
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
