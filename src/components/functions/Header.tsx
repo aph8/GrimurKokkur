@@ -3,7 +3,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import styles from '@/styles/Header.module.scss';
 
@@ -18,7 +17,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
-  const toggleMenu = useCallback(() => setMenuOpen((o) => !o), []);
+  const toggleMenu = useCallback(() => setMenuOpen(o => !o), []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -44,16 +43,13 @@ export default function Header() {
       <div className={styles.container}>
         <div className={styles.branding}>
           <Link href="/" className={styles.logo} aria-label="Forsíða">
-            <Image
+            <img
               src="/Grimur_kokkur_logo.svg"
               alt="Grímur Kokkur logo"
               width={100}
               height={100}
-              unoptimized          
-              fetchPriority={undefined}   
-              loading="lazy"      
             />
-            <span className={styles.logoText}>Grímur Kokkur</span>
+            <span className={styles.logoLink}>Grímur Kokkur</span>
           </Link>
         </div>
 
@@ -82,7 +78,7 @@ export default function Header() {
                 <Link
                   key={href}
                   href={href}
-                  className={`${styles.tab} ${isActive ? styles.activeLink : ''}`}
+                  className={isActive ? styles.activeLink : undefined}
                   aria-current={isActive ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
                 >

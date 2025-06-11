@@ -2,21 +2,18 @@
 @use './variables' as v;
 @use './mixins' as m;
 
-$bp-mobile: 480px;
-$bp-tablet: 768px;
-
 .header {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #fff !important;
+  background-color: #ffffff !important;
   color: var(--header-text);
-  box-shadow: 0 clamp(1px, 0.2vw, 3px) clamp(2px, 0.4vw, 6px) rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   transition: transform 0.25s ease-in-out;
 
   @media (prefers-color-scheme: dark) {
-    background-color: #000 !important;
+    background-color: #000000 !important;
   }
 }
 
@@ -27,17 +24,14 @@ $bp-tablet: 768px;
 .container {
   max-width: 1800px;
   margin: 0 auto;
-  padding: 0 clamp(v.$spacing-xs, 5vw, v.$spacing-lg);
-  display: grid;
-  grid-template-areas:
-    "branding controls";
-  grid-template-columns: auto 1fr;
+  padding: 0 clamp(v.$spacing-sm, 5vw, v.$spacing-lg);
+  display: flex;
   align-items: center;
-  height: clamp(4rem, 8vw, 8rem);
+  justify-content: space-between;
+  height: 8rem;
 }
 
 .branding {
-  grid-area: branding;
   display: flex;
   align-items: center;
 }
@@ -45,38 +39,44 @@ $bp-tablet: 768px;
 .logo {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .logoLink {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+  margin-left: 0.75rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: 700;
   color: var(--logo-text);
   transition: color 0.2s ease;
-
-  img {
-    width: clamp(2rem, 4vw, 3rem);
-    height: auto;
-    object-fit: contain;
-  }
-}
-
-.logoText {
-  margin-left: clamp(0.5rem, 2vw, 1rem);
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  font-weight: 700;
-  color: var(--foreground);
-  line-height: 1;
   white-space: nowrap;
 }
 
 .controls {
-  grid-area: controls;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: clamp(v.$spacing-sm, 3vw, v.$spacing-lg);
+  gap: v.$spacing-lg;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(v.$spacing-sm, 4vw, v.$spacing-lg);
+  border-bottom: 1px solid #ddd;
+
+  a {
+    position: relative;
+    padding: 0 v.$spacing-sm;
+    font-size: clamp(1.125rem, 3vw, 1.25rem);
+    color: var(--nav-link);
+    text-decoration: none;
+    font-weight: 700;
+    transition: border-bottom-color 0.2s ease;
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: black;
+    }
+  }
 }
 
 .hamburger {
@@ -85,103 +85,35 @@ $bp-tablet: 768px;
   border: none;
   cursor: pointer;
   flex-direction: column;
-  gap: clamp(4px, 1vw, 8px);
-  padding: clamp(v.$spacing-xs, 2vw, v.$spacing-sm);
+  gap: 6px;
+  padding: v.$spacing-sm;
 }
 
 .bar,
 .barOpen {
-  width: clamp(1.5rem, 4vw, 2rem);
-  height: clamp(2px, 0.5vw, 4px);
+  width: 25px;
+  height: 3px;
   background-color: var(--foreground);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .barOpen:nth-child(1) {
-  transform: translateY(clamp(4px, 1vw, 8px)) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
 }
 .barOpen:nth-child(2) {
   opacity: 0;
 }
 .barOpen:nth-child(3) {
-  transform: translateY(-clamp(4px, 1vw, 8px)) rotate(-45deg);
-}
-
-.nav {
-  display: flex;
-  gap: clamp(v.$spacing-xs, 3vw, v.$spacing-lg);
-  border-bottom: clamp(1px, 0.2vw, 2px) solid #ddd;
-
-  a {
-    position: relative;
-    padding: 0 clamp(v.$spacing-xs, 1.5vw, v.$spacing-sm);
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--nav-link);
-    text-decoration: none;
-    font-weight: 700;
-    transition: border-bottom-color 0.2s ease;
-    border-bottom: clamp(2px, 0.4vw, 2px) solid transparent;
-
-    &:hover,
-    &:focus {
-      border-bottom-color: var(--nav-link-hover, black);
-    }
-  }
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .activeLink {
-  color: var(--nav-link-active, black);
-  font-weight: 800;
-  border-bottom-color: var(--nav-link-active, black) !important;
+  color: var(--nav-link);
+  font-weight: 600;
+  border-bottom-color: black !important;
 }
 
-/* MOBILE (≤480px) */
-@media (max-width: $bp-mobile) {
-  .container {
-    grid-template-areas:
-      "branding hamburger"
-      "nav nav";
-    grid-template-columns: auto auto;
-    row-gap: clamp(v.$spacing-xs, 2vw, v.$spacing-sm);
-    height: auto;
-    padding: clamp(v.$spacing-sm, 4vw, v.$spacing-md) clamp(v.$spacing-sm, 4vw, v.$spacing-lg);
-  }
-
-  .controls {
-    justify-content: flex-start;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .nav {
-    grid-area: nav;
-    flex-direction: column;
-    width: 100%;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease;
-
-    a {
-      padding: clamp(v.$spacing-xs, 2vw, v.$spacing-sm) clamp(v.$spacing-sm, 5vw, v.$spacing-lg);
-      border-top: clamp(1px, 0.2vw, 1px) solid #eee;
-    }
-  }
-
-  .navOpen {
-    max-height: 1000px;
-  }
-}
-
-/* TABLET (481px–768px) */
-@media (min-width: ($bp-mobile + 1)) and (max-width: $bp-tablet) {
-  .container {
-    grid-template-areas: "branding controls";
-    grid-template-columns: 1fr auto;
-    padding: clamp(v.$spacing-sm, 3vw, v.$spacing-lg);
-  }
-
+@media (max-width: 768px) {
   .hamburger {
     display: flex;
   }
@@ -189,48 +121,40 @@ $bp-tablet: 768px;
   .nav {
     position: absolute;
     top: 100%;
+    left: 0;
     right: 0;
-    background-color: #fff !important;
+    background-color: #ffffff !important;
     flex-direction: column;
-    width: clamp(200px, 50vw, 300px);
-    border: none;
-    box-shadow: 0 clamp(2px, 0.5vw, 4px) clamp(4px, 1vw, 8px) rgba(0, 0, 0, 0.1);
+    gap: 0;
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease;
 
+    @media (prefers-color-scheme: dark) {
+      background-color: #000000 !important;
+    }
+
     a {
-      padding: clamp(v.$spacing-sm, 2vw, v.$spacing-md);
-      border-bottom: clamp(1px, 0.2vw, 2px) solid transparent;
+      padding: v.$spacing-md clamp(v.$spacing-sm, 5vw, v.$spacing-lg);
+      border-top: 1px solid #eee;
+      border-bottom: 3px solid transparent;
     }
   }
 
   .navOpen {
-    max-height: 1000px;
+    max-height: 500px;
   }
 }
 
-/* DESKTOP (≥769px) */
-@media (min-width: ($bp-tablet + 1)) {
-  .hamburger {
-    display: none;
-  }
-
+@media (min-width: 769px) {
   .nav {
     position: static;
-    flex-direction: row;
     max-height: none !important;
     background: none !important;
-    border: none;
     overflow: visible;
+  }
 
-    a {
-      border-bottom: clamp(2px, 0.3vw, 3px) solid transparent;
-
-      &:hover,
-      &:focus {
-        border-bottom-color: var(--nav-link-hover, black);
-      }
-    }
+  .hamburger {
+    display: none;
   }
 }
