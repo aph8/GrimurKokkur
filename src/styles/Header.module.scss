@@ -44,7 +44,8 @@
 
 .logoLink {
   margin-left: 0.75rem;
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  /* fixed size—no clamp here anymore */
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--logo-text);
   transition: color 0.2s ease;
@@ -122,18 +123,6 @@
   }
   .hamburger {
     display: flex;
-  }
-}
-
-@media (max-width: 768px) {
-  .logoLink {
-    font-size: 1rem !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .logoLink {
-    display: none !important;
   }
 }
 
