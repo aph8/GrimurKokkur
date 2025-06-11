@@ -155,6 +155,18 @@
   }
 }
 
+@media (max-width: 400px) {
+  /* hide the entire nav bar under 400px */
+  .nav {
+    display: none !important;
+  }
+  /* ensure the hamburger still shows */
+  .hamburger {
+    display: flex !important;
+  }
+}
+
+
 /* Desktop (≥920px) restores the horizontal menu */
 @media (min-width: 920px) {
   .nav {
@@ -170,14 +182,4 @@
 }
 
 
-@media (max-width: 400px) {
-  /* hide the entire nav bar under 400px */
-  .nav {
-    display: none !important;
-  }
-  /* ensure the hamburger still shows */
-  .hamburger {
-    display: flex !important;
-  }
-}
 
