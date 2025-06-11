@@ -44,7 +44,6 @@
 
 .logoLink {
   margin-left: 0.75rem;
-  /* fixed size—no clamp here anymore */
   font-size: 1.5rem;
   font-weight: 700;
   color: black;
@@ -68,7 +67,7 @@
     position: relative;
     padding: 0 v.$spacing-sm;
     font-size: clamp(1.125rem, 3vw, 1.25rem);
-    color: black;      
+    color: black;
     text-decoration: none;
     font-weight: 700;
     transition: border-bottom-color 0.2s ease;
@@ -82,7 +81,7 @@
 }
 
 .activeLink {
-  color: var(--nav-link);
+  color: black;
   font-weight: 600;
   border-bottom-color: black !important;
 }
@@ -126,7 +125,7 @@
   }
 }
 
-/* Slide‐down mobile menu */
+/* Slide-down mobile menu */
 @media (max-width: 768px) {
   .nav {
     position: absolute;
@@ -168,11 +167,12 @@
   .hamburger {
     display: none;
   }
+}
 
-  @media (max-width: 400px) {
-    .nav a {
-      display: none;
-      pointer-events: none;
-    }
+
+@media (max-width: 400px) {
+  .nav a {
+    display: none;
+    pointer-events: none;
   }
 }
