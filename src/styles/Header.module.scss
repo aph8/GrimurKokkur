@@ -2,17 +2,7 @@
 @use './variables' as v;
 @use './mixins' as m;
 
-/* ————————————————————————————————————————————— */
-/* 1. At very narrow widths (<400px), hide all nav links */
-@media (max-width: 400px) {
-  .nav a {
-    display: none;
-    pointer-events: none;
-  }
-}
 
-/* ————————————————————————————————————————————— */
-/* Rest of your styles… */
 
 .header {
   position: sticky;
@@ -178,3 +168,16 @@
     display: none;
   }
 }
+
+
+@media (max-width: 400px) {
+  /* hide the entire nav bar under 400px */
+  .nav {
+    display: none !important;
+  }
+  /* ensure the hamburger still shows */
+  .hamburger {
+    display: flex !important;
+  }
+}
+
