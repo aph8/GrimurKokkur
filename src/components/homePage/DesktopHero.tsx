@@ -31,9 +31,6 @@ export default function DesktopHero({ panels }: DesktopHeroProps) {
           </div>
         );
       })}
-      <div className={styles.overlayContent}>
-        <h1 id="hero-title">Grímur Kokkur</h1>
-      </div>
     </header>
   );
 }

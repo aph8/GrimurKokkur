@@ -51,10 +51,6 @@ export default function MobileHeroCarousel({ panels, startImmediately }: MobileH
           </div>
         ))}
       </div>
-
-      <div className={styles.overlayContent}>
-        <h1 id="hero-title">Grímur Kokkur</h1>
-      </div>
     </div>
   );
 }

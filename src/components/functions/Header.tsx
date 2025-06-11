@@ -50,9 +50,10 @@ export default function Header() {
               width={100}
               height={100}
               unoptimized          
-              fetchPriority="high"   
-              loading="eager"      
+              fetchPriority={undefined}   
+              loading="lazy"      
             />
+            <span className={styles.logoText}>Grímur Kokkur</span>
           </Link>
         </div>
 
