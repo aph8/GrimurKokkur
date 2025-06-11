@@ -1,4 +1,3 @@
-// src/components/functions/Header.tsx
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
