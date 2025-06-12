@@ -87,10 +87,10 @@
 }
 
 .contactButton {
-  /* Only the button itself is clickable */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  /* Görum takkann block-level 100% breiddar */
+  display: block;
+  width: 100%;
+  text-align: center;
 
   margin-top: v.$spacing-md;
   background: var(--foreground);
@@ -107,8 +107,6 @@
 }
 
 .bottom {
-  /* no dividing line here, content-footer separation is gone */
-
   padding-top: v.$spacing-md;
   display: flex;
   align-items: center;

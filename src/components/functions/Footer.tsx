@@ -71,6 +71,8 @@ export default function Footer() {
           <p>
             <strong>Kennitala:</strong> 531205-1460
           </p>
+
+          {/* Nú er það bara þetta Link-element sem er smellanlegt, og dettur full-breidd */}
           <Link href="/contact" className={styles.contactButton}>
             Hafa samband
           </Link>
