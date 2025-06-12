@@ -2,31 +2,23 @@
 @use './mixins'    as m;
 
 .footer {
-  /* Pale-gray footer in light mode, dark in dark mode */
   background: var(--accent-bg);
   @media (prefers-color-scheme: dark) {
     background: var(--foreground);
-  }
-
-  /* Main text color */
-  color: var(--foreground);
-  @media (prefers-color-scheme: dark) {
     color: var(--background);
   }
+  color: var(--foreground);
 
   padding: clamp(2rem, 5vw, 3rem) v.$spacing-sm;
   font-size: 0.9rem;
   line-height: 1.5;
 
-  /* Blue phone + email links */
   a[href^='tel'],
   a[href^='mailto'] {
     color: #0070f3;
     font-weight: 600;
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
+    &:hover { text-decoration: underline; }
   }
 }
 
@@ -43,18 +35,14 @@
 
   @media (min-width: 769px) and (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
-    .column:last-child {
-      grid-column: 1 / -1;
-    }
+    .column:last-child { grid-column: 1 / -1; }
   }
 }
 
 .column {
   display: flex;
   flex-direction: column;
-
-  h2,
-  h3 {
+  h2, h3 {
     margin-bottom: v.$spacing-sm;
     font-size: 1.1rem;
     color: inherit;
@@ -72,28 +60,37 @@
   margin-top: v.$spacing-md;
 }
 
+/* Base icon wrapper */
 .icon {
-  /* Solid black frame */
-  background: #000;
   border-radius: 6px;
   padding: v.$spacing-sm;
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  svg {
-    /* White glyph */
-    color: #fff;
-  }
+/* Instagram: gradient background */
+.instagramIcon {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+/* Facebook: solid black */
+.facebookIcon {
+  background: #000;
 }
 
 .contactButton {
-  /* Intrinsic width (no 100%), only button area clickable */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: auto;
-
   margin-top: v.$spacing-md;
   background: var(--foreground);
   color: var(--background);
@@ -102,10 +99,7 @@
   border-radius: v.$radius-md;
   cursor: pointer;
   transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 0.8;
-  }
+  &:hover { opacity: 0.8; }
 }
 
 .bottom {
@@ -130,7 +124,6 @@
   display: flex;
   align-items: center;
   gap: v.$spacing-lg;
-
   @media (max-width: 768px) {
     flex-direction: column;
     gap: v.$spacing-sm;
@@ -140,15 +133,12 @@
 .navLinks {
   display: flex;
   gap: v.$spacing-lg;
-
   a {
     color: var(--foreground);
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s ease;
-    &:hover {
-      opacity: 0.8;
-    }
+    &:hover { opacity: 0.8; }
   }
 }
 
@@ -160,7 +150,5 @@
   display: flex;
   align-items: center;
   transition: opacity 0.2s ease;
-  &:hover {
-    opacity: 0.8;
-  }
+  &:hover { opacity: 0.8; }
 }
