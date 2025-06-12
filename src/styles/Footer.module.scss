@@ -2,7 +2,7 @@
 @use './mixins'    as m;
 
 .footer {
-  /* Distinct pale‐gray band in light mode, dark band in dark mode */
+  /* Pale‐gray band in light mode, dark band in dark mode */
   background: var(--accent-bg);
   @media (prefers-color-scheme: dark) {
     background: var(--foreground);
@@ -24,7 +24,6 @@
     color: #0070f3;
     font-weight: 600;
     text-decoration: none;
-
     &:hover {
       text-decoration: underline;
     }
@@ -44,7 +43,6 @@
 
   @media (min-width: 769px) and (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
-
     .column:last-child {
       grid-column: 1 / -1;
     }
@@ -55,7 +53,8 @@
   display: flex;
   flex-direction: column;
 
-  h3 {
+  h3,
+  h2 {
     margin-bottom: v.$spacing-sm;
     font-size: 1.1rem;
     color: inherit;
@@ -80,17 +79,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  svg {
-    color: var(--foreground);
-  }
 }
 
 .contactButton {
-  /* Görum takkann block-level 100% breiddar */
-  display: block;
-  width: 100%;
-  text-align: center;
+  /* make the button itself auto‐width again */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   margin-top: v.$spacing-md;
   background: var(--foreground);
@@ -144,7 +139,6 @@
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s ease;
-
     &:hover {
       opacity: 0.8;
     }
@@ -159,7 +153,6 @@
   display: flex;
   align-items: center;
   transition: opacity 0.2s ease;
-
   &:hover {
     opacity: 0.8;
   }

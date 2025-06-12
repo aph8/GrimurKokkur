@@ -10,6 +10,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
+        {/* Column 1 */}
         <div className={styles.column}>
           <Image
             src="/Grimur_kokkur_logo.svg"
@@ -37,7 +38,8 @@ export default function Footer() {
               aria-label="Instagram"
             >
               <div className={styles.icon}>
-                <Instagram size={24} />
+                {/* Instagram brand color */}
+                <Instagram size={24} color="#E4405F" />
               </div>
             </Link>
             <Link
@@ -47,12 +49,14 @@ export default function Footer() {
               aria-label="Facebook"
             >
               <div className={styles.icon}>
-                <Facebook size={24} />
+                {/* Facebook brand color */}
+                <Facebook size={24} color="#1877F2" />
               </div>
             </Link>
           </div>
         </div>
 
+        {/* Column 2 */}
         <div className={styles.column}>
           <h2>Hafa samband</h2>
           <p>
@@ -71,13 +75,12 @@ export default function Footer() {
           <p>
             <strong>Kennitala:</strong> 531205-1460
           </p>
-
-          {/* Nú er það bara þetta Link-element sem er smellanlegt, og dettur full-breidd */}
           <Link href="/contact" className={styles.contactButton}>
             Hafa samband
           </Link>
         </div>
 
+        {/* Column 3 */}
         <div className={styles.column}>
           <h3>Opnunartími</h3>
           <p>
@@ -93,6 +96,7 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Bottom row */}
       <div className={styles.bottom}>
         <div className={styles.bottomLeft}>
           Allur réttur áskilinn. {new Date().getFullYear()}. Grímur Kokkur
