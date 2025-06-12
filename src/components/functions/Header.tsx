@@ -16,7 +16,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
-  const toggleMenu = useCallback(() => setMenuOpen(o => !o), []);
+  const toggleMenu = useCallback(() => setMenuOpen((o) => !o), []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -42,12 +42,7 @@ export default function Header() {
       <div className={styles.container}>
         <div className={styles.branding}>
           <Link href="/" className={styles.logo} aria-label="Forsíða">
-            <img
-              src="/Grimur_kokkur_logo.svg"
-              alt="Grímur Kokkur logo"
-              width={100}
-              height={100}
-            />
+            <img src="/Grimur_kokkur_logo.svg" alt="Grímur Kokkur logo" width={100} height={100} />
             <span className={styles.logoLink}>Grímur Kokkur</span>
           </Link>
         </div>

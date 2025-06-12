@@ -1,3 +1,5 @@
+// src/styles/global.scss
+
 @use 'sass:color';
 @use './variables' as *;
 @use './mixins' as *;
@@ -6,6 +8,7 @@
 @use './helpers' as *;
 @use './base';
 
+// 1) Export your Sass palette into CSS vars
 :root {
   --background: #{$color-background};
   --foreground: #{$color-foreground};
@@ -13,14 +16,18 @@
   --accent-bg: #{$color-accent-bg};
   --primary: #{$color-primary};
   --primary-light: #{$color-primary-light};
+  --success: #{$color-success};
+  --error: #{$color-error};
 }
 
+// 2) Dark-mode overrides
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
     --card-bg: #1a1a1a;
     --accent-bg: #222222;
+    // --primary, --primary-light, --success and --error remain as above
   }
 }
 
@@ -80,7 +87,7 @@ a {
   transition: none;
 
   &:focus {
-    outline: 3px solid black;
+    outline: 3px solid var(--foreground);
     outline-offset: 2px;
   }
 }
@@ -88,13 +95,13 @@ a {
 button:focus,
 input:focus,
 textarea:focus {
-  outline: 3px solid black;
+  outline: 3px solid var(--foreground);
   outline-offset: 2px;
 }
 
 .tabs {
   display: flex;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--accent-bg);
 
   .tab {
     padding: 0.5rem 1rem;
@@ -105,11 +112,11 @@ textarea:focus {
 
     &:hover,
     &:focus {
-      border-bottom-color: black;
+      border-bottom-color: var(--foreground);
     }
 
     &.active {
-      border-bottom-color: black;
+      border-bottom-color: var(--foreground);
       font-weight: 600;
     }
   }

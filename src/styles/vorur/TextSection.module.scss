@@ -1,4 +1,5 @@
 // src/styles/vorur/TextSection.module.scss
+
 @use '../variables' as v;
 @use '../mixins' as m;
 
@@ -39,11 +40,13 @@
   p {
     margin-bottom: v.$spacing-md;
   }
+
   ul,
   ol {
     margin: v.$spacing-md 0;
     padding-left: v.$spacing-md;
   }
+
   strong {
     color: var(--foreground);
   }

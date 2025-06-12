@@ -1,4 +1,5 @@
 // src/styles/vorur/NutritionTable.module.scss
+
 @use '../variables' as v;
 @use '../mixins' as m;
 
@@ -14,13 +15,15 @@
   border-spacing: 0;
   border-radius: v.$radius-sm;
   overflow: hidden;
-  background: v.$color-primary;
-  color: v.$color-foreground;
+
+  background: var(--primary);
+  color: var(--foreground);
+
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-size: clamp(0.85rem, 1.5vw, 1rem);
 
   thead {
-    background: v.$color-primary-light;
+    background: var(--primary-light);
 
     th {
       padding: v.$spacing-sm v.$spacing-md;
@@ -28,31 +31,33 @@
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.025em;
-      border-bottom: 2px solid v.$color-foreground;
+      border-bottom: 2px solid var(--foreground);
     }
   }
 
   tbody {
     tr {
       &:nth-child(even) {
-        background: v.$color-primary-light;
+        background: var(--accent-bg);
       }
+
       &:hover {
         background: rgba(0, 0, 0, 0.05);
       }
 
       td {
         padding: v.$spacing-xs v.$spacing-md;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid var(--accent-bg);
       }
 
       &.subRow {
+        background: var(--accent-bg);
+
         td:first-child {
           padding-left: v.$spacing-lg;
           font-style: italic;
-          color: #555;
+          color: var(--foreground);
         }
-        background: rgba(0, 0, 0, 0.03);
       }
     }
   }

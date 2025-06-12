@@ -7,8 +7,8 @@
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: var(--color-background) !important;
-  color: var(--color-foreground);
+  background-color: var(--background) !important;
+  color: var(--foreground);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   transition: transform 0.25s ease-in-out;
@@ -43,7 +43,7 @@
   margin-left: 0.75rem;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-foreground);
+  color: var(--foreground);
   white-space: nowrap;
   transition: color 0.2s ease;
 }
@@ -58,28 +58,29 @@
 .nav {
   display: flex;
   gap: clamp(v.$spacing-sm, 4vw, v.$spacing-lg);
-  border-bottom: 1px solid var(--color-accent-bg);
+  border-bottom: 1px solid var(--accent-bg);
 
   a {
     position: relative;
     padding: 0 v.$spacing-sm;
     font-size: clamp(1.125rem, 3vw, 1.25rem);
-    color: var(--color-foreground);
+    color: var(--foreground);
     text-decoration: none;
     font-weight: 700;
     border-bottom: 2px solid transparent;
     transition: border-bottom-color 0.2s ease;
+
     &:hover,
     &:focus {
-      border-bottom-color: var(--color-foreground);
+      border-bottom-color: var(--foreground);
     }
   }
 }
 
 .activeLink {
-  color: var(--color-foreground);
+  color: var(--foreground);
   font-weight: 600;
-  border-bottom-color: var(--color-foreground) !important;
+  border-bottom-color: var(--foreground) !important;
 }
 
 /* Hamburger icon */
@@ -97,13 +98,21 @@
 .barOpen {
   width: 25px;
   height: 3px;
-  background-color: var(--color-foreground);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  background: var(--foreground);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
-.barOpen:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.barOpen:nth-child(2) { opacity: 0; }
-.barOpen:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.barOpen:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.barOpen:nth-child(2) {
+  opacity: 0;
+}
+.barOpen:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
 
 /* Collapse into hamburger BELOW this width */
 @media (max-width: 1024px) {
@@ -121,14 +130,14 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--color-background) !important;
+    background-color: var(--background) !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: max-height 0.3s ease;
     z-index: 999;
 
     a {
       padding: v.$spacing-md clamp(v.$spacing-sm, 5vw, v.$spacing-lg);
-      border-top: 1px solid var(--color-accent-bg);
+      border-top: 1px solid var(--accent-bg);
       border-bottom: 3px solid transparent;
     }
   }
