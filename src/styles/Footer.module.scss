@@ -4,11 +4,12 @@
 @use './mixins'    as m;
 
 .footer {
-  /* distinct band below your main content */
-  background: var(--accent-bg);
-  border-top: 1px solid var(--background);
+  /* invert the page colors for max contrast */
+  background: var(--foreground);
+  color:      var(--background);
+  /* strong accent top border */
+  border-top: 4px solid var(--primary);
 
-  color: var(--foreground);
   padding: clamp(2rem, 5vw, 3rem) v.$spacing-sm;
   font-size: 0.9rem;
   line-height: 1.5;
@@ -41,13 +42,13 @@
   h3 {
     margin-bottom: v.$spacing-sm;
     font-size: 1.1rem;
-    color: var(--foreground);
+    color: var(--background);
   }
 }
 
 .description {
   margin: v.$spacing-md 0;
-  color: var(--foreground);
+  color: var(--background);
 }
 
 .socialIcons {
@@ -57,7 +58,8 @@
 }
 
 .icon {
-  background: var(--accent-bg);
+  /* light box on dark footer */
+  background: var(--background);
   border-radius: 6px;
   padding: v.$spacing-sm;
   display: flex;
@@ -70,9 +72,14 @@
 }
 
 .contactButton {
+  /* shrink the clickable area to the button itself */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   margin-top: v.$spacing-md;
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--background);
+  color:      var(--foreground);
   border: none;
   padding: v.$spacing-sm v.$spacing-md;
   border-radius: v.$radius-md;
@@ -85,7 +92,7 @@
 }
 
 .bottom {
-  border-top: 1px solid var(--accent-bg);
+  border-top: 1px solid var(--background);
   padding-top: v.$spacing-md;
   display: flex;
   align-items: center;
@@ -99,7 +106,7 @@
 }
 
 .bottomLeft {
-  color: var(--foreground);
+  color: var(--background);
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -120,7 +127,7 @@
   gap: v.$spacing-lg;
 
   a {
-    color: var(--foreground);
+    color: var(--background);
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s ease;
@@ -134,7 +141,7 @@
 .toTop {
   background: none;
   border: none;
-  color: var(--foreground);
+  color: var(--background);
   cursor: pointer;
   transition: opacity 0.2s ease;
   display: flex;
