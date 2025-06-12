@@ -1,10 +1,13 @@
 // src/styles/Footer.module.scss
 
 @use './variables' as v;
-@use './mixins' as m;
+@use './mixins'    as m;
 
 .footer {
-  background: var(--background);
+  /* distinct band below your main content */
+  background: var(--accent-bg);
+  border-top: 1px solid var(--background);
+
   color: var(--foreground);
   padding: clamp(2rem, 5vw, 3rem) v.$spacing-sm;
   font-size: 0.9rem;

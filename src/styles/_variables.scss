@@ -3,24 +3,24 @@
 // — your existing Sass variables —
 $color-foreground: #171717 !default;
 $color-background: #ffffff !default;
-$color-card-bg:    #ffffff !default;
-$color-accent-bg:  #f9f9f9 !default;
-$color-primary:    #f4d35e !default;
+$color-card-bg: #ffffff !default;
+$color-accent-bg: #f9f9f9 !default;
+$color-primary: #f4d35e !default;
 $color-primary-light: #f9e18c !default;
-$color-success:    #4caf50 !default;
-$color-error:      #e53935 !default;
+$color-success: #4caf50 !default;
+$color-error: #e53935 !default;
 
-$font-sans:  'Geist', sans-serif !default;
-$font-mono:  'Geist Mono', monospace !default;
+$font-sans: 'Geist', sans-serif !default;
+$font-mono: 'Geist Mono', monospace !default;
 
 $spacing-xs: 0.5rem !default;
-$spacing-sm: 1rem   !default;
+$spacing-sm: 1rem !default;
 $spacing-md: 1.5rem !default;
-$spacing-lg: 2rem   !default;
+$spacing-lg: 2rem !default;
 
 $radius-sm: 0.375rem !default;
-$radius-md: 1rem     !default;
-$radius-lg: 2rem     !default;
+$radius-md: 1rem !default;
+$radius-lg: 2rem !default;
 
 $breakpoints: (
   xs: 0,
