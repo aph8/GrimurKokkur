@@ -1,3 +1,6 @@
+// src/styles/variables.scss
+
+// — your existing Sass variables —
 $color-foreground: #171717 !default;
 $color-background: #ffffff !default;
 $color-card-bg: #ffffff !default;
@@ -26,3 +29,30 @@ $breakpoints: (
   lg: 1024px,
   xl: 1280px,
 ) !default;
+
+// — export them as CSS variables —
+:root {
+  --color-foreground: #{$color-foreground};
+  --color-background: #{$color-background};
+  --color-card-bg: #{$color-card-bg};
+  --color-accent-bg: #{$color-accent-bg};
+  --color-primary: #{$color-primary};
+  --color-primary-light: #{$color-primary-light};
+  --color-success: #{$color-success};
+  --color-error: #{$color-error};
+}
+
+// — dark‐mode overrides via prefers‐color‐scheme —
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-foreground: #ffffff;
+    --color-background: #171717;
+    --color-card-bg: #1f1f1f;
+    --color-accent-bg: #2a2a2a;
+    // tweak these if you like darker/lighter variants:
+    --color-primary: #f4d35e;
+    --color-primary-light: #f9e18c;
+    --color-success: #4caf50;
+    --color-error: #e53935;
+  }
+}
