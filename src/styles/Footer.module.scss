@@ -90,11 +90,10 @@
 }
 
 .contactButton {
-  /* bara sjálfur takkinn er smellanlegur, minni en áður */
   display: inline-flex;
-  align-items: center;
+  align-items: left;
   justify-content: center;
-  width: auto;
+  width: 50%;
 
   margin-top: v.$spacing-md;
   background: var(--foreground);
