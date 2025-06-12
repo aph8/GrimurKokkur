@@ -4,12 +4,11 @@
 @use './mixins'    as m;
 
 .footer {
-  /* invert the page colors for max contrast */
-  background: var(--foreground);
-  color:      var(--background);
-  /* give it a strong top border in your brand accent */
-  border-top: 4px solid var(--primary);
+  /* distinct band below your main content */
+  background: var(--accent-bg);
+  border-top: 1px solid var(--background);
 
+  color: var(--foreground);
   padding: clamp(2rem, 5vw, 3rem) v.$spacing-sm;
   font-size: 0.9rem;
   line-height: 1.5;
@@ -42,13 +41,13 @@
   h3 {
     margin-bottom: v.$spacing-sm;
     font-size: 1.1rem;
-    color: var(--background);
+    color: var(--foreground);
   }
 }
 
 .description {
   margin: v.$spacing-md 0;
-  color: var(--background);
+  color: var(--foreground);
 }
 
 .socialIcons {
@@ -58,8 +57,7 @@
 }
 
 .icon {
-  /* on a dark footer, give icons a light background */
-  background: var(--background);
+  background: var(--accent-bg);
   border-radius: 6px;
   padding: v.$spacing-sm;
   display: flex;
@@ -67,16 +65,14 @@
   justify-content: center;
 
   svg {
-    /* icon glyphs stay dark */
     color: var(--foreground);
   }
 }
 
 .contactButton {
   margin-top: v.$spacing-md;
-  /* invert button to match the page’s main bg/text */
-  background: var(--background);
-  color:      var(--foreground);
+  background: var(--foreground);
+  color: var(--background);
   border: none;
   padding: v.$spacing-sm v.$spacing-md;
   border-radius: v.$radius-md;
@@ -89,7 +85,7 @@
 }
 
 .bottom {
-  border-top: 1px solid var(--background);
+  border-top: 1px solid var(--accent-bg);
   padding-top: v.$spacing-md;
   display: flex;
   align-items: center;
@@ -103,7 +99,7 @@
 }
 
 .bottomLeft {
-  color: var(--background);
+  color: var(--foreground);
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -124,7 +120,7 @@
   gap: v.$spacing-lg;
 
   a {
-    color: var(--background);
+    color: var(--foreground);
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s ease;
@@ -138,7 +134,7 @@
 .toTop {
   background: none;
   border: none;
-  color: var(--background);
+  color: var(--foreground);
   cursor: pointer;
   transition: opacity 0.2s ease;
   display: flex;
