@@ -1,15 +1,14 @@
-// src/styles/Footer.module.scss
-
 @use './variables' as v;
 @use './mixins'    as m;
 
 .footer {
+  /* Pale-gray footer in light mode, dark in dark mode */
   background: var(--accent-bg);
   @media (prefers-color-scheme: dark) {
     background: var(--foreground);
   }
 
-
+  /* Main text color */
   color: var(--foreground);
   @media (prefers-color-scheme: dark) {
     color: var(--background);
@@ -19,9 +18,9 @@
   font-size: 0.9rem;
   line-height: 1.5;
 
-  /* blár sími & email */
-  a[href^="tel"],
-  a[href^="mailto"] {
+  /* Blue phone + email links */
+  a[href^='tel'],
+  a[href^='mailto'] {
     color: #0070f3;
     font-weight: 600;
     text-decoration: none;
@@ -74,8 +73,8 @@
 }
 
 .icon {
-  /* dökkur bakgrunnur á ikon-ramma */
-  background: var(--foreground);
+  /* Solid black frame */
+  background: #000;
   border-radius: 6px;
   padding: v.$spacing-sm;
   display: flex;
@@ -83,20 +82,21 @@
   justify-content: center;
 
   svg {
-    /* hvítt icon-glyph */
-    color: var(--background);
+    /* White glyph */
+    color: #fff;
   }
 }
 
 .contactButton {
+  /* Intrinsic width (no 100%), only button area clickable */
   display: inline-flex;
-  align-items: left;
+  align-items: center;
   justify-content: center;
-  width: 40%;
+  width: auto;
 
   margin-top: v.$spacing-md;
   background: var(--foreground);
-  color:      var(--background);
+  color: var(--background);
   border: none;
   padding: v.$spacing-xs v.$spacing-md;
   border-radius: v.$radius-md;
