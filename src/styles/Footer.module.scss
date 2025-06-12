@@ -4,14 +4,36 @@
 @use './mixins'    as m;
 
 .footer {
-  /* distinct band below your main content */
+  /* light mode: pale gray band, dark mode: dark gray band */
   background: var(--accent-bg);
-  border-top: 1px solid var(--background);
+  @media (prefers-color-scheme: dark) {
+    background: var(--foreground);
+  }
 
+  /* strong accent line */
+  border-top: 4px solid var(--primary);
+
+  /* main text */
   color: var(--foreground);
+  @media (prefers-color-scheme: dark) {
+    color: var(--background);
+  }
+
   padding: clamp(2rem, 5vw, 3rem) v.$spacing-sm;
   font-size: 0.9rem;
   line-height: 1.5;
+
+  /* make phone & email links pop */
+  a[href^="tel"],
+  a[href^="mailto"] {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .top {
@@ -41,13 +63,13 @@
   h3 {
     margin-bottom: v.$spacing-sm;
     font-size: 1.1rem;
-    color: var(--foreground);
+    color: inherit;
   }
 }
 
 .description {
   margin: v.$spacing-md 0;
-  color: var(--foreground);
+  color: inherit;
 }
 
 .socialIcons {
@@ -57,7 +79,7 @@
 }
 
 .icon {
-  background: var(--accent-bg);
+  background: var(--background);
   border-radius: 6px;
   padding: v.$spacing-sm;
   display: flex;
@@ -75,8 +97,8 @@
   justify-content: center;
 
   margin-top: v.$spacing-md;
-  background: var(--background);
-  color:      var(--foreground);
+  background: var(--foreground);
+  color:      var(--background);
   border: none;
   padding: v.$spacing-sm v.$spacing-md;
   border-radius: v.$radius-md;
@@ -84,12 +106,12 @@
   transition: opacity 0.2s ease;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.85;
   }
 }
 
 .bottom {
-  border-top: 1px solid var(--accent-bg);
+  border-top: 1px solid var(--background);
   padding-top: v.$spacing-md;
   display: flex;
   align-items: center;
@@ -103,7 +125,7 @@
 }
 
 .bottomLeft {
-  color: var(--foreground);
+  color: inherit;
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -124,7 +146,7 @@
   gap: v.$spacing-lg;
 
   a {
-    color: var(--foreground);
+    color: inherit;
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s ease;
@@ -138,11 +160,11 @@
 .toTop {
   background: none;
   border: none;
-  color: var(--foreground);
+  color: inherit;
   cursor: pointer;
-  transition: opacity 0.2s ease;
   display: flex;
   align-items: center;
+  transition: opacity 0.2s ease;
 
   &:hover {
     opacity: 0.8;
