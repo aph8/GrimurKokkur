@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 import styles from '@/styles/Footer.module.scss';
 
 export default function Footer() {
@@ -39,23 +39,7 @@ export default function Footer() {
               aria-label="Instagram"
             >
               <div className={`${styles.icon} ${styles.instagramIcon}`}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M349.33,69.33H162.67A93.34,93.34,0,0,0,69.33,
-                       162.67V349.33A93.34,93.34,0,0,0,162.67,442.67H349.33
-                       A93.34,93.34,0,0,0,442.67,349.33V162.67A93.34,93.34,
-                       0,0,0,349.33,69.33Zm61.33,279.99a61.42,61.42,0,0,1
-                       -61.33,61.33H162.67a61.42,61.42,0,0,1-61.33-61.33V162.67
-                       a61.42,61.42,0,0,1,61.33-61.33H349.33a61.42,61.42,0,0,1,
-                       61.33,61.33Zm-146.66-61.33A85.34,85.34,0,1,1,298,202.66,
-                       85.43,85.43,0,0,1,264,287.99Zm88-158.66a20,20,0,1,1-20,
-                       20A20,20,0,0,1,352,129.33Z"
-                  />
-                </svg>
+                <Instagram size={32} color="#fff" />
               </div>
             </Link>
 
@@ -67,7 +51,7 @@ export default function Footer() {
               aria-label="Facebook"
             >
               <div className={`${styles.icon} ${styles.facebookIcon}`}>
-                <Facebook />
+                <Facebook size={32} color="#fff" />
               </div>
             </Link>
           </div>
