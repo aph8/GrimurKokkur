@@ -1,4 +1,3 @@
-// src/components/Footer.tsx
 'use client';
 
 import React from 'react';
@@ -6,9 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Facebook } from 'lucide-react';
 import styles from '@/styles/Footer.module.scss';
-/**
- * Displays the global site footer with contact details and social links.
- */
 
 export default function Footer() {
   return (
@@ -33,7 +29,6 @@ export default function Footer() {
             height={68}
             quality={100}
           />
-
           <div className={styles.socialIcons}>
             <Link
               href="https://www.instagram.com/grimurkokkur/"
@@ -45,7 +40,6 @@ export default function Footer() {
                 <Instagram size={24} />
               </div>
             </Link>
-
             <Link
               href="https://www.facebook.com/Grimurkokkur"
               target="_blank"
@@ -66,21 +60,19 @@ export default function Footer() {
           </p>
           <p>
             <strong>Sími:</strong>{' '}
-            <a href="tel:+3544812665" className={styles.link}>
-              481 2665
-            </a>
+            <a href="tel:+3544812665">481 2665</a>
           </p>
           <p>
             <strong>Email:</strong>{' '}
-            <a href="mailto:grimurkokkur@grimurkokkur.is" className={styles.link}>
+            <a href="mailto:grimurkokkur@grimurkokkur.is">
               grimurkokkur@grimurkokkur.is
             </a>
           </p>
           <p>
             <strong>Kennitala:</strong> 531205-1460
           </p>
-          <Link href="/contact">
-            <button className={styles.contactButton}>Hafa samband</button>
+          <Link href="/contact" className={styles.contactButton}>
+            Hafa samband
           </Link>
         </div>
 
@@ -101,9 +93,8 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         <div className={styles.bottomLeft}>
-          <span>Allur réttur áskilinn. {new Date().getFullYear()}. Grímur Kokkur</span>
+          Allur réttur áskilinn. {new Date().getFullYear()}. Grímur Kokkur
         </div>
-
         <div className={styles.bottomRight}>
           <nav className={styles.navLinks}>
             <Link href="/vorur">Vörur</Link>

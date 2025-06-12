@@ -1,19 +1,14 @@
-// src/styles/Footer.module.scss
-
 @use './variables' as v;
 @use './mixins'    as m;
 
 .footer {
-  /* light mode: pale gray band, dark mode: dark gray band */
+  /* Distinct pale‐gray band in light mode, dark band in dark mode */
   background: var(--accent-bg);
   @media (prefers-color-scheme: dark) {
     background: var(--foreground);
   }
 
-  /* strong accent line */
-  border-top: 4px solid var(--primary);
-
-  /* main text */
+  /* Main text color */
   color: var(--foreground);
   @media (prefers-color-scheme: dark) {
     color: var(--background);
@@ -23,10 +18,10 @@
   font-size: 0.9rem;
   line-height: 1.5;
 
-  /* make phone & email links pop */
+  /* Blue phone + email links */
   a[href^="tel"],
   a[href^="mailto"] {
-    color: var(--primary);
+    color: #0070f3;
     font-weight: 600;
     text-decoration: none;
 
@@ -92,6 +87,7 @@
 }
 
 .contactButton {
+  /* Only the button itself is clickable */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -106,12 +102,13 @@
   transition: opacity 0.2s ease;
 
   &:hover {
-    opacity: 0.85;
+    opacity: 0.8;
   }
 }
 
 .bottom {
-  border-top: 1px solid var(--background);
+  /* no dividing line here, content-footer separation is gone */
+
   padding-top: v.$spacing-md;
   display: flex;
   align-items: center;
@@ -125,7 +122,6 @@
 }
 
 .bottomLeft {
-  color: inherit;
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -146,7 +142,7 @@
   gap: v.$spacing-lg;
 
   a {
-    color: inherit;
+    color: var(--foreground);
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s ease;
@@ -160,7 +156,7 @@
 .toTop {
   background: none;
   border: none;
-  color: inherit;
+  color: var(--foreground);
   cursor: pointer;
   display: flex;
   align-items: center;
