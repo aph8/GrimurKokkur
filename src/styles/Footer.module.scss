@@ -63,11 +63,11 @@
 
 // Base icon wrapper: fixed square, centered content
 .icon {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   display: grid;
   place-items: center;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
 }
 
 // Instagram gradient background
@@ -89,8 +89,8 @@
 
 // SVGs inside both icons are white
 .icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   color: #fff;
 }
 
