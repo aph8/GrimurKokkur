@@ -1,14 +1,16 @@
+// src/styles/Footer.module.scss
+
 @use './variables' as v;
 @use './mixins'    as m;
 
 .footer {
-  /* Pale‐gray band in light mode, dark band in dark mode */
+  /* ljósgrauður (light) eða dökkur (dark) footer-bakgrunnur */
   background: var(--accent-bg);
   @media (prefers-color-scheme: dark) {
     background: var(--foreground);
   }
 
-  /* Main text color */
+  /* aðalgrafík-litur */
   color: var(--foreground);
   @media (prefers-color-scheme: dark) {
     color: var(--background);
@@ -18,7 +20,7 @@
   font-size: 0.9rem;
   line-height: 1.5;
 
-  /* Blue phone + email links */
+  /* blár sími & email */
   a[href^="tel"],
   a[href^="mailto"] {
     color: #0070f3;
@@ -53,8 +55,8 @@
   display: flex;
   flex-direction: column;
 
-  h3,
-  h2 {
+  h2,
+  h3 {
     margin-bottom: v.$spacing-sm;
     font-size: 1.1rem;
     color: inherit;
@@ -73,25 +75,32 @@
 }
 
 .icon {
-  background: var(--background);
+  /* dökkur bakgrunnur á ikon-ramma */
+  background: var(--foreground);
   border-radius: 6px;
   padding: v.$spacing-sm;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  svg {
+    /* hvítt icon-glyph */
+    color: var(--background);
+  }
 }
 
 .contactButton {
-  /* make the button itself auto‐width again */
+  /* bara sjálfur takkinn er smellanlegur, minni en áður */
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: auto;
 
   margin-top: v.$spacing-md;
   background: var(--foreground);
   color:      var(--background);
   border: none;
-  padding: v.$spacing-sm v.$spacing-md;
+  padding: v.$spacing-xs v.$spacing-md;
   border-radius: v.$radius-md;
   cursor: pointer;
   transition: opacity 0.2s ease;
