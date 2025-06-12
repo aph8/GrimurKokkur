@@ -11,6 +11,9 @@
 
 
   color: var(--foreground);
+  @media (prefers-color-scheme: dark) {
+    color: var(--background);
+  }
 
   padding: clamp(2rem, 5vw, 3rem) v.$spacing-sm;
   font-size: 0.9rem;
