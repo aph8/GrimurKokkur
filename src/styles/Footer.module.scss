@@ -1,13 +1,24 @@
+// src/styles/Footer.module.scss
+
 @use './variables' as v;
 @use './mixins'    as m;
 
 .footer {
+  /* Light-mode: pale gray */
   background: var(--accent-bg);
-  @media (prefers-color-scheme: dark) {
-    background: var(--foreground);
-    color: var(--background);
-  }
   color: var(--foreground);
+
+  /* Dark-mode: use card-bg (#1a1a1a) rather than pure black */
+  @media (prefers-color-scheme: dark) {
+    background: var(--card-bg);
+    color: var(--foreground);
+  }
+
+  /* thin top border in both modes */
+  border-top: 1px solid var(--accent-bg);
+  @media (prefers-color-scheme: dark) {
+    border-top: 1px solid var(--accent-bg);
+  }
 
   padding: clamp(2rem, 5vw, 3rem) v.$spacing-sm;
   font-size: 0.9rem;
@@ -61,7 +72,6 @@
   margin-top: v.$spacing-md;
 }
 
-// Base icon wrapper: fixed square, centered content
 .icon {
   width: 4rem;
   height: 4rem;
@@ -70,7 +80,6 @@
   border-radius: 1rem;
 }
 
-// Instagram gradient background
 .instagramIcon {
   background-image: linear-gradient(
     135deg,
@@ -82,12 +91,10 @@
   );
 }
 
-// Facebook official blue background
 .facebookIcon {
   background: #1877F2;
 }
 
-// SVGs inside both icons are white and 2rem
 .icon svg {
   width: 2rem;
   height: 2rem;
@@ -96,9 +103,9 @@
 
 .contactButton {
   display: inline-flex;
-  align-items: left;
+  align-items: center;
   justify-content: center;
-  width: 40%;
+  width: auto;
   margin-top: v.$spacing-md;
   background: var(--foreground);
   color: var(--background);
@@ -115,6 +122,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: v.$spacing-md;
@@ -131,6 +139,7 @@
   display: flex;
   align-items: center;
   gap: v.$spacing-lg;
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: v.$spacing-sm;
