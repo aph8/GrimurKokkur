@@ -11,10 +11,12 @@ import { Analytics } from '@vercel/analytics/next';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  preload: false,        // ← disable preload
 });
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  preload: false,        // ← disable preload
 });
 
 export const metadata: Metadata = {
@@ -38,7 +40,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="/fiskibollur_portrait.jpg"
           media="(min-width:769px)"
         />
-        <link rel="prefetch" as="image" href="/humarsupa_portrait.jpg" media="(min-width:769px)" />
+        <link
+          rel="prefetch"
+          as="image"
+          href="/humarsupa_portrait.jpg"
+          media="(min-width:769px)"
+        />
         <link
           rel="prefetch"
           as="image"

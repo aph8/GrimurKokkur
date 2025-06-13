@@ -1,3 +1,4 @@
+// src/components/functions/Footer.tsx
 'use client';
 
 import React from 'react';
@@ -31,7 +32,6 @@ export default function Footer() {
             quality={100}
           />
           <div className={styles.socialIcons}>
-            {/* Instagram */}
             <Link
               href="https://www.instagram.com/grimurkokkur/"
               target="_blank"
@@ -42,8 +42,6 @@ export default function Footer() {
                 <Instagram size={32} color="#fff" />
               </div>
             </Link>
-
-            {/* Facebook */}
             <Link
               href="https://www.facebook.com/Grimurkokkur"
               target="_blank"
@@ -76,7 +74,7 @@ export default function Footer() {
           <p>
             <strong>Kennitala:</strong> 531205-1460
           </p>
-          <Link href="/contact" className={styles.contactButton}>
+          <Link href="/contact" className={styles.contactButton} prefetch={false}>
             Hafa samband
           </Link>
         </div>
@@ -97,16 +95,15 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom row */}
       <div className={styles.bottom}>
         <div className={styles.bottomLeft}>
           Allur réttur áskilinn. {new Date().getFullYear()}. Grímur Kokkur
         </div>
         <div className={styles.bottomRight}>
           <nav className={styles.navLinks}>
-            <Link href="/vorur">Vörur</Link>
-            <Link href="/about">Um Okkur</Link>
-            <Link href="/contact">Hafa Samband</Link>
+            <Link href="/vorur" prefetch={false}>Vörur</Link>
+            <Link href="/about" prefetch={false}>Um Okkur</Link>
+            <Link href="/contact" prefetch={false}>Hafa Samband</Link>
           </nav>
         </div>
       </div>

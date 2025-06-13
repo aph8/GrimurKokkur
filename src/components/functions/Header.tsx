@@ -1,3 +1,4 @@
+// src/components/functions/Header.tsx
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -41,8 +42,13 @@ export default function Header() {
     >
       <div className={styles.container}>
         <div className={styles.branding}>
-          <Link href="/" className={styles.logo} aria-label="Forsíða">
-            <img src="/Grimur_kokkur_logo.svg" alt="Grímur Kokkur logo" width={100} height={100} />
+          <Link href="/" className={styles.logo} aria-label="Forsíða" prefetch={false}>
+            <img
+              src="/Grimur_kokkur_logo.svg"
+              alt="Grímur Kokkur logo"
+              width={100}
+              height={100}
+            />
             <span className={styles.logoLink}>Grímur Kokkur</span>
           </Link>
         </div>
@@ -72,6 +78,7 @@ export default function Header() {
                 <Link
                   key={href}
                   href={href}
+                  prefetch={false}  
                   className={isActive ? styles.activeLink : undefined}
                   aria-current={isActive ? 'page' : undefined}
                   onClick={() => setMenuOpen(false)}
