@@ -66,7 +66,7 @@ export default function Footer() {
             <a href="tel:+3544812665">481 2665</a>
           </p>
           <p>
-            <strong>Email:</strong>{' '}
+            <strong>Netfang:</strong>{' '}
             <a href="mailto:grimurkokkur@grimurkokkur.is">
               grimurkokkur@grimurkokkur.is
             </a>
