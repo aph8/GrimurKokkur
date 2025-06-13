@@ -15,10 +15,6 @@ interface AboutSectionsProps {
   sections: AboutSection[];
 }
 
-/**
- * Renders a list of "about" sections with optional hero images, text and photo galleries.
- * Image always on top (or left on wide), text below (or right on wide).
- */
 export default function AboutSections({ sections }: AboutSectionsProps) {
   return (
     <>
@@ -28,6 +24,7 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
           aria-labelledby={`about-${sec.slug}`}
           className={styles.section}
         >
+          {/* 1) IMAGE */}
           {sec.image && (
             <div className={styles.section__image}>
               <HeroImage
@@ -39,7 +36,8 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
             </div>
           )}
 
-          <div className={styles.section__text}>
+          {/* 2) CONTENT: text then optional gallery */}
+          <div className={styles.section__content}>
             <TextSection
               title={sec.title}
               text={sec.discription ?? ''}

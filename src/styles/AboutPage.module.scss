@@ -9,58 +9,40 @@
   padding: 2rem 1rem;
 }
 
-.pageTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--foreground);
-  position: relative;
-}
-
 .section {
-  margin-bottom: 3rem;
   display: grid;
   gap: 2rem;
+
+  /* 1 column: image then content */
   grid-template-columns: 1fr;
   grid-template-areas:
     "image"
-    "text";
+    "content";
 
   @media (min-width: 1100px) {
+    /* 2 columns: image | content */
     grid-template-columns: 2fr 3fr;
-    grid-template-areas: "image text";
+    grid-template-areas: "image content";
   }
+}
 
-  &__image {
-    grid-area: image;
+.section__image {
+  grid-area: image;
 
-    /* Ensure HeroImage (or any img) fills its column */
+  /* make sure your HeroImage or <img> is fluid */
+  img {
+    width: 100%;
+    height: auto;
     display: block;
-    > * {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
+    object-fit: cover;
   }
+}
 
-  &__text {
-    grid-area: text;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--foreground);
-    }
-
-    p {
-      line-height: 1.6;
-      color: var(--foreground-secondary);
-    }
-  }
+.section__content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* space between text and gallery */
 }
 
 .loadingContainer {
@@ -74,7 +56,8 @@
 }
 
 .galleryWrapper {
-  margin-top: 2rem;
+  /* already in the content container, so will sit below the TextSection */
+  /* you can add more spacing here if you like */
 }
 
 .galleryTitle {
