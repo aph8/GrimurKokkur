@@ -1,5 +1,3 @@
-// app/about/page.tsx
-
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllAboutSections, type AboutSection } from '@/lib/datocms';
@@ -19,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * About page fetching section content from DatoCMS.
+ * Fetches and renders all “about” sections.
  */
 export default async function AboutPage() {
   const sections: AboutSection[] | null = await getAllAboutSections();
@@ -27,7 +25,6 @@ export default async function AboutPage() {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.pageTitle}>Um okkur</h1>
       <AboutSections sections={sections} />
     </main>
   );

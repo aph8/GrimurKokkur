@@ -1,5 +1,3 @@
-/* styles/AboutPage.module.scss */
-
 @use './slantTheme' as slantTheme;
 
 .main {
@@ -9,19 +7,27 @@
   padding: 2rem 1rem;
 }
 
+.pageTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--foreground);
+  position: relative;
+}
+
 .section {
   display: grid;
   gap: 2rem;
 
-  /* 1 column: image then content */
+  /* Mobile/tablet: stack image over content */
   grid-template-columns: 1fr;
   grid-template-areas:
     "image"
     "content";
 
   @media (min-width: 1100px) {
-    /* 2 columns: image | content */
-    grid-template-columns: 2fr 3fr;
+    /* Desktop: image 60%, content 40% */
+    grid-template-columns: 3fr 2fr;
     grid-template-areas: "image content";
   }
 }
@@ -29,7 +35,6 @@
 .section__image {
   grid-area: image;
 
-  /* make sure your HeroImage or <img> is fluid */
   img {
     width: 100%;
     height: auto;
@@ -54,6 +59,7 @@
 .error {
   color: #e53935;
 }
+
 
 .galleryTitle {
   font-size: 1.5rem;

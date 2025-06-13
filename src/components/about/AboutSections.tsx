@@ -1,5 +1,3 @@
-// src/components/about/AboutSections.tsx
-
 import React from 'react';
 import dynamic from 'next/dynamic';
 import HeroImage from '@/components/vorur/HeroImage';
@@ -15,6 +13,12 @@ interface AboutSectionsProps {
   sections: AboutSection[];
 }
 
+/**
+ * Renders each “about” section:
+ *  - HeroImage (4:3 ratio on desktop)
+ *  - TextSection
+ *  - Optional PhotoGallery
+ */
 export default function AboutSections({ sections }: AboutSectionsProps) {
   return (
     <>
@@ -24,19 +28,19 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
           aria-labelledby={`about-${sec.slug}`}
           className={styles.section}
         >
-          {/* 1) IMAGE */}
+          {/* IMAGE */}
           {sec.image && (
             <div className={styles.section__image}>
               <HeroImage
                 src={sec.image.url}
                 alt={sec.image.alt || sec.title}
                 blurDataURL={sec.image.blurUpThumb}
-                ratio="16:9"
+                ratio="4:3"               // TALLER frame
               />
             </div>
           )}
 
-          {/* 2) CONTENT: text then optional gallery */}
+          {/* CONTENT: text + gallery */}
           <div className={styles.section__content}>
             <TextSection
               title={sec.title}
