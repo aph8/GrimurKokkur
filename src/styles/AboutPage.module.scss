@@ -21,7 +21,7 @@
   gap: 2rem;
   grid-template-columns: 1fr;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1100px) {
     grid-template-columns: 2fr 3fr;
   }
 }
