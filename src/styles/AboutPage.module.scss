@@ -1,3 +1,5 @@
+/* styles/AboutPage.module.scss */
+
 @use './slantTheme' as slantTheme;
 
 .main {
@@ -20,9 +22,44 @@
   display: grid;
   gap: 2rem;
   grid-template-columns: 1fr;
+  grid-template-areas:
+    "image"
+    "text";
 
   @media (min-width: 1100px) {
     grid-template-columns: 2fr 3fr;
+    grid-template-areas: "image text";
+  }
+
+  &__image {
+    grid-area: image;
+
+    /* Ensure HeroImage (or any img) fills its column */
+    display: block;
+    > * {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__text {
+    grid-area: text;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--foreground);
+    }
+
+    p {
+      line-height: 1.6;
+      color: var(--foreground-secondary);
+    }
   }
 }
 
