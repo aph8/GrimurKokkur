@@ -7,6 +7,8 @@ import Header from '@/components/functions/Header';
 import Footer from '@/components/functions/Footer';
 import BackToTop from '@/components/functions/BackToTop';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -55,8 +57,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <Header />
         <main id="main-content">{children}</main>
-        <Footer />
-        <Analytics />
+        <Footer/>
+        <Analytics/>
+        <SpeedInsights/>
         <BackToTop />
       </body>
     </html>
