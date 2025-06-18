@@ -10,9 +10,6 @@ interface HeroImageProps {
   blurDataURL?: string;
   className?: string;
 }
-/**
- * Displays a responsive hero image while avoiding CLS using padding.
- */
 
 const HeroImage: React.FC<HeroImageProps> = ({
   src,
@@ -37,9 +34,9 @@ const HeroImage: React.FC<HeroImageProps> = ({
         "
         placeholder={blurDataURL ? 'blur' : 'empty'}
         blurDataURL={blurDataURL}
-        priority
+        priority={Boolean(blurDataURL)}
         unoptimized={false}
-        quality={100}
+        quality={85}
         className={styles.heroImage}
       />
     </div>

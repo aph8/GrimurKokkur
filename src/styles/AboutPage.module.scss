@@ -1,3 +1,5 @@
+/* src/styles/AboutPage.module.scss */
+
 @use './slantTheme' as slantTheme;
 
 .main {
@@ -34,13 +36,7 @@
 
 .section__image {
   grid-area: image;
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-  }
+  background-color: #f0f0f0; /* placeholder bg while image loads */
 }
 
 .section__content {
