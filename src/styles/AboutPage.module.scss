@@ -21,29 +21,23 @@
   display: grid;
   gap: 2rem;
 
-  /* Mobile/tablet: stack image over content */
+ 
   grid-template-columns: 1fr;
   grid-template-areas:
     'image'
     'content';
 
   @media (min-width: 1100px) {
-    /* Desktop: image 60%, content 40% */
     grid-template-columns: 3fr 2fr;
     grid-template-areas: 'image content';
   }
-}
-
-.section__image {
-  grid-area: image;
-  background-color: #f0f0f0; /* placeholder bg while image loads */
 }
 
 .section__content {
   grid-area: content;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* space between text and gallery */
+  gap: 2rem;
 }
 
 .loadingContainer {
