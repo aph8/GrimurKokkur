@@ -1,5 +1,5 @@
 @use './variables' as v;
-@use './mixins'    as m;
+@use './mixins' as m;
 
 .footer {
   /* Light-mode defaults */
@@ -96,7 +96,7 @@
 }
 
 .facebookIcon {
-  background: #1877F2;
+  background: #1877f2;
 }
 
 .icon svg {

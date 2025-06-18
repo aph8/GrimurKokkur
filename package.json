@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@datocms/cda-client": "^0.2.7",
+    "@upstash/ratelimit": "^2.0.5",
+    "@upstash/redis": "^1.35.0",
     "@vercel/analytics": "^1.5.0",
     "graphql-request": "^7.1.2",
     "lucide-react": "^0.511.0",
@@ -21,6 +23,7 @@
     "react": "^19.1.0",
     "react-datocms": "^7.2.2",
     "react-dom": "^19.1.0",
+    "react-google-recaptcha-v3": "^1.11.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "sanitize-html": "^2.17.0",

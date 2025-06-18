@@ -1,26 +1,32 @@
-// src/app/contact/page.client.tsx
+// src/app/contact/pageClient.tsx
 'use client';
 
 import React, { useState, useRef, FormEvent } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import styles from '@/styles/ContactPage.module.scss';
 import MapPlaceholder from '@/components/MapPlaceholder';
 
+// include ts and sig as props
+type Props = { ts: string; tsSignature: string };
 type ContactInput = {
   name: string;
   email: string;
   message: string;
+  website: string; // honeypot
 };
-
 type Status = 'idle' | 'pending' | 'success' | 'error';
-/**
- * Client side form logic for the contact page.
- */
 
-export default function ContactPageClient() {
-  const [form, setForm] = useState<ContactInput>({ name: '', email: '', message: '' });
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactInput, string>>>({});
+export default function ContactPageClient({ ts, tsSignature }: Props) {
+  const [form, setForm] = useState<ContactInput>({
+    name: '',
+    email: '',
+    message: '',
+    website: '',
+  });
+  const [errors, setErrors] = useState<Partial<Record<'name' | 'email' | 'message', string>>>({});
   const [status, setStatus] = useState<Status>('idle');
   const liveRef = useRef<HTMLDivElement>(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleChange =
     (field: keyof ContactInput) =>
@@ -29,14 +35,14 @@ export default function ContactPageClient() {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     };
 
-  const validate = (): boolean => {
-    const newErrors: Partial<Record<keyof ContactInput, string>> = {};
-    if (!form.name.trim()) newErrors.name = 'Nafn má ekki vera tómt';
-    if (!form.email.trim()) newErrors.email = 'Netfang má ekki vera tómt';
-    if (!form.message.trim()) newErrors.message = 'Skilaboð mega ekki vera tóm';
+  const validate = () => {
+    const newErr: Partial<Record<'name' | 'email' | 'message', string>> = {};
+    if (!form.name.trim()) newErr.name = 'Nafn má ekki vera tómt';
+    if (!form.email.trim()) newErr.email = 'Netfang má ekki vera tómt';
+    if (!form.message.trim()) newErr.message = 'Skilaboð mega ekki vera tóm';
 
-    if (Object.keys(newErrors).length) {
-      setErrors(newErrors);
+    if (Object.keys(newErr).length) {
+      setErrors(newErr);
       liveRef.current?.focus();
       return false;
     }
@@ -49,21 +55,30 @@ export default function ContactPageClient() {
     if (!validate()) return;
 
     setStatus('pending');
+    if (!executeRecaptcha) {
+      setStatus('error');
+      liveRef.current?.focus();
+      return;
+    }
+    const token = await executeRecaptcha('contact_form');
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          ts,
+          tsSignature,
+          token,
+        }),
       });
       const json = await res.json();
       if (!res.ok) {
-        const errMsg = (json.errors?._errors ?? json.error) as string | undefined;
-        throw new Error(errMsg || 'Unknown error');
+        throw new Error((json.errors?._errors ?? json.error) as string);
       }
-
       setStatus('success');
-      setForm({ name: '', email: '', message: '' });
-      setErrors({});
+      setForm({ name: '', email: '', message: '', website: '' });
       liveRef.current?.focus();
     } catch {
       setStatus('error');
@@ -82,6 +97,17 @@ export default function ContactPageClient() {
       <form className={styles.formWrapper} onSubmit={handleSubmit} noValidate>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Upplýsingar</legend>
+
+          {/* honeypot */}
+          <input
+            type="text"
+            name="website"
+            value={form.website}
+            onChange={handleChange('website')}
+            style={{ display: 'none' }}
+            autoComplete="off"
+            tabIndex={-1}
+          />
 
           <div className={styles.formGroup}>
             <label htmlFor="name">Nafn</label>

@@ -63,14 +63,11 @@ export default function Footer() {
             <strong>Heimilisfang:</strong> Hlíðavegi 5, 900 Vestmannaeyjar
           </p>
           <p>
-            <strong>Sími:</strong>{' '}
-            <a href="tel:+3544812665">481 2665</a>
+            <strong>Sími:</strong> <a href="tel:+3544812665">481 2665</a>
           </p>
           <p>
             <strong>Netfang:</strong>{' '}
-            <a href="mailto:grimurkokkur@grimurkokkur.is">
-              grimurkokkur@grimurkokkur.is
-            </a>
+            <a href="mailto:grimurkokkur@grimurkokkur.is">grimurkokkur@grimurkokkur.is</a>
           </p>
           <p>
             <strong>Kennitala:</strong> 531205-1460
@@ -103,9 +100,15 @@ export default function Footer() {
         </div>
         <div className={styles.bottomRight}>
           <nav className={styles.navLinks}>
-            <Link href="/vorur" prefetch={false}>Vörur</Link>
-            <Link href="/about" prefetch={false}>Um Okkur</Link>
-            <Link href="/contact" prefetch={false}>Hafa Samband</Link>
+            <Link href="/vorur" prefetch={false}>
+              Vörur
+            </Link>
+            <Link href="/about" prefetch={false}>
+              Um Okkur
+            </Link>
+            <Link href="/contact" prefetch={false}>
+              Hafa Samband
+            </Link>
           </nav>
         </div>
       </div>

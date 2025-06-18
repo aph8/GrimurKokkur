@@ -23,11 +23,7 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
   return (
     <>
       {sections.map((sec) => (
-        <section
-          key={sec.slug}
-          aria-labelledby={`about-${sec.slug}`}
-          className={styles.section}
-        >
+        <section key={sec.slug} aria-labelledby={`about-${sec.slug}`} className={styles.section}>
           {/* IMAGE */}
           {sec.image && (
             <div className={styles.section__image}>
@@ -35,18 +31,14 @@ export default function AboutSections({ sections }: AboutSectionsProps) {
                 src={sec.image.url}
                 alt={sec.image.alt || sec.title}
                 blurDataURL={sec.image.blurUpThumb}
-                ratio="4:3"               // TALLER frame
+                ratio="4:3" // TALLER frame
               />
             </div>
           )}
 
           {/* CONTENT: text + gallery */}
           <div className={styles.section__content}>
-            <TextSection
-              title={sec.title}
-              text={sec.discription ?? ''}
-              isMarkdown
-            />
+            <TextSection title={sec.title} text={sec.discription ?? ''} isMarkdown />
 
             {sec.imagegallery && sec.imagegallery.length > 0 && (
               <div className={styles.galleryWrapper}>

@@ -54,7 +54,6 @@
   gap: v.$spacing-lg;
 }
 
-/* Desktop nav */
 .nav {
   display: flex;
   gap: clamp(v.$spacing-sm, 4vw, v.$spacing-lg);
@@ -83,7 +82,6 @@
   border-bottom-color: var(--foreground) !important;
 }
 
-/* Hamburger icon */
 .hamburger {
   display: none;
   background: transparent;
@@ -114,7 +112,6 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* Collapse into hamburger BELOW this width */
 @media (max-width: 1024px) {
   .hamburger {
     display: flex !important;
@@ -147,7 +144,6 @@
   }
 }
 
-/* Restore desktop nav ABOVE this width */
 @media (min-width: 1025px) {
   .nav {
     display: flex !important;
@@ -161,7 +157,6 @@
   }
 }
 
-/* Hide site title text at ≤400px */
 @media (max-width: 400px) {
   .logoLink {
     display: none !important;
