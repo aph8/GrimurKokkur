@@ -2,11 +2,9 @@
 'use client';
 
 import React, { useState, useRef, FormEvent } from 'react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import styles from '@/styles/ContactPage.module.scss';
 import MapPlaceholder from '@/components/MapPlaceholder';
 
-// include ts and sig as props
 type Props = { ts: string; tsSignature: string };
 type ContactInput = {
   name: string;
@@ -14,6 +12,7 @@ type ContactInput = {
   message: string;
   website: string; // honeypot
 };
+
 type Status = 'idle' | 'pending' | 'success' | 'error';
 
 export default function ContactPageClient({ ts, tsSignature }: Props) {
@@ -26,27 +25,24 @@ export default function ContactPageClient({ ts, tsSignature }: Props) {
   const [errors, setErrors] = useState<Partial<Record<'name' | 'email' | 'message', string>>>({});
   const [status, setStatus] = useState<Status>('idle');
   const liveRef = useRef<HTMLDivElement>(null);
-  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleChange =
     (field: keyof ContactInput) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setForm((prev) => ({ ...prev, [field]: e.target.value }));
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
+      setForm((f) => ({ ...f, [field]: e.target.value }));
+      setErrors((e) => ({ ...e, [field]: undefined }));
     };
 
   const validate = () => {
-    const newErr: Partial<Record<'name' | 'email' | 'message', string>> = {};
-    if (!form.name.trim()) newErr.name = 'Nafn má ekki vera tómt';
-    if (!form.email.trim()) newErr.email = 'Netfang má ekki vera tómt';
-    if (!form.message.trim()) newErr.message = 'Skilaboð mega ekki vera tóm';
-
-    if (Object.keys(newErr).length) {
-      setErrors(newErr);
+    const errs: typeof errors = {};
+    if (!form.name.trim()) errs.name = 'Nafn má ekki vera tómt';
+    if (!form.email.trim()) errs.email = 'Netfang má ekki vera tómt';
+    if (!form.message.trim()) errs.message = 'Skilaboð mega ekki vera tóm';
+    if (Object.keys(errs).length) {
+      setErrors(errs);
       liveRef.current?.focus();
       return false;
     }
-    setErrors({});
     return true;
   };
 
@@ -55,13 +51,6 @@ export default function ContactPageClient({ ts, tsSignature }: Props) {
     if (!validate()) return;
 
     setStatus('pending');
-    if (!executeRecaptcha) {
-      setStatus('error');
-      liveRef.current?.focus();
-      return;
-    }
-    const token = await executeRecaptcha('contact_form');
-
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -70,13 +59,11 @@ export default function ContactPageClient({ ts, tsSignature }: Props) {
           ...form,
           ts,
           tsSignature,
-          token,
         }),
       });
       const json = await res.json();
-      if (!res.ok) {
-        throw new Error((json.errors?._errors ?? json.error) as string);
-      }
+      if (!res.ok) throw new Error(json.error || 'Unknown error');
+
       setStatus('success');
       setForm({ name: '', email: '', message: '', website: '' });
       liveRef.current?.focus();
@@ -95,19 +82,19 @@ export default function ContactPageClient({ ts, tsSignature }: Props) {
       </div>
 
       <form className={styles.formWrapper} onSubmit={handleSubmit} noValidate>
+        {/* Honeypot field (hidden) */}
+        <input
+          type="text"
+          name="website"
+          value={form.website}
+          onChange={handleChange('website')}
+          style={{ display: 'none' }}
+          autoComplete="off"
+          tabIndex={-1}
+        />
+
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Upplýsingar</legend>
-
-          {/* honeypot */}
-          <input
-            type="text"
-            name="website"
-            value={form.website}
-            onChange={handleChange('website')}
-            style={{ display: 'none' }}
-            autoComplete="off"
-            tabIndex={-1}
-          />
 
           <div className={styles.formGroup}>
             <label htmlFor="name">Nafn</label>
@@ -120,7 +107,6 @@ export default function ContactPageClient({ ts, tsSignature }: Props) {
               aria-describedby={errors.name ? 'err-name' : undefined}
               disabled={status === 'pending'}
               required
-              minLength={1}
               maxLength={100}
             />
             {errors.name && (
@@ -160,7 +146,6 @@ export default function ContactPageClient({ ts, tsSignature }: Props) {
               aria-describedby={errors.message ? 'err-message' : undefined}
               disabled={status === 'pending'}
               required
-              minLength={1}
               maxLength={2000}
             />
             {errors.message && (

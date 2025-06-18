@@ -1,10 +1,9 @@
 // src/lib/contactSchema.ts
-
 import { z } from 'zod';
+
 /**
  * Helper to trim a string and enforce length constraints.
  */
-
 const trimmedString = (min?: number, minMsg?: string, max?: number, maxMsg?: string) =>
   z.preprocess(
     (val) => (typeof val === 'string' ? val.trim() : val),
@@ -32,6 +31,4 @@ export const ContactSchema = z
       'Skilaboð mega ekki vera lengri en 2000 stafir',
     ),
   })
-  .strict();
-
-export type ContactInput = z.infer<typeof ContactSchema>;
+  .passthrough();

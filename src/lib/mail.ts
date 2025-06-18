@@ -12,7 +12,8 @@ if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_EMAIL) {
 const isDev = NODE_ENV !== 'production';
 let transporter: Transporter;
 /**
- * Lazily creates and returns a nodemailer transporter.
+ * Creates and returns a nodemailer transporter instance.
+ * Uses environment variables for SMTP configuration.
  */
 
 function getTransporter() {
@@ -53,7 +54,7 @@ export async function sendContactEmail({
   await getTransporter().sendMail({
     from: `"Kontakt form" <${SMTP_USER}>`,
     to: CONTACT_EMAIL,
-    subject: `Ný skilaboð frá ${name}`,
+    subject: `Ný skilaboð frá Heimasíðu`,
     replyTo: email,
     text: `Name: ${name}\nEmail: ${email}\n\n${cleanMessage}`,
     html: `

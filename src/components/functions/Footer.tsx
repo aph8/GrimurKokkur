@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Instagram, Facebook } from 'lucide-react';
 import styles from '@/styles/Footer.module.scss';
@@ -12,20 +13,20 @@ export default function Footer() {
       <div className={styles.top}>
         {/* Column 1 */}
         <div className={styles.column}>
-          {/* Logo as plain <img> */}
-          <img
+          {/* Logo using <Image> */}
+          <Image
             src="/Grimur_kokkur_logo.svg"
             alt="Grímur Kokkur logo"
             width={80}
             height={80}
-            loading="lazy"
+            priority={false}
           />
           <p className={styles.description}>
             Grímur kokkur er fjölskyldufyrirtæki í fremstu röð í framleiðslu á tilbúnum
             sjávarréttum.
           </p>
-          {/* Award badge as plain <img> */}
-          <img
+          {/* Award badge using <Image> */}
+          <Image
             src="/RGB_FF%202024-Ice-Red-Horz.png"
             alt="Framúrskarandi fyrirtæki 2024"
             width={256}

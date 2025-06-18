@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from '@/styles/Header.module.scss';
@@ -43,7 +44,13 @@ export default function Header() {
       <div className={styles.container}>
         <div className={styles.branding}>
           <Link href="/" className={styles.logo} aria-label="Forsíða" prefetch={false}>
-            <img src="/Grimur_kokkur_logo.svg" alt="Grímur Kokkur logo" width={100} height={100} />
+            <Image
+              src="/Grimur_kokkur_logo.svg"
+              alt="Grímur Kokkur logo"
+              width={100}
+              height={100}
+              priority={true}
+            />
             <span className={styles.logoLink}>Grímur Kokkur</span>
           </Link>
         </div>
