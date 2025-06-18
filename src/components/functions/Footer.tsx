@@ -3,7 +3,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Instagram, Facebook } from 'lucide-react';
 import styles from '@/styles/Footer.module.scss';
 
@@ -13,23 +12,25 @@ export default function Footer() {
       <div className={styles.top}>
         {/* Column 1 */}
         <div className={styles.column}>
-          <Image
+          {/* Logo as plain <img> */}
+          <img
             src="/Grimur_kokkur_logo.svg"
             alt="Grímur Kokkur logo"
             width={80}
             height={80}
-            quality={100}
+            loading="lazy"
           />
           <p className={styles.description}>
             Grímur kokkur er fjölskyldufyrirtæki í fremstu röð í framleiðslu á tilbúnum
             sjávarréttum.
           </p>
-          <Image
-            src="/RGB_FF 2024-Ice-Red-Horz.png"
+          {/* Award badge as plain <img> */}
+          <img
+            src="/RGB_FF%202024-Ice-Red-Horz.png"
             alt="Framúrskarandi fyrirtæki 2024"
             width={256}
             height={68}
-            quality={100}
+            loading="lazy"
           />
           <div className={styles.socialIcons}>
             <Link
@@ -96,7 +97,8 @@ export default function Footer() {
       </div>
 
       <div className={styles.bottom}>
-        <div className={styles.bottomLeft}>
+        {/* Suppress only the dynamic year mismatch */}
+        <div className={styles.bottomLeft} suppressHydrationWarning>
           Allur réttur áskilinn. {new Date().getFullYear()}. Grímur Kokkur
         </div>
         <div className={styles.bottomRight}>

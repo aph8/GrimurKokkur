@@ -35,25 +35,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Prefetch large portraits for later use without warnings */}
         <link
-          rel="prefetch"
+          rel="preload"
           as="image"
           href="/fiskibollur_portrait.jpg"
           media="(min-width:769px)"
         />
         <link
-          rel="prefetch"
+          rel="preload"
           as="image"
           href="/humarsupa_portrait.jpg"
           media="(min-width:769px)"
         />
         <link
-          rel="prefetch"
+          rel="preload"
           as="image"
           href="/fiskistangir_portrait.jpg"
           media="(min-width:769px)"
         />
         <link
-          rel="prefetch"
+          rel="preload"
           as="image"
           href="/plokkfiskur_portrait.jpg"
           media="(min-width:769px)"
