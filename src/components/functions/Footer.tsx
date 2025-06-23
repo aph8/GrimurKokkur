@@ -97,7 +97,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         {/* Suppress only the dynamic year mismatch */}
         <div className={styles.bottomLeft} suppressHydrationWarning>
-          Allur réttur áskilinn. {new Date().getFullYear()}. Grímur Kokkur
+          Grímur Kokkur $copy {new Date().getFullYear()}
         </div>
         <div className={styles.bottomRight}>
           <nav className={styles.navLinks}>
