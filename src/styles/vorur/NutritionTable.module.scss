@@ -16,7 +16,6 @@
   border-radius: v.$radius-sm;
   overflow: hidden;
 
-  /* Tekur litinn úr CSS-breytum */
   background: var(--nt-table-bg);
   color: var(--nt-text-color);
 
@@ -41,6 +40,7 @@
       &:nth-child(even) {
         background: var(--nt-row-alt-bg);
       }
+
       &:hover {
         background: rgba(0, 0, 0, 0.05);
       }
@@ -52,6 +52,7 @@
 
       &.subRow {
         background: var(--nt-subrow-bg);
+
         td:first-child {
           padding-left: v.$spacing-lg;
           font-style: italic;

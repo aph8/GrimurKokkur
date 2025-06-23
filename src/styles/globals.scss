@@ -8,7 +8,7 @@
 @use './helpers' as *;
 @use './base';
 
-// 1) Export your Sass palette into CSS vars
+/* 1) Export your Sass palette into CSS vars */
 :root {
   --background: #{$color-background};
   --foreground: #{$color-foreground};
@@ -18,19 +18,38 @@
   --primary-light: #{$color-primary-light};
   --success: #{$color-success};
   --error: #{$color-error};
+
+  /* NutritionTable vars (light theme) */
+  --nt-table-bg: #{$color-background};
+  --nt-text-color: #{$color-foreground};
+  --nt-header-bg: #{$color-accent-bg};
+  --nt-row-alt-bg: #{$color-card-bg};
+  --nt-border-color: #{$color-border};
+  --nt-subrow-bg: #{$color-background};
+  --nt-subtext-color: #{$color-text-muted};
 }
 
-// 2) Dark-mode overrides
+/* 2) Dark‐mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
     --card-bg: #1a1a1a;
     --accent-bg: #222222;
-    // --primary, --primary-light, --success and --error remain as above
+    /* --primary, --primary-light, --success and --error remain as above */
+
+    /* NutritionTable vars (dark theme) */
+    --nt-table-bg: #171717;
+    --nt-text-color: #ffffff;
+    --nt-header-bg: #2a2a2a;
+    --nt-row-alt-bg: #1f1f1f;
+    --nt-border-color: #444444;
+    --nt-subrow-bg: #171717;
+    --nt-subtext-color: #bbbbbb;
   }
 }
 
+/* Accessibility “Skip to content” link */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -47,6 +66,7 @@
   }
 }
 
+/* Back-to-top floating button */
 .back-to-top {
   position: fixed;
   right: 1rem;
@@ -75,12 +95,14 @@
   }
 }
 
+/* Main content wrapper */
 body > main {
   padding: 2rem 1rem;
   max-width: 95%;
   margin: 0 auto;
 }
 
+/* Global link styles */
 a {
   color: var(--primary);
   text-decoration: none;
@@ -92,6 +114,7 @@ a {
   }
 }
 
+/* Focus outlines for form controls */
 button:focus,
 input:focus,
 textarea:focus {
@@ -99,6 +122,7 @@ textarea:focus {
   outline-offset: 2px;
 }
 
+/* Tabs component */
 .tabs {
   display: flex;
   border-bottom: 1px solid var(--accent-bg);
