@@ -10,7 +10,7 @@ type ContactInput = {
   name: string;
   email: string;
   message: string;
-  website: string; // honeypot
+  website: string;
 };
 
 type Status = 'idle' | 'pending' | 'success' | 'error';
@@ -82,7 +82,6 @@ export default function ContactPageClient({ ts, tsSignature }: Props) {
       </div>
 
       <form className={styles.formWrapper} onSubmit={handleSubmit} noValidate>
-        {/* Honeypot field (hidden) */}
         <input
           type="text"
           name="website"

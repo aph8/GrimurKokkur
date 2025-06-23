@@ -8,7 +8,6 @@
 @use './helpers' as *;
 @use './base';
 
-/* 1) Export your Sass palette into CSS custom properties */
 :root {
   --background: #{$color-background};
   --foreground: #{$color-foreground};
@@ -18,8 +17,6 @@
   --primary-light: #{$color-primary-light};
   --success: #{$color-success};
   --error: #{$color-error};
-
-  /* NutritionTable vars (light theme) */
   --nt-table-bg: #{$color-background};
   --nt-text-color: #{$color-foreground};
   --nt-header-bg: #{$color-accent-bg};
@@ -32,7 +29,6 @@
   --link-hover-color: #{color.adjust(#63a4ff, $lightness: 15%)};
 }
 
-/* 2) Dark-mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -51,7 +47,6 @@
   }
 }
 
-/* Accessibility “Skip to content” link */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -68,7 +63,6 @@
   }
 }
 
-/* Back-to-top floating button */
 .back-to-top {
   position: fixed;
   right: 1rem;
@@ -97,14 +91,12 @@
   }
 }
 
-/* Main content wrapper */
 body > main {
   padding: 2rem 1rem;
   max-width: 95%;
   margin: 0 auto;
 }
 
-/* Global link styles */
 a {
   color: var(--link-color);
   text-decoration: underline;
@@ -117,7 +109,6 @@ a {
   }
 }
 
-/* Focus outlines for form controls */
 button:focus,
 input:focus,
 textarea:focus {
@@ -125,7 +116,6 @@ textarea:focus {
   outline-offset: 2px;
 }
 
-/* Tabs component */
 .tabs {
   display: flex;
   border-bottom: 1px solid var(--accent-bg);

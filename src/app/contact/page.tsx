@@ -10,7 +10,6 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  // generate timestamp token & HMAC on the server
   const ts = Date.now().toString();
   const tsSignature = createHmac('sha256', process.env.TS_TOKEN_SECRET!).update(ts).digest('hex');
 
