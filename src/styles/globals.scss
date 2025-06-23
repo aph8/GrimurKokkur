@@ -28,9 +28,8 @@
   --nt-subrow-bg: #{$color-background};
   --nt-subtext-color: #{$color-text-muted};
 
-  /* Link colors (light theme) */
-  --link-color: #{$color-primary};
-  --link-hover-color: #{color.adjust($color-primary, $lightness: -15%)};
+  --link-color: #63a4ff;
+  --link-hover-color: #{color.adjust(#63a4ff, $lightness: 15%)};
 }
 
 /* 2) Dark-mode overrides */
@@ -40,9 +39,6 @@
     --foreground: #ededed;
     --card-bg: #1a1a1a;
     --accent-bg: #222222;
-    /* --primary, --primary-light, --success, --error remain unchanged */
-
-    /* NutritionTable vars (dark theme) */
     --nt-table-bg: #171717;
     --nt-text-color: #ffffff;
     --nt-header-bg: #2a2a2a;
@@ -50,8 +46,6 @@
     --nt-border-color: #444444;
     --nt-subrow-bg: #171717;
     --nt-subtext-color: #bbbbbb;
-
-    /* Link colors (dark theme) */
     --link-color: #63a4ff;
     --link-hover-color: #{color.adjust(#63a4ff, $lightness: 15%)};
   }
