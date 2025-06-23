@@ -16,14 +16,16 @@
   border-radius: v.$radius-sm;
   overflow: hidden;
 
-  background: var(--primary);
-  color: var(--foreground);
+  /* white background, dark grey text */
+  background: v.$color-background;
+  color: v.$color-foreground;
 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-size: clamp(0.85rem, 1.5vw, 1rem);
 
   thead {
-    background: var(--primary-light);
+    /* very light grey header */
+    background: v.$color-accent-bg;
 
     th {
       padding: v.$spacing-sm v.$spacing-md;
@@ -31,14 +33,15 @@
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.025em;
-      border-bottom: 2px solid var(--foreground);
+      border-bottom: 2px solid v.$color-border;
     }
   }
 
   tbody {
     tr {
+      /* alternate rows with off-white */
       &:nth-child(even) {
-        background: var(--accent-bg);
+        background: v.$color-card-bg;
       }
 
       &:hover {
@@ -47,16 +50,17 @@
 
       td {
         padding: v.$spacing-xs v.$spacing-md;
-        border-bottom: 1px solid var(--accent-bg);
+        border-bottom: 1px solid v.$color-border;
       }
 
       &.subRow {
-        background: var(--accent-bg);
+        /* keep subrows on pure white */
+        background: v.$color-background;
 
         td:first-child {
           padding-left: v.$spacing-lg;
           font-style: italic;
-          color: var(--foreground);
+          color: v.$color-text-muted;
         }
       }
     }
