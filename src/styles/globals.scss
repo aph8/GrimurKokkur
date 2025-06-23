@@ -8,7 +8,7 @@
 @use './helpers' as *;
 @use './base';
 
-/* 1) Export your Sass palette into CSS vars */
+/* 1) Export your Sass palette into CSS custom properties */
 :root {
   --background: #{$color-background};
   --foreground: #{$color-foreground};
@@ -27,16 +27,20 @@
   --nt-border-color: #{$color-border};
   --nt-subrow-bg: #{$color-background};
   --nt-subtext-color: #{$color-text-muted};
+
+  /* Link colors (light theme) */
+  --link-color: #{$color-primary};
+  --link-hover-color: #{color.adjust($color-primary, $lightness: -15%)};
 }
 
-/* 2) Dark‐mode overrides */
+/* 2) Dark-mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
     --card-bg: #1a1a1a;
     --accent-bg: #222222;
-    /* --primary, --primary-light, --success and --error remain as above */
+    /* --primary, --primary-light, --success, --error remain unchanged */
 
     /* NutritionTable vars (dark theme) */
     --nt-table-bg: #171717;
@@ -46,6 +50,10 @@
     --nt-border-color: #444444;
     --nt-subrow-bg: #171717;
     --nt-subtext-color: #bbbbbb;
+
+    /* Link colors (dark theme) */
+    --link-color: #63a4ff;
+    --link-hover-color: #{color.adjust(#63a4ff, $lightness: 15%)};
   }
 }
 
@@ -104,13 +112,14 @@ body > main {
 
 /* Global link styles */
 a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: none;
+  color: var(--link-color);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.2s ease;
 
+  &:hover,
   &:focus {
-    outline: 3px solid var(--foreground);
-    outline-offset: 2px;
+    color: var(--link-hover-color);
   }
 }
 
