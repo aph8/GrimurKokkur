@@ -8,6 +8,9 @@ const TS_SECRET = process.env.TS_TOKEN_SECRET!;
 const MIN_AGE = 3_000;
 const MAX_AGE = 3_600_000;
 
+/**
+ * Handles contact form submissions with bot protection and validation.
+ */
 export async function POST(request: Request) {
   const body = await request.json();
 

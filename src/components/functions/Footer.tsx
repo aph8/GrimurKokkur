@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { Instagram, Facebook } from 'lucide-react';
 import styles from '@/styles/Footer.module.scss';
 
+/**
+ * Site footer containing contact info, logo and social links.
+ */
 export default function Footer() {
   return (
     <footer className={styles.footer}>
