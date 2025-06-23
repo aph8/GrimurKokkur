@@ -9,6 +9,9 @@ export const metadata = {
   description: 'Sendu okkur skilaboð eða fyrirspurnir í gegnum formið hér að neðan.',
 };
 
+/**
+ * Static contact page that signs a timestamp token and passes it to the client component.
+ */
 export default function ContactPage() {
   const ts = Date.now().toString();
   const tsSignature = createHmac('sha256', process.env.TS_TOKEN_SECRET!).update(ts).digest('hex');

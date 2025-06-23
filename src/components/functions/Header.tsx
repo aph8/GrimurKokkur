@@ -13,6 +13,9 @@ const navLinks = [
   { href: '/about', label: 'Um okkur' },
   { href: '/contact', label: 'Hafðu samband' },
 ];
+/**
+ * Responsive header with navigation links and a toggle for mobile screens.
+ */
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

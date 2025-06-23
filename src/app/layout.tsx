@@ -30,6 +30,9 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Root layout wrapping all pages with global providers and metadata.
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="is">

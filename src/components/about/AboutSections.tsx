@@ -14,6 +14,10 @@ interface AboutSectionsProps {
   sections: AboutSection[];
 }
 
+/**
+ * Displays all sections from the about page, including hero images,
+ * markdown text and optional photo galleries.
+ */
 export default function AboutSections({ sections }: AboutSectionsProps) {
   return (
     <>

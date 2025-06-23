@@ -15,6 +15,9 @@ type ContactInput = {
 
 type Status = 'idle' | 'pending' | 'success' | 'error';
 
+/**
+ * Client side of the contact page handling form state and submission.
+ */
 export default function ContactPageClient({ ts, tsSignature }: Props) {
   const [form, setForm] = useState<ContactInput>({
     name: '',
