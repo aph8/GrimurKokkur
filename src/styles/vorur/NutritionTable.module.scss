@@ -51,7 +51,16 @@
       }
 
       &.subRow {
-        background: var(--nt-subrow-bg);
+        /* Make sub-rows visually distinct */
+        background: var(--nt-header-bg);
+        border-left: 4px solid var(--nt-border-color);
+
+        td {
+          /* slightly smaller text */
+          font-size: 0.9em;
+          /* dashed separator */
+          border-bottom: 1px dashed var(--nt-border-color);
+        }
 
         td:first-child {
           padding-left: v.$spacing-lg;
