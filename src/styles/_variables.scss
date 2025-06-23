@@ -1,6 +1,5 @@
 // src/styles/variables.scss
 
-// — your existing Sass variables —
 $color-foreground: #171717 !default;
 $color-background: #ffffff !default;
 $color-card-bg: #ffffff !default;
@@ -9,8 +8,6 @@ $color-primary: #f4d35e !default;
 $color-primary-light: #f9e18c !default;
 $color-success: #4caf50 !default;
 $color-error: #e53935 !default;
-$color-border: #ddd !default;
-$color-text-muted: #555 !default;
 
 $font-sans: 'Geist', sans-serif !default;
 $font-mono: 'Geist Mono', monospace !default;
@@ -31,3 +28,28 @@ $breakpoints: (
   lg: 1024px,
   xl: 1280px,
 ) !default;
+
+$color-border: #ddd !default;
+$color-text-muted: #555 !default;
+
+:root {
+  --nt-table-bg: #{$color-background};
+  --nt-text-color: #{$color-foreground};
+  --nt-header-bg: #{$color-accent-bg};
+  --nt-row-alt-bg: #{$color-card-bg};
+  --nt-border-color: #{$color-border};
+  --nt-subrow-bg: #{$color-background};
+  --nt-subtext-color: #{$color-text-muted};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nt-table-bg: #171717;
+    --nt-text-color: #ffffff;
+    --nt-header-bg: #2a2a2a;
+    --nt-row-alt-bg: #1f1f1f;
+    --nt-border-color: #444444;
+    --nt-subrow-bg: #171717;
+    --nt-subtext-color: #bbbbbb;
+  }
+}

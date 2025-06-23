@@ -9,7 +9,6 @@ import BackToTop from '@/components/functions/BackToTop';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
-
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -57,9 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <Header />
         <main id="main-content">{children}</main>
-        <Footer/>
-        <Analytics/>
-        <SpeedInsights/>
+        <Footer />
+        <Analytics />
+        <SpeedInsights />
         <BackToTop />
       </body>
     </html>

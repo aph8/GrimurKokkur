@@ -52,7 +52,7 @@ const ALL_PRODUCTS_QUERY = gql`
       title
       vegan
       image {
-        url( imgixParams: { auto: format, q: 100 } )
+        url(imgixParams: { auto: format, q: 100 })
         alt
         blurUpThumb
       }
@@ -87,11 +87,11 @@ const PRODUCT_BY_SLUG_QUERY = gql`
         }
       }
       image {
-        url( imgixParams: { auto: format, q: 100 } )
+        url(imgixParams: { auto: format, q: 100 })
         alt
       }
       imagegallery {
-        url( imgixParams: { auto: format, q: 100 } )
+        url(imgixParams: { auto: format, q: 100 })
         alt
       }
       video {
@@ -118,12 +118,12 @@ const ALL_ABOUT_QUERY = gql`
       title
       discription
       image {
-        url( imgixParams: { auto: format, q: 100 } )
+        url(imgixParams: { auto: format, q: 100 })
         alt
         blurUpThumb
       }
       imagegallery {
-        url( imgixParams: { auto: format, q: 100 } )
+        url(imgixParams: { auto: format, q: 100 })
         alt
         blurUpThumb
       }
@@ -150,12 +150,12 @@ const ABOUT_BY_SLUG_QUERY = gql`
       title
       discription
       image {
-        url( imgixParams: { auto: format, q: 100 } )
+        url(imgixParams: { auto: format, q: 100 })
         alt
         blurUpThumb
       }
       imagegallery {
-        url( imgixParams: { auto: format, q: 100 } )
+        url(imgixParams: { auto: format, q: 100 })
         alt
         blurUpThumb
       }

@@ -16,16 +16,15 @@
   border-radius: v.$radius-sm;
   overflow: hidden;
 
-  /* white background, dark grey text */
-  background: v.$color-background;
-  color: v.$color-foreground;
+  /* Tekur litinn úr CSS-breytum */
+  background: var(--nt-table-bg);
+  color: var(--nt-text-color);
 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-size: clamp(0.85rem, 1.5vw, 1rem);
 
   thead {
-    /* very light grey header */
-    background: v.$color-accent-bg;
+    background: var(--nt-header-bg);
 
     th {
       padding: v.$spacing-sm v.$spacing-md;
@@ -33,34 +32,30 @@
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.025em;
-      border-bottom: 2px solid v.$color-border;
+      border-bottom: 2px solid var(--nt-border-color);
     }
   }
 
   tbody {
     tr {
-      /* alternate rows with off-white */
       &:nth-child(even) {
-        background: v.$color-card-bg;
+        background: var(--nt-row-alt-bg);
       }
-
       &:hover {
         background: rgba(0, 0, 0, 0.05);
       }
 
       td {
         padding: v.$spacing-xs v.$spacing-md;
-        border-bottom: 1px solid v.$color-border;
+        border-bottom: 1px solid var(--nt-border-color);
       }
 
       &.subRow {
-        /* keep subrows on pure white */
-        background: v.$color-background;
-
+        background: var(--nt-subrow-bg);
         td:first-child {
           padding-left: v.$spacing-lg;
           font-style: italic;
-          color: v.$color-text-muted;
+          color: var(--nt-subtext-color);
         }
       }
     }
