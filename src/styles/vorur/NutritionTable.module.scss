@@ -16,18 +16,24 @@
   border-radius: v.$radius-sm;
   overflow: hidden;
 
+  /* theme vars */
   background: var(--nt-table-bg);
   color: var(--nt-text-color);
 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-size: clamp(0.85rem, 1.5vw, 1rem);
 
+  /* 🔧 left-align everything */
+  th,
+  td {
+    text-align: left;
+  }
+
   thead {
     background: var(--nt-header-bg);
 
     th {
       padding: v.$spacing-sm v.$spacing-md;
-      text-align: right;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.025em;
@@ -40,7 +46,6 @@
       &:nth-child(even) {
         background: var(--nt-row-alt-bg);
       }
-
       &:hover {
         background: rgba(0, 0, 0, 0.05);
       }
@@ -51,14 +56,11 @@
       }
 
       &.subRow {
-        /* Make sub-rows visually distinct */
-        background: var(--nt-header-bg);
+        background: var(--nt-subrow-bg);
         border-left: 4px solid var(--nt-border-color);
 
         td {
-          /* slightly smaller text */
           font-size: 0.9em;
-          /* dashed separator */
           border-bottom: 1px dashed var(--nt-border-color);
         }
 
